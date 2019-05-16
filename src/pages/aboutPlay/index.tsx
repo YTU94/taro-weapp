@@ -1,10 +1,9 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.less'
-import { AtButton, AtList, AtListItem } from "taro-ui"
+import { AtButton, AtCard, AtModal } from 'taro-ui'
 
 export default class Index extends Component {
-
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -12,19 +11,39 @@ export default class Index extends Component {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
+
+  constructor() {
+    super(...arguments)
+    this.state = {
+      title: 'Ytu',
+      isOpened: false
+    }
+  }
+
   config: Config = {
     navigationBarTitleText: '首页'
   }
 
-  componentWillMount () { }
+  componentWillMount() {
+    Taro.request({
+      url: 'http://localhost:8080/test',
+      data: {
+        foo: 'foo',
+        bar: 10
+      },
+      header: {
+        'content-type': 'application/json'
+      }
+    }).then(res => console.log(res.data))
+  }
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentWillUnmount () { }
+  componentWillUnmount() {}
 
-  componentDidShow () { }
+  componentDidShow() {}
 
-  componentDidHide () { }
+  componentDidHide() {}
 
   goPage = (e, index) => {
     console.log(e, index)
@@ -33,35 +52,53 @@ export default class Index extends Component {
     })
   }
 
-  render () {
+  join = e => {
+    console.log(e)
+    this.setState({
+      isOpened: true
+    })
+  }
+  handleClose = e => {
+    console.log(e)
+    this.setState({
+      isOpened: false
+    })
+  }
+  handleCancel = e => {
+    console.log(e)
+    this.setState({
+      isOpened: false
+    })
+  }
+  handleConfirm = e => {
+    console.log(e)
+    this.setState({
+      isOpened: false
+    })
+  }
+
+  render() {
     return (
       <View className='index'>
-        <Text>Hello world!</Text>
         <h1>欢迎使用 y约玩</h1>
-        <AtList>
-          <AtListItem
-            onClick={this.goPage}
-            title='标题文字-点击'
-            arrow='right'
-            thumb='https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png'
-          />
-          <AtListItem
-            title='标题文字'
-            note='描述信息'
-            arrow='right'
-            thumb='http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png'
-          />
-          <AtListItem
-            title='标题文字'
-            note='描述信息'
-            extraText='详细信息'
-            arrow='right'
-            thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-          />
-        </AtList>
-        <View className="footer">
+        <AtCard note='小Tips' extra='额外信息' title='这是个标题' thumb='' />
+        <AtButton type='primary' onClick={this.join}>
+          赴约
+        </AtButton>
+
+        <View className='footer'>
           <AtButton type='primary'>发起行动</AtButton>
         </View>
+        <AtModal
+          isOpened={this.state.isOpened}
+          title='标题'
+          cancelText='取消'
+          confirmText='确认'
+          onClose={this.handleClose}
+          onCancel={this.handleCancel}
+          onConfirm={this.handleConfirm}
+          content='确定参加该活动吗？'
+        />
       </View>
     )
   }

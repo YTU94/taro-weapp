@@ -4,25 +4,22 @@ import { AtButton, AtGrid } from 'taro-ui'
 
 class Clock extends Component {
   constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
+    super(props)
+    this.state = { date: new Date() }
   }
 
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
+    this.timerID = setInterval(() => this.tick(), 1000)
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    clearInterval(this.timerID)
   }
 
   tick() {
     this.setState({
       date: new Date()
-    });
+    })
   }
 
   render() {
@@ -31,12 +28,12 @@ class Clock extends Component {
         <h1>Hello, world!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
-    );
+    )
   }
 }
 
 export default class Index extends Component {
-  constructor () {
+  constructor() {
     super(...arguments)
     this.state = {
       title: 'Ytu',
@@ -44,19 +41,19 @@ export default class Index extends Component {
     }
   }
 
-  componentWillMount () {}
+  componentWillMount() {}
 
-  componentDidMount () {}
+  componentDidMount() {}
 
-  componentWillUpdate (nextProps, nextState) {}
+  componentWillUpdate(nextProps, nextState) {}
 
-  componentDidUpdate (prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {}
 
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return true
   }
 
-  add = (e) => {
+  add = e => {
     // dosth
     console.log(e)
   }
@@ -66,12 +63,13 @@ export default class Index extends Component {
       url: e.url
     })
   }
-  render () {
+  render() {
     return (
       <View className='index'>
         <View className='title'>{this.state.title}</View>
-        <AtGrid onClick={this.goPage} data={
-          [
+        <AtGrid
+          onClick={this.goPage}
+          data={[
             {
               url: '/pages/ordering/index',
               image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
@@ -86,20 +84,30 @@ export default class Index extends Component {
               url: '/pages/aboutPlay/index',
               image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
               value: '私人订制'
+            },
+            {
+              url: '/pages/game/index',
+              image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
+              value: '色字游戏'
             }
-          ]
-        } />
+          ]}
+        />
 
         <View className='content'>
           {this.state.list.map((item, index) => {
             return (
-              <View className='item' key="{index}" onClick={this.goPage.bind(this, item)}>{item}</View>
+              <View className='item' key='{index}' onClick={this.goPage.bind(this, item)}>
+                {item}
+              </View>
             )
           })}
         </View>
-        <View className="btn-group">
+
+        <View className='btn-group'>
           <Clock />
-          <AtButton type='primary' className='add' onClick={this.add}>去发布</AtButton>
+          <AtButton type='primary' className='add' onClick={this.add}>
+            去发布
+          </AtButton>
         </View>
       </View>
     )

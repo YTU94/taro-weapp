@@ -2,7 +2,6 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/tabBar/index/index'
 import 'taro-ui/dist/style/index.scss'
 
-
 import './app.less'
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -11,9 +10,7 @@ import './app.less'
 //   require('nerv-devtools')
 // }
 
-
 class App extends Component {
-
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -23,6 +20,7 @@ class App extends Component {
    */
   config: Config = {
     pages: [
+      'pages/game/index',
       'pages/tabBar/index/index',
       'pages/ordering/index',
       'pages/tabBar/user/index',
@@ -32,13 +30,16 @@ class App extends Component {
     tabBar: {
       selectedColor: 'red',
       backgroundColor: '#fff',
-      list: [{
-        pagePath: 'pages/tabBar/index/index',
-        text: '首页'
-      }, {
-        pagePath: 'pages/tabBar/user/index',
-        text: '我的'
-      }]
+      list: [
+        {
+          pagePath: 'pages/tabBar/index/index',
+          text: '首页'
+        },
+        {
+          pagePath: 'pages/tabBar/user/index',
+          text: '我的'
+        }
+      ]
     },
     window: {
       backgroundTextStyle: 'light',
@@ -48,20 +49,18 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
+  componentDidMount() {}
 
-  componentDidShow () {}
+  componentDidShow() {}
 
-  componentDidHide () {}
+  componentDidHide() {}
 
-  componentDidCatchError () {}
+  componentDidCatchError() {}
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
-    return (
-      <Index />
-    )
+  render() {
+    return <Index />
   }
 }
 

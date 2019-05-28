@@ -1,6 +1,6 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { AtButton, AtGrid } from 'taro-ui'
+import Taro, { Component } from "@tarojs/taro"
+import { View } from "@tarojs/components"
+import { AtButton, AtGrid } from "taro-ui"
 
 class Clock extends Component {
   constructor(props) {
@@ -36,8 +36,8 @@ export default class Index extends Component {
   constructor() {
     super(...arguments)
     this.state = {
-      title: 'Ytu',
-      list: ['1.二货', '2.来一个', '3.啥啥啥']
+      title: "Ytu",
+      list: ["1.二货", "2.来一个", "3.啥啥啥"]
     }
   }
 
@@ -71,24 +71,24 @@ export default class Index extends Component {
           onClick={this.goPage}
           data={[
             {
-              url: '/pages/ordering/index',
-              image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
-              value: '买龙虾'
+              url: "/pages/ordering/index",
+              image: "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png",
+              value: "keep清单"
             },
             {
-              url: '/pages/aboutPlay/index',
-              image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
-              value: '约打球'
+              url: "/pages/aboutPlay/index",
+              image: "https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png",
+              value: "约打球"
             },
             {
-              url: '/pages/aboutPlay/index',
-              image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-              value: '私人订制'
+              url: "/pages/aboutPlay/index",
+              image: "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
+              value: "私人订制"
             },
             {
-              url: '/pages/game/index',
-              image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-              value: '色字游戏'
+              url: "/pages/game/index",
+              image: "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
+              value: "色字游戏"
             }
           ]}
         />

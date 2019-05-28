@@ -1,11 +1,12 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Swiper, SwiperItem } from '@tarojs/components'
-import { AtButton, AtCard, AtInputNumber, AtInput, AtForm } from "taro-ui"
+import Taro, { Component, Config } from "@tarojs/taro"
+import { View, Text, Swiper, SwiperItem } from "@tarojs/components"
+import { AtButton, AtDrawer, AtCheckbox, AtCard, AtInputNumber, AtInput, AtForm } from "taro-ui"
 
-import './index.less'
+import "./index.less"
+import "taro-ui/dist/style/components/drawer.scss"
+import "taro-ui/dist/style/components/list.scss"
 
 export default class Index extends Component {
-
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -14,73 +15,101 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: "首页"
   }
-  constructor () {
+  constructor() {
     super()
     this.state = {
-      value: 1
+      value: 1,
+      show: false,
+      checkedList: ["list1"]
     }
+    this.checkboxOption = [
+      {
+        value: "list1",
+        label: "iPhone X",
+        desc: "部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。"
+      },
+      {
+        value: "list2",
+        label: "HUAWEI P20"
+      },
+      {
+        value: "list3",
+        label: "OPPO Find X",
+        desc: "部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。",
+        disabled: true
+      },
+      {
+        value: "list4",
+        label: "vivo NEX",
+        desc: "部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。",
+        disabled: true
+      }
+    ]
   }
-  componentWillMount () { }
+  componentWillMount() {
+    Taro.request({
+      url: "http://api.ytuj.cn/api/v1/ytu/articles",
+      method: "GET",
+      data: {
+        page: 1,
+        page_size: 10
+      },
+      header: {
+        "content-type": "application/json"
+      }
+    }).then(res => {
+      console.log(res)
+    })
+  }
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentWillUnmount () { }
+  componentWillUnmount() {}
 
-  componentDidShow () { }
+  componentDidShow() {}
 
-  componentDidHide () { }
+  componentDidHide() {}
 
-  handleChange (e) {
+  handleChange(e) {
     console.log(e)
   }
 
-  render () {
+  handleChange = value => {
+    this.setState({
+      checkedList: value
+    })
+  }
+
+  add = e => {
+    console.log(e)
+    this.setState({
+      show: true
+    })
+  }
+
+  render() {
     return (
       <View className='ordering'>
         <View>
-          <Swiper
-            className='test-h'
-            indicatorColor='#999'
-            indicatorActiveColor='#333'
-            vertical
-            circular
-            indicatorDots
-            autoplay>
-            <SwiperItem>
-              <View className='demo-text-1'>1</View>
-            </SwiperItem>
-            <SwiperItem>
-              <View className='demo-text-2'>2</View>
-            </SwiperItem>
-            <SwiperItem>
-              <View className='demo-text-3'>3</View>
-            </SwiperItem>
-          </Swiper>
-
           <Text>Hello world!</Text>
+          <AtCheckbox options={this.checkboxOption} selectedList={this.state.checkedList} onChange={this.handleChange.bind(this)} />
+        </View>
+        <View className='footer'>
+          <AtButton onClick={this.add.bind(this)} className='footer-btn' type='primary'>
+            添加
+          </AtButton>
+        </View>
 
-          <AtCard
-            note='小Tips'
-            extra='额外信息'
-            title='这是个标题'
-            thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
-          >
-            这也是内容区 可以随意定义功能
-          </AtCard>
-        </View>
-        <View className="footer">
-          <AtInputNumber
-            min={0}
-            max={10}
-            step={1}
-            className="footer-num"
-            value={this.state.value}
-            onChange={this.handleChange.bind(this)}
-          />
-          <AtButton className="footer-btn" type='primary'>买买买</AtButton>
-        </View>
+        <AtDrawer show={this.state.show} mask>
+          <View className='drawer-item'>优先展示items里的数据</View>
+          <View className='drawer-item'>如果items没有数据就会展示children</View>
+          <View className='drawer-item'>
+            这是自定义内容 <AtIcon value='home' size='20' />
+          </View>
+          <View className='drawer-item'>这是自定义内容</View>
+        </AtDrawer>
       </View>
     )
   }

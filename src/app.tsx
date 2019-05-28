@@ -1,8 +1,8 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import Index from './pages/tabBar/index/index'
-import 'taro-ui/dist/style/index.scss'
+import Taro, { Component, Config } from "@tarojs/taro"
+import Index from "./pages/tabBar/index/index"
+import "taro-ui/dist/style/index.scss"
 
-import './app.less'
+import "./app.less"
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -20,32 +20,32 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/game/index',
-      'pages/tabBar/index/index',
-      'pages/ordering/index',
-      'pages/tabBar/user/index',
-      'pages/joinAction/index',
-      'pages/aboutPlay/index'
+      "pages/ordering/index",
+      "pages/tabBar/index/index",
+      "pages/tabBar/user/index",
+      "pages/joinAction/index",
+      "pages/game/index",
+      "pages/aboutPlay/index"
     ],
     tabBar: {
-      selectedColor: 'red',
-      backgroundColor: '#fff',
+      selectedColor: "red",
+      backgroundColor: "#fff",
       list: [
         {
-          pagePath: 'pages/tabBar/index/index',
-          text: '首页'
+          pagePath: "pages/tabBar/index/index",
+          text: "首页"
         },
         {
-          pagePath: 'pages/tabBar/user/index',
-          text: '我的'
+          pagePath: "pages/tabBar/user/index",
+          text: "我的"
         }
       ]
     },
     window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      backgroundTextStyle: "light",
+      navigationBarBackgroundColor: "#fff",
+      navigationBarTitleText: "WeChat",
+      navigationBarTextStyle: "black"
     }
   }
 
@@ -64,4 +64,4 @@ class App extends Component {
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App />, document.getElementById("app"))

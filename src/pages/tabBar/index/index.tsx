@@ -77,14 +77,9 @@ export default class Index extends Component {
                             value: "keep清单"
                         },
                         {
-                            url: "/pages/aboutPlay/index",
+                            url: "/pages/playingCards/index",
                             image:
                                 "https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png",
-                            value: "约打球"
-                        },
-                        {
-                            url: "/pages/playingCards/index",
-                            image: "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
                             value: "扑克牌"
                         },
                         {
@@ -94,16 +89,6 @@ export default class Index extends Component {
                         }
                     ]}
                 />
-
-                {/* <View className='content'>
-          {this.state.list.map((item, index) => {
-            return (
-              <View className='item' key='{index}' onClick={this.goPage.bind(this, item)}>
-                {item}
-              </View>
-            )
-          })}
-        </View> */}
 
                 <View className='btn-group'>
                     <Clock />

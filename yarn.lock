@@ -203,6 +203,11 @@
   resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-1.2.26.tgz#486c9acce62751e2e3110421a06c0e1bb7174034"
   integrity sha512-frvRjLoSyklvcGQPJFVm1dwhVt6/pzGLomGSOHrACaSB+DSRQ9Z+Ank0SrQwHTtcw62TytRqudoI+h0bbHaG3Q==
 
+"@tarojs/taro@1.3.0-beta.4":
+  version "1.3.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-1.3.0-beta.4.tgz#ead8c87ba6c4805df106bf108291e1a27e18e9d8"
+  integrity sha512-YX5wz+iMhpymaQicTCLB0moC+DALrwLshVcauMkqyoc/7faBaqYcB+/xlpqSEFo6K/tMfzyAqVpuPP7uWSj9aw==
+
 "@tarojs/utils@1.2.26":
   version "1.2.26"
   resolved "https://registry.yarnpkg.com/@tarojs/utils/-/utils-1.2.26.tgz#de60d2e3cbc941259ca0672009c993628188975b"

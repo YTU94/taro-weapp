@@ -49,7 +49,7 @@ export default class Index extends Component {
     super(...arguments)
     this.state = {
       number: 5,
-      value: '霸王等着吧',
+      value: '你死定了',
       value4: '',
       squal: [
         { key: '1', value: '' },
@@ -135,20 +135,20 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className='index'>
-        <h1>欢迎使用 色字翻牌游戏</h1>
+      <View className='game'>
+        <View className='title'>欢迎使用 色字翻牌游戏</View>
 
         <View>
           <AtInput
             clear
             border={false}
             title='清除按钮'
-            placeholder='点击清除按钮清空内容'
+            placeholder='翻牌文字'
             type='text'
             value={this.state.value4}
             onChange={this.handleChange.bind(this)}
           >
-            <AtButton type='primary' onClick={this.changeValue}>
+            <AtButton type='primary' size="small" onClick={this.changeValue}>
               确定
             </AtButton>
           </AtInput>
@@ -169,6 +169,11 @@ export default class Index extends Component {
           })}
         </View>
 
+        <View className="expain">
+          游戏规则：自定义一段文字，这段文字会随即打乱在1-9的牌面下面，然后自定义翻到什么字的人，做什么样的惩罚！
+          
+          例如：自定义文字输入：‘你死定了’，然后规则：翻到‘你’字的人喝一杯，翻到‘死’的人和一瓶。
+        </View>
         <View className='footer'>
           <AtButton type='primary' onClick={this.next}>
             下一局

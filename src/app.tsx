@@ -20,8 +20,8 @@ class App extends Component {
      */
     config: Config = {
         pages: [
-            "pages/game/index",
             "pages/tabBar/index/index",
+            "pages/game/index",
             "pages/ordering/index",
             "pages/playingCards/index",
             "pages/tabBar/user/index",
@@ -29,7 +29,7 @@ class App extends Component {
             "pages/aboutPlay/index"
         ],
         tabBar: {
-            selectedColor: "red",
+            selectedColor: "#6190E8",
             backgroundColor: "#fff",
             list: [
                 {

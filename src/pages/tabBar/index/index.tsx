@@ -65,7 +65,7 @@ export default class Index extends Component {
     }
     render() {
         return (
-            <View className='index'>
+            <View className='home'>
                 <View className='title'>{this.state.title}</View>
 
                 <AtGrid

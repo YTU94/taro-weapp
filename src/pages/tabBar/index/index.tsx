@@ -56,6 +56,15 @@ export default class Index extends Component {
     add = e => {
         // dosth
         console.log(e)
+        Taro.navigateToMiniProgram({
+            appId: "wx18a2ac992306a5a4",
+            path: "pages/apps/largess/detail?accountId=5686224",
+            envVersion: "release",
+            success(res) {
+                // 打开成功
+                console.log(res)
+            }
+        })
     }
     goPage = (e, index) => {
         console.log(e, index)
@@ -85,7 +94,7 @@ export default class Index extends Component {
                         {
                             url: "/pages/game/index",
                             image: "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
-                            value: "色字游戏"
+                            value: "翻牌游戏"
                         }
                     ]}
                 />
@@ -93,7 +102,7 @@ export default class Index extends Component {
                 <View className='btn-group'>
                     <Clock />
                     <AtButton type='primary' className='add' onClick={this.add}>
-                        去发布
+                        赞赏👍
                     </AtButton>
                 </View>
             </View>

@@ -136,7 +136,7 @@ export default class Index extends Component {
     render() {
         return (
             <View className='game'>
-                <View className='title'>欢迎使用 色字翻牌游戏</View>
+                <View className='title'>文字翻牌游戏</View>
 
                 <View>
                     <AtInput

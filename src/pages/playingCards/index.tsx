@@ -2,7 +2,6 @@ import Taro, { Component, Config } from "@tarojs/taro"
 import { View, Text } from "@tarojs/components"
 import "./index.less"
 import { AtButton, AtModal, AtModalHeader, AtModalContent, AtModalAction, AtCard, AtModal } from "taro-ui"
-import { stat } from "fs"
 
 export default class Index extends Component {
     /**
@@ -17,7 +16,7 @@ export default class Index extends Component {
         super(...arguments)
         this.state = {
             title: "Ytu",
-            num: 0,
+            num: 1,
             isOpened: false
         }
     }
@@ -38,15 +37,16 @@ export default class Index extends Component {
 
     goPage = (e, index) => {
         console.log(e, index)
-        Taro.navigateTo({
-            url: "/pages/joinAction/index"
-        })
+        // Taro.navigateTo({
+        //     url: "/pages/joinAction/index"
+        // })
     }
 
     select = e => {
         console.log(e)
         this.setState({
-            isOpened: true
+            isOpened: true,
+            num: Math.floor(Math.random() * 54) + 1 || 1
         })
     }
     handleClose = e => {
@@ -77,9 +77,8 @@ export default class Index extends Component {
                     选牌
                 </AtButton>
 
-                <View className='expain'>规则：玩家随机选择一张牌，然后后面的游戏就是你们自己的啦</View>
+                <View className='expain'>规则：玩家随机选择一张牌，然后后面的游戏规则完全可以由玩家自己子定义了。</View>
                 <AtModal isOpened={this.state.isOpened}>
-                    <AtModalHeader />
                     <AtModalContent>
                         <image
                             className='puke-img'
@@ -89,7 +88,6 @@ export default class Index extends Component {
                             mode='widthFix'
                         />
                     </AtModalContent>
-                    <AtModalAction />
                 </AtModal>
             </View>
         )

@@ -37,7 +37,7 @@ export default class Index extends Component {
             <View className='user'>
                 <View className='title'>{this.state.title}</View>
 
-                <AtButton type='primary' open-type='feedback'>
+                <AtButton className="action-btn" type='primary' open-type='feedback'>
                     建议和反馈
                 </AtButton>
                 <View className='' />

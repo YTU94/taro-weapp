@@ -21,22 +21,25 @@ class App extends Component {
     config: Config = {
         pages: [
             "pages/tabBar/index/index",
+            "pages/tabBar/user/index",
             "pages/game/index",
             "pages/ordering/index",
-            "pages/playingCards/index",
-            "pages/tabBar/user/index",
-            "pages/joinAction/index",
-            "pages/aboutPlay/index"
+            "pages/playingCards/index"
         ],
         tabBar: {
+            color: "#333333",
             selectedColor: "#6190E8",
             backgroundColor: "#fff",
             list: [
                 {
+                    iconPath: "./assets/images/game-default.png",
+                    selectedIconPath: "./assets/images/game-active.png",
                     pagePath: "pages/tabBar/index/index",
                     text: "首页"
                 },
                 {
+                    iconPath: "./assets/images/person-default.png",
+                    selectedIconPath: "./assets/images/person-active.png",
                     pagePath: "pages/tabBar/user/index",
                     text: "我的"
                 }
@@ -47,7 +50,8 @@ class App extends Component {
             navigationBarBackgroundColor: "#fff",
             navigationBarTitleText: "WeChat",
             navigationBarTextStyle: "black"
-        }
+        },
+        navigateToMiniProgramAppIdList: ["wx18a2ac992306a5a4"]
     }
 
     componentDidMount() {}

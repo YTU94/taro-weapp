@@ -3,8 +3,6 @@ import { View, Text, Swiper, SwiperItem } from "@tarojs/components"
 import { AtButton, AtDrawer, AtCheckbox, AtCard, AtInputNumber, AtInput, AtForm } from "taro-ui"
 
 import "./index.less"
-import "taro-ui/dist/style/components/drawer.scss"
-import "taro-ui/dist/style/components/list.scss"
 
 export default class Index extends Component {
     /**

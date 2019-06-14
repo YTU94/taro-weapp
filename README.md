@@ -1,6 +1,5 @@
 <p align="center"><img src="static/logo.png" width="100%" height="auto"/></p>
 
-# 酒桌Gameing 小程序
 > 使用taro框架强力驱动
 
 ----------

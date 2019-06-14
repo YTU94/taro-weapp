@@ -1,6 +1,14 @@
 import Taro, { Component, Config } from "@tarojs/taro"
 import Index from "./pages/tabBar/index/index"
-import "taro-ui/dist/style/index.scss"
+import "taro-ui/dist/style/components/grid.scss"
+import "taro-ui/dist/style/components/drawer.scss"
+import "taro-ui/dist/style/components/list.scss"
+import "taro-ui/dist/style/components/button.scss"
+import "taro-ui/dist/style/components/loading.scss"
+import "taro-ui/dist/style/components/input.scss"
+import "taro-ui/dist/style/components/icon.scss"
+import "taro-ui/dist/style/components/checkbox.scss"
+import "taro-ui/dist/style/components/modal.scss"
 
 import "./app.less"
 

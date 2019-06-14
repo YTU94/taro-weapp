@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from "@tarojs/taro"
 import { View, Text } from "@tarojs/components"
 import "./index.less"
-import { AtButton, AtModal, AtModalHeader, AtModalContent, AtModalAction, AtCard, AtModal } from "taro-ui"
+import { AtButton, AtModalHeader, AtModalContent, AtModalAction, AtCard, AtModal } from "taro-ui"
 
 export default class Index extends Component {
     /**
@@ -83,7 +83,7 @@ export default class Index extends Component {
                         <image
                             className='puke-img'
                             src={`http://assets.ytuj.cn/img/pukeImage/${this.state.num}.jpg`}
-                            alt=''
+                            alt='loading'
                             style='width:100%;'
                             mode='widthFix'
                         />

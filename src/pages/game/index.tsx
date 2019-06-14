@@ -1,8 +1,7 @@
 import Taro, { Component, Config } from "@tarojs/taro"
-import { View, Text } from "@tarojs/components"
+import { View } from "@tarojs/components"
 import "./index.less"
 import { AtButton, AtInput } from "taro-ui"
-import { func } from "prop-types"
 
 function getRandomInt(min, max) {
     min = Math.ceil(min)
@@ -95,7 +94,7 @@ export default class Index extends Component {
     changeValue = e => {
         console.log(e)
         if (this.state.value4.length > 8) {
-            wx.showToast({
+            Taro.showToast({
                 icon: "none",
                 title: "no no no"
             })
@@ -137,9 +136,9 @@ export default class Index extends Component {
         return (
             <View className='game'>
                 <View className='title'>文字翻牌游戏</View>
-
                 <View>
                     <AtInput
+                        name=''
                         clear
                         border={false}
                         title='清除按钮'

@@ -27,13 +27,7 @@ class App extends Component {
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
     config: Config = {
-        pages: [
-            "pages/tabBar/index/index",
-            "pages/tabBar/user/index",
-            "pages/game/index",
-            "pages/ordering/index",
-            "pages/playingCards/index"
-        ],
+        pages: ["pages/tabBar/index/index", "pages/tabBar/user/index", "pages/game/index", "pages/keepList/index", "pages/pukeGame/index"],
         tabBar: {
             color: "#333333",
             selectedColor: "#6190E8",

@@ -1,3 +1,17 @@
+@keyframes rotateAnima {
+    0% {
+        transform: rotateY(0deg)
+    }
+
+    50% {
+        transform: rotateY(180deg)
+    }
+
+    100% {
+        transform: rotateY(360deg)
+    }
+}
+
 .game {
     padding: 0 40rpx;
 
@@ -11,7 +25,7 @@
         padding: 20rpx 0;
     }
 
-    .expain{
+    .expain {
         font-size: 24rpx;
         color: #7b7b7b;
         padding: 40rpx 0;
@@ -22,4 +36,26 @@
         box-sizing: border-box;
 
     }
+}
+
+.game-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-item: center;
+    justify-content: center;
+
+    .card-item {
+        flex: 0 0 33%;
+        height: 5em;
+        line-height: 5em;
+        text-align: center;
+        border: 1px solid #eee;
+        box-sizing: border-box;
+        transition: 1s;
+    }
+
+    .animation-rotate {
+        animation: rotateAnima 1s 1;
+    }
+
 }

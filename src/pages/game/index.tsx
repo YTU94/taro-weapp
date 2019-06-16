@@ -51,15 +51,15 @@ export default class Index extends Component {
             value: "你死定了",
             value4: "",
             squal: [
-                { key: "1", value: "" },
-                { key: "2", value: "" },
-                { key: "3", value: "" },
-                { key: "4", value: "" },
-                { key: "5", value: "" },
-                { key: "6", value: "" },
-                { key: "7", value: "" },
-                { key: "8", value: "" },
-                { key: "9", value: "" }
+                { key: "1", value: "", hasClick: false },
+                { key: "2", value: "", hasClick: false },
+                { key: "3", value: "", hasClick: false },
+                { key: "4", value: "", hasClick: false },
+                { key: "5", value: "", hasClick: false },
+                { key: "6", value: "", hasClick: false },
+                { key: "7", value: "", hasClick: false },
+                { key: "8", value: "", hasClick: false },
+                { key: "9", value: "", hasClick: false }
             ]
         }
     }
@@ -78,6 +78,7 @@ export default class Index extends Component {
     flop = (e, index) => {
         let newSqual = this.state.squal.splice(0)
         newSqual[index].key = e.value || "=^_^="
+        newSqual[index].hasClick = true
         this.setState({
             squal: newSqual
         })
@@ -112,15 +113,15 @@ export default class Index extends Component {
 
     next = e => {
         const a = [
-            { key: "1", value: "" },
-            { key: "2", value: "" },
-            { key: "3", value: "" },
-            { key: "4", value: "" },
-            { key: "5", value: "" },
-            { key: "6", value: "" },
-            { key: "7", value: "" },
-            { key: "8", value: "" },
-            { key: "9", value: "" }
+            { key: "1", value: "", hasClick: false },
+            { key: "2", value: "", hasClick: false },
+            { key: "3", value: "", hasClick: false },
+            { key: "4", value: "", hasClick: false },
+            { key: "5", value: "", hasClick: false },
+            { key: "6", value: "", hasClick: false },
+            { key: "7", value: "", hasClick: false },
+            { key: "8", value: "", hasClick: false },
+            { key: "9", value: "", hasClick: false }
         ]
         this.setState(
             {
@@ -153,14 +154,13 @@ export default class Index extends Component {
                     </AtInput>
                 </View>
 
-                <View className='' style='display:flex;flex-wrap: wrap;align-item:center;justify-content:center;'>
+                <View className='game-content'>
                     {this.state.squal.map((element, index) => {
                         return (
                             <View
-                                className=''
+                                className={this.state.squal[index].hasClick ? "card-item animation-rotate" : "card-item"}
                                 key={index}
                                 onClick={this.flop.bind(this, element, index)}
-                                style='flex: 0 0 33%; height: 5em; line-height:5em; text-align:center;border:1px solid #eee; box-sizing:border-box;'
                             >
                                 {element.key}
                             </View>

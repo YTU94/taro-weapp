@@ -1,14 +1,14 @@
 @keyframes rotateAnima {
     0% {
-        transform: rotateY(0deg)
+        transform: rotateY(0deg);
     }
 
     50% {
-        transform: rotateY(180deg)
+        transform: rotateY(90deg);
     }
 
     100% {
-        transform: rotateY(360deg)
+        transform: rotateY(180deg);
     }
 }
 
@@ -21,7 +21,7 @@
 
     .title {
         text-align: center;
-        color: #6190E8;
+        color: #6190e8;
         padding: 20rpx 0;
     }
 
@@ -29,33 +29,38 @@
         font-size: 24rpx;
         color: #7b7b7b;
         padding: 40rpx 0;
+        margin-bottom: 160rpx;
     }
 
     .footer {
         padding: 40rpx;
         box-sizing: border-box;
-
     }
 }
 
 .game-content {
     display: flex;
     flex-wrap: wrap;
-    align-item: center;
+    align-items: center;
     justify-content: center;
 
     .card-item {
-        flex: 0 0 33%;
-        height: 5em;
-        line-height: 5em;
+        flex: 0 0 30%;
+        height: 6.2em;
+        line-height: 6.2em;
         text-align: center;
         border: 1px solid #eee;
         box-sizing: border-box;
         transition: 1s;
+        margin: 1.5%;
+        background: #92b901;
+        color: #fff;
+        border-radius: 10rpx;
     }
 
     .animation-rotate {
         animation: rotateAnima 1s 1;
+        background-color: #6190e8;
+        color: #fff;
     }
-
 }

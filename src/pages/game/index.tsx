@@ -82,7 +82,6 @@ export default class Index extends Component {
         this.setState({
             squal: newSqual
         })
-        console.log(this.state.squal[index])
     }
 
     handleChange = e => {

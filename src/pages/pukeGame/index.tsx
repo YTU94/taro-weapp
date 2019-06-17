@@ -17,6 +17,7 @@ export default class Index extends Component {
         this.state = {
             title: "Ytu",
             num: 1,
+            showExpain: false,
             isOpened: false
         }
     }
@@ -67,6 +68,11 @@ export default class Index extends Component {
             isOpened: false
         })
     }
+    showExpainModal = e => {
+        this.setState({
+            showExpain: true
+        })
+    }
 
     render() {
         return (
@@ -78,6 +84,11 @@ export default class Index extends Component {
                 </AtButton>
 
                 <View className='expain'>规则：玩家随机选择一张牌，然后后面的游戏规则完全可以由玩家自己子定义了。</View>
+
+                <AtButton className='' type='secondary' size='small' onClick={this.showExpainModal}>
+                    点我告诉你怎么玩🎮
+                </AtButton>
+
                 <AtModal isOpened={this.state.isOpened}>
                     <AtModalContent>
                         <image
@@ -87,6 +98,18 @@ export default class Index extends Component {
                             style='width:100%;'
                             mode='widthFix'
                         />
+                    </AtModalContent>
+                </AtModal>
+
+                <AtModal isOpened={this.state.showExpain}>
+                    <AtModalContent>
+                        <View style='text-align:left;'>
+                            玩法一：酒桌方一个空碗，每人选一张牌，不要被别人看到，然后往碗里一直倒酒，如果有人心虚，就喊停，喊停的人就要喝掉碗里的酒，没人喊停就倒满，然后牌面最小的人喝酒。
+                        </View>
+
+                        <View style='text-align:left;'>
+                            玩法二：酒桌方一个空碗，每人选一张牌，注意自己不可看这个牌，需要把牌给其他人看，然后同上，你觉得桌上有比你小的牌，就不喊停，直到酒满，最后比大小。
+                        </View>
                     </AtModalContent>
                 </AtModal>
             </View>

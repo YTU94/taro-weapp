@@ -8,28 +8,21 @@ function getRandomInt(min, max) {
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min)) + min //不含最大值，含最小值
 }
-function dos(a: string, arr: Array) {
-    let nArr = arr.slice(0)
+
+function dos(a: string, arr: []) {
     let sArr = a.split("")
-    let n = []
-    for (let i = 0; i < sArr.length; i++) {
-        let r = getRandomInt(0, nArr.length)
-        console.log(r, sArr[i], nArr[r])
-        try {
-            nArr[r].value = sArr[i]
-        } catch (error) {
-            console.log(error)
+    let insert = i => {
+        let r = getRandomInt(0, arr.length)
+        if (!arr[r].value) {
+            console.log(r)
+            arr[r].value = sArr[i]
+        } else {
+            insert(i)
         }
-        n.push(nArr[r])
-        nArr.splice(r, 1)
     }
-    arr.forEach(e => {
-        n.forEach(f => {
-            if (e.key === f.key) {
-                e = f
-            }
-        })
-    })
+    for (let i = 0; i < sArr.length; i++) {
+        insert(i)
+    }
 }
 
 export default class Index extends Component {
@@ -47,9 +40,8 @@ export default class Index extends Component {
     constructor() {
         super(...arguments)
         this.state = {
-            number: 5,
-            value: "你死定了",
-            value4: "",
+            value: "翻牌文字",
+            inputValue: "",
             squal: [
                 { key: "1", value: "", hasClick: false },
                 { key: "2", value: "", hasClick: false },
@@ -77,7 +69,6 @@ export default class Index extends Component {
 
     flop = (e, index) => {
         let newSqual = this.state.squal.splice(0)
-        newSqual[index].key = e.value || "=^_^="
         newSqual[index].hasClick = true
         this.setState({
             squal: newSqual
@@ -85,24 +76,22 @@ export default class Index extends Component {
     }
 
     handleChange = e => {
-        console.log(e)
         this.setState({
-            value4: e
+            inputValue: e
         })
     }
 
     changeValue = e => {
-        console.log(e)
-        if (this.state.value4.length > 8) {
+        if (this.state.inputValue.length > 8) {
             Taro.showToast({
                 icon: "none",
-                title: "no no no"
+                title: "最长9个字哦😯"
             })
             return false
         }
         this.setState(
             {
-                value: this.state.value4
+                value: this.state.inputValue
             },
             () => {
                 this.next()
@@ -144,7 +133,7 @@ export default class Index extends Component {
                         title='清除按钮'
                         placeholder='翻牌文字'
                         type='text'
-                        value={this.state.value4}
+                        value={this.state.inputValue}
                         onChange={this.handleChange.bind(this)}
                     >
                         <AtButton type='primary' size='small' onClick={this.changeValue}>
@@ -161,7 +150,7 @@ export default class Index extends Component {
                                 key={index}
                                 onClick={this.flop.bind(this, element, index)}
                             >
-                                {element.key}
+                                {this.state.squal[index].hasClick ? element.value || "=^_^=" : index + 1}
                             </View>
                         )
                     })}

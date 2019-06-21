@@ -36,8 +36,7 @@ export default class Index extends Component {
     constructor() {
         super(...arguments)
         this.state = {
-            title: "酒桌Gameing",
-            list: ["1.二货", "2.来一个", "3.啥啥啥"]
+            title: "酒桌Gameing"
         }
     }
 
@@ -65,7 +64,6 @@ export default class Index extends Component {
         })
     }
     goPage = (e, index) => {
-        console.log(e, index)
         Taro.navigateTo({
             url: e.url
         })

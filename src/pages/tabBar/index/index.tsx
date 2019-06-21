@@ -54,8 +54,6 @@ export default class Index extends Component {
     }
 
     add = e => {
-        // dosth
-        console.log(e)
         Taro.navigateToMiniProgram({
             appId: "wx18a2ac992306a5a4",
             path: "pages/apps/largess/detail?accountId=5686224",
@@ -72,6 +70,7 @@ export default class Index extends Component {
             url: e.url
         })
     }
+
     render() {
         return (
             <View className='home'>
@@ -101,6 +100,7 @@ export default class Index extends Component {
 
                 <View className='btn-group'>
                     <Clock />
+
                     <AtButton type='primary' className='add' onClick={this.add}>
                         赞赏👍
                     </AtButton>

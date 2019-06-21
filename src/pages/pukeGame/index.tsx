@@ -44,37 +44,33 @@ export default class Index extends Component {
     }
 
     select = e => {
-        console.log(e)
         this.setState({
             isOpened: true,
             num: Math.floor(Math.random() * 54) + 1 || 1
         })
     }
-    handleClose = e => {
-        console.log(e)
-        this.setState({
-            isOpened: false
-        })
-    }
-    handleCancel = e => {
-        console.log(e)
-        this.setState({
-            isOpened: false
-        })
-    }
-    handleConfirm = e => {
-        console.log(e)
-        this.setState({
-            isOpened: false
-        })
-    }
+
     showExpainModal = e => {
         this.setState({
-            showExpain: true
+            showExpain: !this.state.showExpain
         })
     }
 
     render() {
+        let playMethods
+        if (this.state.showExpain) {
+            playMethods = (
+                <View className='expain'>
+                    <View style='text-align:left;'>
+                        玩法一：酒桌方一个空碗，每人选一张牌，不要被别人看到，然后往碗里一直倒酒，如果有人心虚，就喊停，喊停的人就要喝掉碗里的酒，没人喊停就倒满，然后牌面最小的人喝酒。
+                    </View>
+
+                    <View style='text-align:left;'>
+                        玩法二：酒桌方一个空碗，每人选一张牌，注意自己不可看这个牌，需要把牌给其他人看，然后同上，你觉得桌上有比你小的牌，就不喊停，直到酒满，最后比大小。
+                    </View>
+                </View>
+            )
+        }
         return (
             <View className='puke-game'>
                 <View className='title'>随机选牌</View>
@@ -100,18 +96,7 @@ export default class Index extends Component {
                         />
                     </AtModalContent>
                 </AtModal>
-
-                <AtModal isOpened={this.state.showExpain}>
-                    <AtModalContent>
-                        <View style='text-align:left;'>
-                            玩法一：酒桌方一个空碗，每人选一张牌，不要被别人看到，然后往碗里一直倒酒，如果有人心虚，就喊停，喊停的人就要喝掉碗里的酒，没人喊停就倒满，然后牌面最小的人喝酒。
-                        </View>
-
-                        <View style='text-align:left;'>
-                            玩法二：酒桌方一个空碗，每人选一张牌，注意自己不可看这个牌，需要把牌给其他人看，然后同上，你觉得桌上有比你小的牌，就不喊停，直到酒满，最后比大小。
-                        </View>
-                    </AtModalContent>
-                </AtModal>
+                {playMethods}
             </View>
         )
     }

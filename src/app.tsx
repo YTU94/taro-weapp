@@ -58,7 +58,28 @@ class App extends Component {
 
     componentDidMount() {}
 
-    componentDidShow() {}
+    componentDidShow() {
+        Taro.login({
+            success(res) {
+                if (res.code) {
+                    console.log("code", res.code)
+                    //发起网络请求
+                    Taro.request({
+                        method: "POST",
+                        url: "https://ggapi.ytuj.cn/api/v1/addUser",
+                        data: {
+                            code: res.code
+                        },
+                        success(response) {
+                            console.log(response)
+                        }
+                    })
+                } else {
+                    console.log("登录失败！" + res.errMsg)
+                }
+            }
+        })
+    }
 
     componentDidHide() {}
 

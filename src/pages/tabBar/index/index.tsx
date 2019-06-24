@@ -63,7 +63,7 @@ export default class Index extends Component {
             }
         })
     }
-    goPage = (e, index) => {
+    goPage = e => {
         Taro.navigateTo({
             url: e.url
         })
@@ -92,6 +92,17 @@ export default class Index extends Component {
                             url: "/pages/game/index",
                             image: "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
                             value: "翻牌游戏"
+                        },
+                        {
+                            url: "/pages/diceGame/index",
+                            image: "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
+                            value: "骰子游戏"
+                        },
+                        {
+                            url: "",
+                            image:
+                                "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png",
+                            value: "敬请期待"
                         }
                     ]}
                 />

@@ -47,19 +47,19 @@ export default class Index extends Component {
         ]
     }
     componentWillMount() {
-        Taro.request({
-            url: "http://api.ytuj.cn/api/v1/ytu/articles",
-            method: "GET",
-            data: {
-                page: 1,
-                page_size: 10
-            },
-            header: {
-                "content-type": "application/json"
-            }
-        }).then(res => {
-            console.log(res)
-        })
+        // Taro.request({
+        //     url: "http://api.ytuj.cn/api/v1/ytu/articles",
+        //     method: "GET",
+        //     data: {
+        //         page: 1,
+        //         page_size: 10
+        //     },
+        //     header: {
+        //         "content-type": "application/json"
+        //     }
+        // }).then(res => {
+        //     console.log(res)
+        // })
     }
 
     componentDidMount() {}
@@ -93,6 +93,21 @@ export default class Index extends Component {
             show: true
         })
     }
+    submit = e => {
+        Taro.request({
+            url: "https://ggapi.ytuj.cn/api/v1/addKeepItem",
+            method: "POST",
+            data: {
+                code: Taro.getStorageSync("code"),
+                content: this.state.value
+            },
+            header: {
+                "content-type": "application/json"
+            }
+        }).then(res => {
+            console.log(res)
+        })
+    }
 
     render() {
         let inputArea
@@ -109,27 +124,27 @@ export default class Index extends Component {
                         placeholder=''
                         value={this.state.value}
                         onChange={this.handleChange.bind(this)}
-                        onConfirm={this.inputOver.bind(this)}
+                        onConfirm={this.submit.bind(this)}
                         onBlur={this.inputOver.bind(this)}
-                    />{" "}
+                    />
                 </View>
             )
         }
         return (
             <View className='keep-list'>
                 <View>
-                    <Text className='title'> Keep List </Text>{" "}
+                    <Text className='title'> Keep List </Text>
                     <AtCheckbox
                         options={this.checkboxOption}
                         selectedList={this.state.checkedList}
                         onChange={this.handleChange.bind(this)}
-                    />{" "}
-                </View>{" "}
+                    />
+                </View>
                 <View className='footer'>
                     <AtButton onClick={this.add.bind(this)} className='footer-btn' type='primary'>
-                        添加{" "}
-                    </AtButton>{" "}
-                </View>{" "}
+                        添加
+                    </AtButton>
+                </View>
                 {inputArea}
                 {/* <AtDrawer show={this.state.show} mask>
                                     <View className='drawer-item'>优先展示items里的数据</View>
@@ -138,7 +153,7 @@ export default class Index extends Component {
                                         这是自定义内容 <AtIcon value='home' size='20' />
                                     </View>
                                     <View className='drawer-item'>这是自定义内容</View>
-                                </AtDrawer> */}{" "}
+                                </AtDrawer> */}
             </View>
         )
     }

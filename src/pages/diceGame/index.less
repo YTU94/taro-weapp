@@ -7,8 +7,6 @@
     right: 0;
     bottom: 0;
     box-sizing: border-box;
-
-
 }
 
 .title {
@@ -25,16 +23,21 @@
     text-align: left;
 }
 
+.dice-picker {
+    font-size: 40rpx;
+}
+
 .dice-bg {
-    position: relative;
-    top: 0;
+    position: absolute;
+    top: 50%;
     left: 0;
+    transform: translate(0, -50%);
 }
 
 .dice-box {
     position: absolute;
     left: 50%;
-    bottom: 40rpx;
+    bottom: 120rpx;
     transform: translate(-50%, 0);
     width: 420rpx;
     display: flex;
@@ -42,6 +45,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    z-index: 1;
 
     image {
         flex: 0 0 100rpx;
@@ -50,9 +54,30 @@
     }
 }
 
+.dice-bg-active {
+    opacity: .8;
+}
 
 .shake-text {
-    font-size: 40rpx;
+    font-size: 60rpx;
     line-height: 2.0;
     color: #6190E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    image {
+        display: inline-block;
+        flex: 0 0 80rpx;
+        height: auto;
+    }
+}
+
+.opt-btn {
+    position: absolute;
+    bottom: 60rpx;
+    left: 0;
+    right: 0;
+    margin: 0 20px;
+
 }

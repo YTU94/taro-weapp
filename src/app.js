@@ -70,6 +70,7 @@ class App extends Component {
             success(res) {
                 if (res.code) {
                     console.log("code", res.code)
+                    // Taro.setStorageSync("code", res.code)
                     //发起网络请求
                     Taro.request({
                         method: "POST",

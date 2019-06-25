@@ -1,6 +1,7 @@
 import Taro, {Component, Config} from "@tarojs/taro"
 import {View, Picker} from "@tarojs/components"
 import "./index.less"
+import {AtButton} from "taro-ui"
 
 function randomNum(params) {
     return Math.ceil(Math.random() * params)
@@ -20,8 +21,7 @@ export default class Index extends Component {
             diceNum: 5,
             selector: [1, 2, 3, 4, 5, 6],
             diceList: [],
-            showExpain: false,
-            isOpened: false
+            showDice: false
         }
     }
     config = {
@@ -29,7 +29,7 @@ export default class Index extends Component {
     }
 
     componentWillMount() {
-        this.init()
+        // this.init()
     }
 
     componentDidMount() {
@@ -37,7 +37,7 @@ export default class Index extends Component {
         Taro.onAccelerometerChange(function(e) {
             if (e.x > 0.6 && e.y > 0.6) {
                 Taro.showToast({
-                    title: "OK",
+                    title: "摇好啦👌",
                     icon: "success",
                     duration: 1000
                 })
@@ -59,6 +59,7 @@ export default class Index extends Component {
             a.push(v)
         }
         this.setState({
+            showDice: false,
             diceList: a
         })
     }
@@ -68,9 +69,22 @@ export default class Index extends Component {
             diceNum: parseInt(e.detail.value) + 1
         })
     }
-
+    openDice = e => {
+        if (this.state.diceList.length > 0) {
+            this.setState({
+                showDice: true
+            })
+        } else {
+            Taro.showToast({
+                title: "请先摇一摇",
+                icon: "none",
+                duration: 1000
+            })
+        }
+    }
     render() {
-        let imgList = this.state.diceList.map(e => {
+        const showDice = this.state.showDice
+        const imgList = this.state.diceList.map(e => {
             return <image className='dice-img' src={`http://assets.ytuj.cn/img/dice/${e}.png`} alt='' mode='widthFix' />
         })
 
@@ -78,21 +92,26 @@ export default class Index extends Component {
             <View className='dice-game'>
                 <View className='dice-num'>
                     <Picker mode='selector' range={this.state.selector} onChange={this.onChange}>
-                        <View className='picker'> 🎲 X {this.state.diceNum} </View>
-                    </Picker>
+                        <View className='dice-picker'> 🎲X {this.state.diceNum} </View>{" "}
+                    </Picker>{" "}
                 </View>
-
                 <View className='title'> 骰子游戏 </View>
-
                 <View className='dice-bg'>
-                    <View className='dice-box'>{imgList}</View>
-
-                    <image className='dice-bg-img' src='http://assets.ytuj.cn/img/dice/dice-bg.png' alt='' mode='widthFix' />
+                    <View className='dice-box'> {showDice ? imgList : ""} </View>
+                    <image
+                        className='dice-bg-img'
+                        className={this.state.diceList.length > 0 ? "dice-bg-active" : ""}
+                        src='http://assets.ytuj.cn/img/dice/dice-bg.png'
+                        alt=''
+                        mode='widthFix'
+                    />
+                    <View className='shake-text' type='primary' onClick={this.select}>
+                        摇一摇 <image className='shake-img' src='http://assets.ytuj.cn/img/dice/shake_icon.png' alt='' mode='widthFix' />
+                    </View>{" "}
                 </View>
-
-                <View className='shake-text' type='primary' onClick={this.select}>
-                    摇一摇
-                </View>
+                <AtButton className='opt-btn' type='primary' onClick={this.openDice}>
+                    开！！{" "}
+                </AtButton>{" "}
             </View>
         )
     }

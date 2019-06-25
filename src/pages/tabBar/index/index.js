@@ -37,15 +37,17 @@ export default class Index extends Component {
         })
     }
     goPage = e => {
-        Taro.navigateTo({
-            url: e.url
-        })
+        if (e.url) {
+            Taro.navigateTo({
+                url: e.url
+            })
+        }
     }
 
     render() {
         return (
             <View className='home'>
-                <View className='title'> {this.state.title} </View>
+                <View className='title'> {this.state.title} </View>{" "}
                 <AtGrid
                     onClick={this.goPage}
                     data={[
@@ -77,7 +79,7 @@ export default class Index extends Component {
                             value: "敬请期待"
                         }
                     ]}
-                />
+                />{" "}
                 <View className='btn-group'>
                     <AtButton type='primary' className='add' onClick={this.add}>
                         赞赏👍{" "}

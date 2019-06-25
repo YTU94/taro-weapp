@@ -1,7 +1,7 @@
 import Taro, {Component, Config} from "@tarojs/taro"
 import {View, Text} from "@tarojs/components"
 import "./index.less"
-import {AtButton, AtModalHeader, AtModalContent, AtModalAction, AtCard, AtModal} from "taro-ui"
+import {AtButton, AtModalContent, AtModal} from "taro-ui"
 
 export default class Index extends Component {
     /**
@@ -35,13 +35,6 @@ export default class Index extends Component {
 
     componentDidHide() {}
 
-    goPage = (e, index) => {
-        console.log(e, index)
-        // Taro.navigateTo({
-        //     url: "/pages/joinAction/index"
-        // })
-    }
-
     select = e => {
         this.setState({
             isOpened: true,
@@ -67,7 +60,7 @@ export default class Index extends Component {
                     <View style='text-align:left;'>
                         玩法二： 酒桌方一个空碗， 每人选一张牌， 注意自己不可看这个牌， 需要把牌给其他人看， 然后同上，
                         你觉得桌上有比你小的牌， 就不喊停， 直到酒满， 最后比大小。{" "}
-                    </View>{" "}
+                    </View>
                 </View>
             )
         }
@@ -75,11 +68,11 @@ export default class Index extends Component {
             <View className='puke-game'>
                 <View className='title'> 随机选牌 </View>
                 <AtButton className='puke-btn' type='primary' onClick={this.select}>
-                    选牌{" "}
+                    选牌
                 </AtButton>
                 <View className='expain'> 规则： 玩家随机选择一张牌， 然后后面的游戏规则完全可以由玩家自己子定义了。 </View>
                 <AtButton className='' type='secondary' size='small' onClick={this.showExpainModal}>
-                    点我告诉你怎么玩🎮{" "}
+                    点我告诉你怎么玩🎮
                 </AtButton>
                 <AtModal isOpened={this.state.isOpened}>
                     <AtModalContent>
@@ -90,9 +83,9 @@ export default class Index extends Component {
                             style='width:100%;'
                             mode='widthFix'
                         />
-                    </AtModalContent>{" "}
-                </AtModal>{" "}
-                {playMethods}{" "}
+                    </AtModalContent>
+                </AtModal>
+                {playMethods}
             </View>
         )
     }

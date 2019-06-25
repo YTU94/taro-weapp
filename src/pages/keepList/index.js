@@ -1,6 +1,6 @@
-import Taro, { Component, Config } from "@tarojs/taro"
-import { View, Text, Swiper, SwiperItem } from "@tarojs/components"
-import { AtButton, AtDrawer, AtCheckbox, AtCard, AtInputNumber, AtInput, AtForm } from "taro-ui"
+import Taro, {Component, Config} from "@tarojs/taro"
+import {View, Text, Swiper, SwiperItem} from "@tarojs/components"
+import {AtButton, AtDrawer, AtCheckbox, AtCard, AtInputNumber, AtInput, AtForm} from "taro-ui"
 
 import "./index.less"
 
@@ -111,35 +111,34 @@ export default class Index extends Component {
                         onChange={this.handleChange.bind(this)}
                         onConfirm={this.inputOver.bind(this)}
                         onBlur={this.inputOver.bind(this)}
-                    />
+                    />{" "}
                 </View>
             )
         }
         return (
             <View className='keep-list'>
                 <View>
-                    <Text className='title'>Keep List</Text>
+                    <Text className='title'> Keep List </Text>{" "}
                     <AtCheckbox
                         options={this.checkboxOption}
                         selectedList={this.state.checkedList}
                         onChange={this.handleChange.bind(this)}
-                    />
-                </View>
+                    />{" "}
+                </View>{" "}
                 <View className='footer'>
                     <AtButton onClick={this.add.bind(this)} className='footer-btn' type='primary'>
-                        添加
-                    </AtButton>
-                </View>
+                        添加{" "}
+                    </AtButton>{" "}
+                </View>{" "}
                 {inputArea}
-
                 {/* <AtDrawer show={this.state.show} mask>
-                    <View className='drawer-item'>优先展示items里的数据</View>
-                    <View className='drawer-item'>如果items没有数据就会展示children</View>
-                    <View className='drawer-item'>
-                        这是自定义内容 <AtIcon value='home' size='20' />
-                    </View>
-                    <View className='drawer-item'>这是自定义内容</View>
-                </AtDrawer> */}
+                                    <View className='drawer-item'>优先展示items里的数据</View>
+                                    <View className='drawer-item'>如果items没有数据就会展示children</View>
+                                    <View className='drawer-item'>
+                                        这是自定义内容 <AtIcon value='home' size='20' />
+                                    </View>
+                                    <View className='drawer-item'>这是自定义内容</View>
+                                </AtDrawer> */}{" "}
             </View>
         )
     }

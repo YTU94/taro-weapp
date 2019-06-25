@@ -1,38 +1,11 @@
-import Taro, { Component } from "@tarojs/taro"
-import { View } from "@tarojs/components"
-import { AtButton, AtGrid } from "taro-ui"
-
-class Clock extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { date: new Date() }
-    }
-
-    componentDidMount() {
-        this.timerID = setInterval(() => this.tick(), 1000)
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID)
-    }
-
-    tick() {
-        this.setState({
-            date: new Date()
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Hello, world!</h1>
-                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-            </div>
-        )
-    }
-}
+import Taro, {Component} from "@tarojs/taro"
+import {View} from "@tarojs/components"
+import {AtButton, AtGrid} from "taro-ui"
 
 export default class Index extends Component {
+    config = {
+        navigationBarTitleText: "我的"
+    }
     constructor() {
         super(...arguments)
         this.state = {
@@ -72,8 +45,7 @@ export default class Index extends Component {
     render() {
         return (
             <View className='home'>
-                <View className='title'>{this.state.title}</View>
-
+                <View className='title'> {this.state.title} </View>
                 <AtGrid
                     onClick={this.goPage}
                     data={[
@@ -106,14 +78,11 @@ export default class Index extends Component {
                         }
                     ]}
                 />
-
                 <View className='btn-group'>
-                    <Clock />
-
                     <AtButton type='primary' className='add' onClick={this.add}>
-                        赞赏👍
-                    </AtButton>
-                </View>
+                        赞赏👍{" "}
+                    </AtButton>{" "}
+                </View>{" "}
             </View>
         )
     }

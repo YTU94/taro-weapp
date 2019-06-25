@@ -1,6 +1,6 @@
 const config = {
-  projectName: 'wxapp',
-  date: '2019-4-29',
+  projectName: 'demoTaro',
+  date: '2019-6-24',
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,

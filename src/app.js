@@ -1,12 +1,12 @@
-import Taro, { Component, Config } from "@tarojs/taro"
-import Index from "./pages/tabBar/index/index"
+import Taro, {Component} from "@tarojs/taro"
+
 import "taro-ui/dist/style/components/grid.scss"
 import "taro-ui/dist/style/components/drawer.scss"
 import "taro-ui/dist/style/components/list.scss"
-import "taro-ui/dist/style/components/button.scss"
 import "taro-ui/dist/style/components/loading.scss"
 import "taro-ui/dist/style/components/input.scss"
 import "taro-ui/dist/style/components/icon.scss"
+import "taro-ui/dist/style/components/button.scss"
 import "taro-ui/dist/style/components/checkbox.scss"
 import "taro-ui/dist/style/components/modal.scss"
 
@@ -26,7 +26,7 @@ class App extends Component {
      * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
-    config: Config = {
+    config = {
         pages: [
             "pages/tabBar/index/index",
             "pages/tabBar/user/index",

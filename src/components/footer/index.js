@@ -1,6 +1,6 @@
-import Taro, { Component, Config } from "@tarojs/taro"
-import { View, Text, Swiper, SwiperItem } from "@tarojs/components"
-import { AtButton, AtDrawer, AtCheckbox, AtCard, AtInputNumber, AtInput, AtForm } from "taro-ui"
+import Taro, {Component, Config} from "@tarojs/taro"
+import {View, Text, Swiper, SwiperItem} from "@tarojs/components"
+import {AtButton, AtDrawer, AtCheckbox, AtCard, AtInputNumber, AtInput, AtForm} from "taro-ui"
 
 import "./index.less"
 import "taro-ui/dist/style/components/drawer.scss"
@@ -14,7 +14,7 @@ export default class Index extends Component {
      * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
-    config: Config = {
+    Config = {
         navigationBarTitleText: "keep清单"
     }
     constructor() {
@@ -46,8 +46,8 @@ export default class Index extends Component {
         return (
             <View className='footer'>
                 <AtButton onClick={this.add.bind(this)} className='footer-btn' type='primary'>
-                    添加
-                </AtButton>
+                    添加{" "}
+                </AtButton>{" "}
             </View>
         )
     }

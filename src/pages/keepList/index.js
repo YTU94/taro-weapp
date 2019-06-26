@@ -98,10 +98,10 @@ export default class Index extends Component {
             url: "https://ggapi.ytuj.cn/api/v1/addKeepItem",
             method: "POST",
             data: {
-                code: Taro.getStorageSync("code"),
                 content: this.state.value
             },
             header: {
+                "x-token": Taro.getStorageSync("token"),
                 "content-type": "application/json"
             }
         }).then(res => {

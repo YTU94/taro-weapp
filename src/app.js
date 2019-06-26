@@ -74,12 +74,12 @@ class App extends Component {
                     //发起网络请求
                     Taro.request({
                         method: "POST",
-                        url: "https://ggapi.ytuj.cn/api/v1/addUser",
+                        url: "https://ggapi.ytuj.cn/api/api/v1/addUser",
                         data: {
                             code: res.code
                         },
                         success(response) {
-                            console.log(response)
+                            Taro.setStorageSync("token", response.data.token || "token")
                         }
                     })
                 } else {

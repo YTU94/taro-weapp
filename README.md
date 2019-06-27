@@ -24,6 +24,10 @@
 
 开发计划：https://github.com/users/YTU94/projects/2
 
+### 后端
+
+服务端：https://github.com/YTU94/taro-GGameing-server
+
 ### 使用
 
 ```

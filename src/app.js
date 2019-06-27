@@ -9,7 +9,7 @@ import "taro-ui/dist/style/components/icon.scss"
 import "taro-ui/dist/style/components/button.scss"
 import "taro-ui/dist/style/components/checkbox.scss"
 import "taro-ui/dist/style/components/modal.scss"
-
+import "taro-ui/dist/style/components/switch.scss"
 import "./app.less"
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -74,7 +74,7 @@ class App extends Component {
                     //发起网络请求
                     Taro.request({
                         method: "POST",
-                        url: "https://ggapi.ytuj.cn/api/api/v1/addUser",
+                        url: "https://ggapi.ytuj.cn/api/v1/addUser",
                         data: {
                             code: res.code
                         },

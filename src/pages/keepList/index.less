@@ -16,17 +16,39 @@
             height: auto;
         }
     }
-    .input-box{
+
+    .input-box {
         position: fixed;
         bottom: 0;
         left: 0;
-        padding: 40rpx;
+        padding: 40rpx 130rpx 40rpx 8rpx;
         background-color: #eee;
         width: 100%;
-        .input-tag{
+        box-sizing: border-box;
+
+        .input-tag {
             border-radius: 5rpx;
             background-color: #fff;
             height: auto;
+            width: 100%;
+            padding: 10rpx;
+            box-sizing: border-box;
+        }
+
+        .input-icon {
+            display: inline-block;
+            width: 60rpx;
+            height: 60rpx;
+            position: absolute;
+            right: 20px;
+            top: 50rpx;
+            z-index: 101;
+        }
+
+        image {
+            display: inline-block;
+            width: 60rpx;
+            height: 60rpx;
         }
     }
 }

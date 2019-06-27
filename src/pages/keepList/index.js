@@ -1,8 +1,9 @@
 import Taro, {Component, Config} from "@tarojs/taro"
 import {View, Text, Swiper, SwiperItem} from "@tarojs/components"
-import {AtButton, AtDrawer, AtCheckbox, AtCard, AtInputNumber, AtInput, AtForm} from "taro-ui"
+import {AtButton, AtDrawer, AtForm, AtSwitch, AtCheckbox, AtCard, AtInputNumber, AtInput} from "taro-ui"
 
 import "./index.less"
+import planeIconImg from "../../assets/images/plane-icon.png"
 
 export default class Index extends Component {
     /**
@@ -12,54 +13,21 @@ export default class Index extends Component {
      * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
-    config: Config = {
+    config = {
         navigationBarTitleText: "keep清单"
     }
     constructor() {
         super()
         this.state = {
-            value: 1,
+            value: "",
+            curStatus: 0,
             show: false,
-            checkedList: ["list1"]
+            checkedList: [],
+            checkboxOption: []
         }
-        this.checkboxOption = [
-            {
-                value: "list1",
-                label: "iPhone X",
-                desc: "部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。"
-            },
-            {
-                value: "list2",
-                label: "HUAWEI P20"
-            },
-            {
-                value: "list3",
-                label: "OPPO Find X",
-                desc: "部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。",
-                disabled: true
-            },
-            {
-                value: "list4",
-                label: "vivo NEX",
-                desc: "部分地区提供电子普通发票，用户可自行打印，效力等同纸质普通发票，具体以实际出具的发票类型为准。",
-                disabled: true
-            }
-        ]
     }
     componentWillMount() {
-        // Taro.request({
-        //     url: "http://api.ytuj.cn/api/v1/ytu/articles",
-        //     method: "GET",
-        //     data: {
-        //         page: 1,
-        //         page_size: 10
-        //     },
-        //     header: {
-        //         "content-type": "application/json"
-        //     }
-        // }).then(res => {
-        //     console.log(res)
-        // })
+        this.init()
     }
 
     componentDidMount() {}
@@ -70,30 +38,80 @@ export default class Index extends Component {
 
     componentDidHide() {}
 
-    handleChange(e) {
-        console.log(e)
+    init = e => {
+        Taro.request({
+            url: "https://ggapi.ytuj.cn/api/v1/keepList",
+            method: "GET",
+            data: {
+                status: this.state.curStatus
+            },
+            header: {
+                "x-token": Taro.getStorageSync("token"),
+                "content-type": "application/json"
+            }
+        }).then(res => {
+            const arr = res.data.data.map(e => {
+                return {
+                    value: e.id,
+                    label: e.content,
+                    disabled: e.status > 0
+                }
+            })
+            this.setState({
+                checkboxOption: arr
+            })
+            if (this.state.curStatus === 1) {
+                const a = res.data.data.map(e => e.id)
+                this.setState({
+                    checkedList: a
+                })
+            }
+        })
     }
 
     handleChange = value => {
+        // this.setState({
+        //     checkedList: value
+        // })
+        let that = this
+        console.log("value", value)
+        Taro.request({
+            url: "https://ggapi.ytuj.cn/api/v1/updateStatus",
+            method: "POST",
+            data: {
+                id: value[0],
+                status: 1
+            },
+            header: {
+                "x-token": Taro.getStorageSync("token"),
+                "content-type": "application/json"
+            }
+        }).then(res => {
+            console.log(res)
+            that.init()
+        })
+    }
+    handleInputChange = v => {
         this.setState({
-            checkedList: value
+            value: v
         })
     }
 
     inputOver = e => {
-        console.log(e)
+        console.log("blur")
         this.setState({
             show: false
         })
     }
 
     add = e => {
-        console.log(e)
         this.setState({
             show: true
         })
     }
+
     submit = e => {
+        let that = this
         Taro.request({
             url: "https://ggapi.ytuj.cn/api/v1/addKeepItem",
             method: "POST",
@@ -106,7 +124,19 @@ export default class Index extends Component {
             }
         }).then(res => {
             console.log(res)
+            that.init()
         })
+    }
+    handleChangeStatus = e => {
+        const that = this
+        this.setState(
+            {
+                curStatus: this.state.curStatus === 0 ? 1 : 0
+            },
+            () => {
+                that.init()
+            }
+        )
     }
 
     render() {
@@ -119,23 +149,28 @@ export default class Index extends Component {
                         cursor-spacing='140'
                         auto-focus={this.state.show}
                         name='value1'
-                        title=''
                         type='text'
                         placeholder=''
                         value={this.state.value}
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleInputChange.bind(this)}
                         onConfirm={this.submit.bind(this)}
                         onBlur={this.inputOver.bind(this)}
                     />
+                    <View className='input-icon' onClick={this.submit.bind(this)}>
+                        <image src={planeIconImg} alt='' mode='widthFix' />
+                    </View>
                 </View>
             )
         }
         return (
             <View className='keep-list'>
                 <View>
-                    <Text className='title'> Keep List </Text>
+                    {/* <Text className='title'> Keep List </Text> */}
+                    <AtForm>
+                        <AtSwitch title={this.state.curStatus === 0 ? "待完成" : "已完成"} onChange={this.handleChangeStatus} />
+                    </AtForm>
                     <AtCheckbox
-                        options={this.checkboxOption}
+                        options={this.state.checkboxOption}
                         selectedList={this.state.checkedList}
                         onChange={this.handleChange.bind(this)}
                     />

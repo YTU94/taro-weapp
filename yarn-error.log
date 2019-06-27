@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add ~taro-ui/dist/style/components/modal.scss --silent --no-progress
+  /usr/local/bin/node /usr/local/bin/yarn add ~taro-ui/dist/style/components/switch.scss --silent --no-progress
 
 PATH: 
-  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/var/folders/bh/fn8bzdkd1xv0hyystgk9mq5r0000gn/T/yarn--1561348474308-0.15225857782017438:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/Users/yuanjiankang/.config/yarn/link/node_modules/.bin:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/Users/yuanjiankang/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/yuanjiankang/www/Go//bin:/Users/yuanjiankang/www/Go//bin
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/var/folders/bh/fn8bzdkd1xv0hyystgk9mq5r0000gn/T/yarn--1561531555164-0.06892152042496558:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/Users/yuanjiankang/.config/yarn/link/node_modules/.bin:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/Users/yuanjiankang/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/yuanjiankang/www/Go//bin:/Users/yuanjiankang/www/Go//bin
 
 Yarn version: 
   1.13.0
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/~taro-ui%2fdist/style/components/modal.scss: Request "https://registry.yarnpkg.com/~taro-ui%2fdist/style/components/modal.scss" returned a 405
+  Error: https://registry.yarnpkg.com/~taro-ui%2fdist/style/components/switch.scss: Request "https://registry.yarnpkg.com/~taro-ui%2fdist/style/components/switch.scss" returned a 405
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66264:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129397:22)
       at Request.emit (events.js:189:13)

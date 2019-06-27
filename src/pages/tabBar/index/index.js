@@ -1,11 +1,12 @@
-import Taro, {Component} from "@tarojs/taro"
-import {View} from "@tarojs/components"
-import {AtButton, AtGrid} from "taro-ui"
+import Taro, { Component } from "@tarojs/taro"
+import { View } from "@tarojs/components"
+import { AtButton, AtGrid } from "taro-ui"
 
 export default class Index extends Component {
     config = {
-        navigationBarTitleText: "我的"
+        navigationBarTitleText: "首页"
     }
+    
     constructor() {
         super(...arguments)
         this.state = {
@@ -83,8 +84,8 @@ export default class Index extends Component {
                 <View className='btn-group'>
                     <AtButton type='primary' className='add' onClick={this.add}>
                         赞赏👍{" "}
-                    </AtButton>{" "}
-                </View>{" "}
+                    </AtButton>
+                </View>
             </View>
         )
     }

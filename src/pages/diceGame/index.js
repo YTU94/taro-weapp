@@ -1,7 +1,7 @@
-import Taro, {Component, Config} from "@tarojs/taro"
-import {View, Picker} from "@tarojs/components"
+import Taro, { Component } from "@tarojs/taro"
+import { View, Picker } from "@tarojs/components"
 import "./index.less"
-import {AtButton} from "taro-ui"
+import { AtButton } from "taro-ui"
 
 function randomNum(params) {
     return Math.ceil(Math.random() * params)
@@ -14,7 +14,10 @@ export default class Index extends Component {
      * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
-
+    config = {
+        navigationBarTitleText: "摇骰子"
+    }
+    
     constructor() {
         super(...arguments)
         this.state = {
@@ -24,13 +27,8 @@ export default class Index extends Component {
             showDice: false
         }
     }
-    config = {
-        navigationBarTitleText: "摇骰子"
-    }
 
-    componentWillMount() {
-        // this.init()
-    }
+    componentWillMount() {}
 
     componentDidMount() {
         const that = this
@@ -92,7 +90,7 @@ export default class Index extends Component {
             <View className='dice-game'>
                 <View className='dice-num'>
                     <Picker mode='selector' range={this.state.selector} onChange={this.onChange}>
-                        <View className='dice-picker'> 🎲X {this.state.diceNum} </View>{" "}
+                        <View className='dice-picker'>🎲 X {this.state.diceNum} </View>{" "}
                     </Picker>{" "}
                 </View>
                 <View className='title'> 骰子游戏 </View>

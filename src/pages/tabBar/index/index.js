@@ -6,7 +6,7 @@ export default class Index extends Component {
     config = {
         navigationBarTitleText: "首页"
     }
-    
+
     constructor() {
         super(...arguments)
         this.state = {
@@ -54,7 +54,7 @@ export default class Index extends Component {
                     data={[
                         {
                             url: "/pages/keepList/index",
-                            image: "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png",
+                            image: "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
                             value: "keep清单"
                         },
                         {
@@ -70,7 +70,7 @@ export default class Index extends Component {
                         },
                         {
                             url: "/pages/diceGame/index",
-                            image: "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
+                            image: "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png",
                             value: "骰子游戏"
                         },
                         {

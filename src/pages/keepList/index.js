@@ -1,6 +1,6 @@
-import Taro, {Component, Config} from "@tarojs/taro"
-import {View, Text, Swiper, SwiperItem} from "@tarojs/components"
-import {AtButton, AtDrawer, AtForm, AtSwitch, AtCheckbox, AtCard, AtInputNumber, AtInput} from "taro-ui"
+import Taro, {Component} from "@tarojs/taro"
+import {View} from "@tarojs/components"
+import {AtButton, AtDrawer, AtForm, AtSwitch, AtCheckbox, AtCard, AtInput} from "taro-ui"
 
 import "./index.less"
 import planeIconImg from "../../assets/images/plane-icon.png"
@@ -70,9 +70,7 @@ export default class Index extends Component {
     }
 
     handleChange = value => {
-        // this.setState({
-        //     checkedList: value
-        // })
+    
         let that = this
         console.log("value", value)
         Taro.request({
@@ -165,7 +163,6 @@ export default class Index extends Component {
         return (
             <View className='keep-list'>
                 <View>
-                    {/* <Text className='title'> Keep List </Text> */}
                     <AtForm>
                         <AtSwitch title={this.state.curStatus === 0 ? "待完成" : "已完成"} onChange={this.handleChangeStatus} />
                     </AtForm>

@@ -51,6 +51,7 @@ export default class Index extends Component {
                 <View className='title'> {this.state.title} </View>{" "}
                 <AtGrid
                     onClick={this.goPage}
+                    hasBorder={false}
                     data={[
                         {
                             url: "/pages/keepList/index",

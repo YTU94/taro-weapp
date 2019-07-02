@@ -1,4 +1,4 @@
-import Taro, {Component} from "@tarojs/taro"
+import Taro, { Component } from "@tarojs/taro"
 
 import "taro-ui/dist/style/components/grid.scss"
 import "taro-ui/dist/style/components/drawer.scss"

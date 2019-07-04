@@ -78,7 +78,7 @@ export default class Index extends Component {
                             url: "/pages/rotateGame/index",
                             image:
                                 "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png",
-                            value: "敬请期待"
+                            value: "转盘游戏"
                         }
                     ]}
                 />{" "}

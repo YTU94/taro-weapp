@@ -1,7 +1,7 @@
-import Taro, {Component, Config} from "@tarojs/taro"
-import {View} from "@tarojs/components"
+import Taro, { Component, Config } from "@tarojs/taro"
+import { View } from "@tarojs/components"
 import "./index.less"
-import {AtButton, AtInput} from "taro-ui"
+import { AtButton, AtInput } from "taro-ui"
 
 function getRandomInt(min, max) {
     min = Math.ceil(min)
@@ -218,7 +218,6 @@ export default class Index extends Component {
                         return (
                             <View
                                 className={this.state.squal[index].hasClick ? "card-item animation-rotate" : "card-item"}
-                                key={index}
                                 onClick={this.flop.bind(this, element, index)}>
                                 {this.state.squal[index].hasClick ? element.value || "=^_^=" : index + 1}{" "}
                             </View>

@@ -3,8 +3,6 @@ import { View } from "@tarojs/components"
 import { AtButton, AtForm, AtSwitch, AtCheckbox, AtInput } from "taro-ui"
 
 import "./index.less"
-import planeIconImg from "../../assets/images/plane-icon.png"
-
 import http from "../../api"
 import CusInput from "../../components/cusInput"
 export default class Index extends Component {

@@ -6,12 +6,14 @@
 
 ### 简介
 
-主要实现用于餐桌，酒桌上的娱乐小游戏，目前有一个选扑克牌游戏，以及一个九宫格文字翻牌游戏。（纯属娱乐）
+主要实现用于餐桌，酒桌上的娱乐小游戏，主要包括，摇骰子，大转盘，选扑克牌，文字翻牌游戏。（纯属娱乐，附带一个Keep List）
 
 ### 功能
 
 - [x] 选扑克牌游戏
 - [x] 九宫格文字翻牌游戏
+- [x] 摇骰子 
+- [x] 幸运大转盘 
 - [x] keep list
 - [x] 给赞->赞赏功能
 
@@ -26,7 +28,8 @@
 
 ### 后端
 
-服务端：https://github.com/YTU94/taro-GGameing-server
+技术：node + mysql + express 
+地址：https://github.com/YTU94/taro-GGameing-server
 
 ### 使用
 
@@ -39,4 +42,4 @@ yarn dev:weapp
 yarn build:weapp
 ```
 
-**最后**欢迎大家使用，欢迎⭐️️️
+**最后**欢迎大家使用，欢迎 ⭐️,Pr

@@ -22,11 +22,9 @@ export default class Index extends Component {
 
     componentDidUpdate(prevProps, prevState) {}
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return true
-    }
+    shouldComponentUpdate(nextProps, nextState) {}
 
-    add = e => {
+    praise = e => {
         Taro.navigateToMiniProgram({
             appId: "wx18a2ac992306a5a4",
             path: "pages/apps/largess/detail?accountId=5686224",
@@ -83,7 +81,7 @@ export default class Index extends Component {
                     ]}
                 />{" "}
                 <View className='btn-group'>
-                    <AtButton type='primary' className='add' onClick={this.add}>
+                    <AtButton type='primary' className='praise' onClick={this.praise}>
                         赞赏👍{" "}
                     </AtButton>
                 </View>

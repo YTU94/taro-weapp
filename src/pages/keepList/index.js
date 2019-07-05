@@ -1,10 +1,12 @@
-import Taro, {Component} from "@tarojs/taro"
-import {View} from "@tarojs/components"
-import {AtButton, AtDrawer, AtForm, AtSwitch, AtCheckbox, AtCard, AtInput} from "taro-ui"
+import Taro, { Component } from "@tarojs/taro"
+import { View } from "@tarojs/components"
+import { AtButton, AtForm, AtSwitch, AtCheckbox, AtInput } from "taro-ui"
 
 import "./index.less"
 import planeIconImg from "../../assets/images/plane-icon.png"
 
+import http from "../../api"
+import CusInput from "../../components/cusInput"
 export default class Index extends Component {
     /**
      * 指定config的类型声明为: Taro.Config
@@ -17,7 +19,7 @@ export default class Index extends Component {
         navigationBarTitleText: "keep清单"
     }
     constructor() {
-        super()
+        super(...arguments)
         this.state = {
             value: "",
             curStatus: 0,
@@ -39,18 +41,13 @@ export default class Index extends Component {
     componentDidHide() {}
 
     init = e => {
-        Taro.request({
-            url: "https://ggapi.ytuj.cn/api/v1/keepList",
-            method: "GET",
+        http({
+            url: "/api/v1/keepList",
             data: {
                 status: this.state.curStatus
-            },
-            header: {
-                "x-token": Taro.getStorageSync("token"),
-                "content-type": "application/json"
             }
         }).then(res => {
-            const arr = res.data.data.map(e => {
+            const arr = res.data.map(e => {
                 return {
                     value: e.id,
                     label: e.content,
@@ -61,7 +58,7 @@ export default class Index extends Component {
                 checkboxOption: arr
             })
             if (this.state.curStatus === 1) {
-                const a = res.data.data.map(e => e.id)
+                const a = res.data.map(e => e.id)
                 this.setState({
                     checkedList: a
                 })
@@ -70,19 +67,14 @@ export default class Index extends Component {
     }
 
     handleChange = value => {
-    
         let that = this
         console.log("value", value)
-        Taro.request({
-            url: "https://ggapi.ytuj.cn/api/v1/updateStatus",
+        http({
+            url: "/api/v1/updateStatus",
             method: "POST",
             data: {
                 id: value[0],
                 status: 1
-            },
-            header: {
-                "x-token": Taro.getStorageSync("token"),
-                "content-type": "application/json"
             }
         }).then(res => {
             console.log(res)
@@ -108,21 +100,24 @@ export default class Index extends Component {
         })
     }
 
-    submit = e => {
-        let that = this
-        Taro.request({
-            url: "https://ggapi.ytuj.cn/api/v1/addKeepItem",
+    onSubmit = v => {
+        if (!v) {
+            Taro.showToast({
+                title: "内容不能为空",
+                icon: "none",
+                duration: 1500
+            })
+            return false
+        }
+        http({
+            url: "/api/v1/addKeepItem",
             method: "POST",
             data: {
-                content: this.state.value
-            },
-            header: {
-                "x-token": Taro.getStorageSync("token"),
-                "content-type": "application/json"
+                content: v
             }
         }).then(res => {
             console.log(res)
-            that.init()
+            this.init()
         })
     }
     handleChangeStatus = e => {
@@ -138,28 +133,7 @@ export default class Index extends Component {
     }
 
     render() {
-        let inputArea
-        if (this.state.show) {
-            inputArea = (
-                <View className='input-box'>
-                    <AtInput
-                        className='input-tag'
-                        cursor-spacing='140'
-                        auto-focus={this.state.show}
-                        name='value1'
-                        type='text'
-                        placeholder=''
-                        value={this.state.value}
-                        onChange={this.handleInputChange.bind(this)}
-                        onConfirm={this.submit.bind(this)}
-                        onBlur={this.inputOver.bind(this)}
-                    />
-                    <View className='input-icon' onClick={this.submit.bind(this)}>
-                        <image src={planeIconImg} alt='' mode='widthFix' />
-                    </View>
-                </View>
-            )
-        }
+  
         return (
             <View className='keep-list'>
                 <View>
@@ -177,15 +151,7 @@ export default class Index extends Component {
                         添加
                     </AtButton>
                 </View>
-                {inputArea}
-                {/* <AtDrawer show={this.state.show} mask>
-                                    <View className='drawer-item'>优先展示items里的数据</View>
-                                    <View className='drawer-item'>如果items没有数据就会展示children</View>
-                                    <View className='drawer-item'>
-                                        这是自定义内容 <AtIcon value='home' size='20' />
-                                    </View>
-                                    <View className='drawer-item'>这是自定义内容</View>
-                                </AtDrawer> */}
+                {this.state.show && <CusInput show={this.state.show} onSubmit={this.onSubmit.bind(this)} onBlur={this.inputOver.bind(this)} />}
             </View>
         )
     }

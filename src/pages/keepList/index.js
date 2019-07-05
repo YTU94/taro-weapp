@@ -98,7 +98,7 @@ export default class Index extends Component {
         })
     }
 
-    onSubmit = v => {
+    onSubmit(v) {
         if (!v) {
             Taro.showToast({
                 title: "内容不能为空",
@@ -131,7 +131,6 @@ export default class Index extends Component {
     }
 
     render() {
-  
         return (
             <View className='keep-list'>
                 <View>
@@ -149,7 +148,9 @@ export default class Index extends Component {
                         添加
                     </AtButton>
                 </View>
-                {this.state.show && <CusInput show={this.state.show} onSubmit={this.onSubmit.bind(this)} onBlur={this.inputOver.bind(this)} />}
+                {this.state.show && (
+                    <CusInput show={this.state.show} onSubmit={this.onSubmit.bind(this)} onBlur={this.inputOver.bind(this)} />
+                )}
             </View>
         )
     }

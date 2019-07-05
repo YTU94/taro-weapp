@@ -17,7 +17,7 @@ export default class Index extends Component {
     config = {
         navigationBarTitleText: "摇骰子"
     }
-    
+
     constructor() {
         super(...arguments)
         this.state = {
@@ -33,7 +33,7 @@ export default class Index extends Component {
     componentDidMount() {
         const that = this
         Taro.onAccelerometerChange(function(e) {
-            if (e.x > 0.6 && e.y > 0.6) {
+            if (e.x > 0.5 || e.y > 0.5) {
                 Taro.showToast({
                     title: "摇好啦👌",
                     icon: "success",
@@ -95,7 +95,7 @@ export default class Index extends Component {
                 </View>
                 <View className='title'> 骰子游戏 </View>
                 <View className='dice-bg'>
-                    <View className='dice-box'> {showDice ? imgList : ""} </View>
+                    <View className='dice-box'> {showDice && imgList} </View>
                     <image
                         className='dice-bg-img'
                         className={this.state.diceList.length > 0 ? "dice-bg-active" : ""}

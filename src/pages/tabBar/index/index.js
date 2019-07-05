@@ -13,6 +13,11 @@ export default class Index extends Component {
             title: "酒桌Gameing"
         }
     }
+    onShareAppMessage(res) {
+        return {
+            path: "/pages/tabBar/index/index"
+        }
+    }
 
     componentWillMount() {}
 

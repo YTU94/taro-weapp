@@ -196,7 +196,7 @@ export default class Index extends Component {
     render() {
         return (
             <View className='game'>
-                <View className='title'> 文字翻牌游戏 </View>{" "}
+                <View className='title'> 文字翻牌游戏 </View>
                 <View>
                     <AtInput
                         name=''
@@ -208,31 +208,31 @@ export default class Index extends Component {
                         value={this.state.inputValue}
                         onChange={this.handleChange.bind(this)}>
                         <AtButton type='primary' size='small' onClick={this.changeValue}>
-                            确定{" "}
-                        </AtButton>{" "}
-                    </AtInput>{" "}
+                            确定
+                        </AtButton>
+                    </AtInput>
                 </View>
                 <View className='game-content'>
-                    {" "}
                     {this.state.squal.map((element, index) => {
                         return (
-                            <View
-                                className={this.state.squal[index].hasClick ? "card-item animation-rotate" : "card-item"}
-                                onClick={this.flop.bind(this, element, index)}>
-                                {this.state.squal[index].hasClick ? element.value || "=^_^=" : index + 1}{" "}
+                            <View style='position:relative;' className='card-item' onClick={this.flop.bind(this, element, index)}>
+                                <View className={this.state.squal[index].hasClick ? "front animation-rotate-f" : "front"}> 🤔</View>
+                                <View className={this.state.squal[index].hasClick ? "back animation-rotate-b" : "back"}>
+                                    {element.value || "😁"}
+                                </View>
                             </View>
                         )
-                    })}{" "}
+                    })}
                 </View>
                 <View className='expain'>
                     游戏规则： 自定义一段文字， 这段文字会随即打乱在1 - 9 的牌面下面， 然后自定义翻到什么字的人， 做什么样的惩罚！ 例如：
-                    自定义文字输入：‘ 你死定了’， 然后规则： 翻到‘ 你’ 字的人喝一杯， 翻到‘ 死’ 的人和一瓶。{" "}
-                </View>{" "}
+                    自定义文字输入：‘ 你死定了’， 然后规则： 翻到‘ 你’ 字的人喝一杯， 翻到‘ 死’ 的人和一瓶。
+                </View>
                 <View className='footer'>
                     <AtButton type='primary' onClick={this.next}>
-                        下一局{" "}
-                    </AtButton>{" "}
-                </View>{" "}
+                        下一局
+                    </AtButton>
+                </View>
             </View>
         )
     }

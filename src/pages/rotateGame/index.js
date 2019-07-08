@@ -42,7 +42,11 @@ export default class Index extends Component {
             btnDisabled: false
         }
     }
-
+    onShareAppMessage(res) {
+        return {
+            path: "/pages/tabBar/index/index"
+        }
+    }
     config = {
         navigationBarTitleText: "转盘游戏"
     }

@@ -26,6 +26,11 @@ export default class Index extends Component {
             checkboxOption: []
         }
     }
+    onShareAppMessage(res) {
+        return {
+            path: "/pages/tabBar/index/index"
+        }
+    }
     componentWillMount() {
         this.init()
     }

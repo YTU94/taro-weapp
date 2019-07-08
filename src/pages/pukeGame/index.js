@@ -20,7 +20,11 @@ export default class Index extends Component {
             isOpened: false
         }
     }
-
+    onShareAppMessage(res) {
+        return {
+            path: "/pages/tabBar/index/index"
+        }
+    }
     config = {
         navigationBarTitleText: "扑克牌"
     }

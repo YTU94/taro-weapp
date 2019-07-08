@@ -34,15 +34,16 @@ export default class Index extends Component {
             title: "留言板",
             userInfo: "",
             value: "",
-            messageList: [
-                {
-                    message: "2323"
-                }
-            ],
+            messageList: [],
             showInput: false
         }
     }
 
+    onShareAppMessage(res) {
+        return {
+            path: "/pages/tabBar/index/index"
+        }
+    }
     componentWillMount() {
         this.init()
     }
@@ -79,7 +80,6 @@ export default class Index extends Component {
 
     onSubmit(v) {
         http({
-            // host: "http://localhost:3001",
             url: "/api/v1/sendMessage",
             method: "post",
             data: {

@@ -27,7 +27,12 @@ export default class Index extends Component {
             showDice: false
         }
     }
-
+    onShareAppMessage(res) {
+        return {
+            path: "/pages/tabBar/index/index"
+        }
+    }
+    
     componentWillMount() {}
 
     componentDidMount() {

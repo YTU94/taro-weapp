@@ -5,7 +5,7 @@ const HOST = "https://ggapi.ytuj.cn"
 const http = function(params = {}) {
     return new Promise((resolve, reject) => {
         Taro.request({
-            url: `${HOST}${params.url || ""}`,
+            url: `${params.host || HOST}${params.url || ""}`,
             method: params.method || "GET",
             data: params.data || {},
             header: {

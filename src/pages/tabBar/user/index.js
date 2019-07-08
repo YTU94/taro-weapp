@@ -1,8 +1,21 @@
-import Taro, {Component} from "@tarojs/taro"
-import {View, Text} from "@tarojs/components"
-import {AtButton} from "taro-ui"
+import Taro, { Component } from "@tarojs/taro"
+import { View, Text } from "@tarojs/components"
+import { AtButton } from "taro-ui"
 
 import "./index.less"
+import http from "../../../api"
+import CusInput from "../../../components/cusInput"
+
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp)
+    var Y = date.getFullYear()
+    var M = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
+    var D = date.getDate() < 10 ? "0" + date.getDate() + " " : date.getDate()
+    var h = date.getHours() < 10 ? "0" + date.getHours() + ":" : date.getHours()
+    var m = date.getMinutes() < 10 ? "0" + date.getMinutes() + ":" : date.getMinutes()
+    var s = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
+    return `${Y}-${M}-${D} ${h}:${m}`
+}
 
 export default class Index extends Component {
     /**
@@ -18,11 +31,21 @@ export default class Index extends Component {
     constructor() {
         super(...arguments)
         this.state = {
-            title: "酒桌Gameing"
+            title: "留言板",
+            userInfo: "",
+            value: "",
+            messageList: [
+                {
+                    message: "2323"
+                }
+            ],
+            showInput: false
         }
     }
 
-    componentWillMount() {}
+    componentWillMount() {
+        this.init()
+    }
 
     componentDidMount() {}
 
@@ -32,15 +55,87 @@ export default class Index extends Component {
 
     componentDidHide() {}
 
+    init() {
+        let that = this
+        http({
+            url: "/api/v1/messageList",
+            data: {
+                pageSize: 100,
+                pageNum: 1
+            }
+        }).then(res => {
+            that.setState({
+                messageList: res.data
+            })
+        })
+    }
+    onGotUserInfo(e) {
+        console.log(e.detail.userInfo)
+        this.setState({
+            showInput: true,
+            userInfo: e.detail.userInfo
+        })
+    }
+
+    onSubmit(v) {
+        http({
+            // host: "http://localhost:3001",
+            url: "/api/v1/sendMessage",
+            method: "post",
+            data: {
+                message: v,
+                nickName: this.state.userInfo.nickName,
+                address: `${this.state.userInfo.country} ${this.state.userInfo.province} ${this.state.userInfo.city}`
+            }
+        }).then(res => {
+            console.log(res)
+            this.init()
+        })
+    }
+
+    onBlur() {
+        this.setState({
+            showInput: false
+        })
+    }
+
     render() {
+        let topBar = (
+            <View style='display:flex; justify-content:space-between;'>
+                <AtButton
+                    className='action-btn'
+                    size='small'
+                    type='secondary'
+                    open-type='getUserInfo'
+                    onGetUserInfo={this.onGotUserInfo.bind(this)}>
+                    留言
+                </AtButton>
+
+                <AtButton className='action-btn' size='small' open-type='feedback'>
+                    建议和反馈
+                </AtButton>
+            </View>
+        )
+
+        let msgList = this.state.messageList.map(e => {
+            return (
+                <View className='list-item' key={e.id}>
+                    <View className='item-msg'>{e.message}</View>
+                    <View className='item-footer'>
+                        <View className='item-footer-right'>{e.nickName || "-"}</View>
+                        <View className='item-footer-left'>{timestampToTime(e.createAt) || "-"}</View>
+                    </View>
+                </View>
+            )
+        })
         return (
             <View className='user'>
+                {topBar}
                 <View className='title'>
                     <View>{this.state.title}</View>
                 </View>
-                <AtButton className='action-btn' type='primary' open-type='feedback'>
-                    建议和反馈
-                </AtButton>
+                <View className='list-box'>{msgList}</View>
+                {this.state.showInput && <CusInput show={showInput} onSubmit={this.onSubmit.bind(this)} onBlur={this.onBlur.bind(this)} />}
             </View>
         )
     }

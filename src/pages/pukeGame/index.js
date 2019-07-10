@@ -53,31 +53,28 @@ export default class Index extends Component {
     }
 
     render() {
-        let playMethods
-        // if (this.state.showExpain) {
-        playMethods = (
-            <View className='expain'>
-                <View style='text-align:left;'>
-                    玩法一： 酒桌方一个空碗， 每人选一张牌， 不要被别人看到， 然后往碗里一直倒酒， 如果有人心虚， 就喊停，
-                    喊停的人就要喝掉碗里的酒， 没人喊停就倒满， 然后牌面最小的人喝酒。{" "}
-                </View>
-                <View style='text-align:left;'>
-                    玩法二： 酒桌方一个空碗， 每人选一张牌， 注意自己不可看这个牌， 需要把牌给其他人看， 然后同上， 你觉得桌上有比你小的牌，
-                    就不喊停， 直到酒满， 最后比大小。{" "}
-                </View>
-            </View>
-        )
-        // }
         return (
             <View className='puke-game'>
-                <View className='title'> 随机选牌 </View>
-                <AtButton className='puke-btn' type='primary' onClick={this.select}>
-                    选牌
-                </AtButton>
-                <View className='explain-label' type='secondary' size='small' onClick={this.showExpainModal}>
-                    🎮玩法介绍：
+                <View className='puke-game-c'>
+                    <View className='title'> 随机选牌 </View>
+                    <AtButton className='puke-btn' type='primary' onClick={this.select}>
+                        选牌
+                    </AtButton>
+                    <View className='expain'>
+                        <View className='explain-label' type='secondary' size='small' onClick={this.showExpainModal}>
+                            🎮玩法介绍：
+                        </View>
+                        <View style='text-align:left;'>
+                            玩法一： 酒桌方一个空碗， 每人选一张牌， 不要被别人看到， 然后往碗里一直倒酒， 如果有人心虚， 就喊停，
+                            喊停的人就要喝掉碗里的酒， 没人喊停就倒满， 然后牌面最小的人喝酒。{" "}
+                        </View>
+                        <View style='text-align:left;'>
+                            玩法二： 酒桌方一个空碗， 每人选一张牌， 注意自己不可看这个牌， 需要把牌给其他人看， 然后同上，
+                            你觉得桌上有比你小的牌， 就不喊停， 直到酒满， 最后比大小。{" "}
+                        </View>
+                    </View>
                 </View>
-                {playMethods}
+
                 <AtModal isOpened={this.state.isOpened}>
                     <AtModalContent>
                         <image

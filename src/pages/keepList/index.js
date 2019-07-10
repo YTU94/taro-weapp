@@ -22,8 +22,8 @@ export default class Index extends Component {
             value: "",
             curStatus: 0,
             show: false,
-            checkedList: [],
-            checkboxOption: []
+            selectedList: [],
+            optionList: []
         }
     }
     onShareAppMessage(res) {
@@ -58,12 +58,13 @@ export default class Index extends Component {
                 }
             })
             this.setState({
-                checkboxOption: arr
+                optionList: arr,
+                selectedList: []
             })
             if (this.state.curStatus === 1) {
                 const a = res.data.map(e => e.id)
                 this.setState({
-                    checkedList: a
+                    selectedList: a
                 })
             }
         })
@@ -71,7 +72,6 @@ export default class Index extends Component {
 
     handleChange = value => {
         let that = this
-        console.log("value", value)
         http({
             url: "/api/v1/updateStatus",
             method: "POST",
@@ -80,8 +80,13 @@ export default class Index extends Component {
                 status: 1
             }
         }).then(res => {
-            console.log(res)
-            that.init()
+            const a = [value[0]]
+            this.setState({
+                selectedList: a
+            })
+            setTimeout(() => {
+                that.init()
+            }, 600)
         })
     }
     handleInputChange = v => {
@@ -91,7 +96,6 @@ export default class Index extends Component {
     }
 
     inputOver = e => {
-        console.log("blur")
         this.setState({
             show: false
         })
@@ -119,11 +123,10 @@ export default class Index extends Component {
                 content: v
             }
         }).then(res => {
-            console.log(res)
             this.init()
         })
     }
-    handleChangeStatus = e => {
+    changeStatus = e => {
         const that = this
         this.setState(
             {
@@ -140,11 +143,11 @@ export default class Index extends Component {
             <View className='keep-list'>
                 <View>
                     <AtForm>
-                        <AtSwitch title={this.state.curStatus === 0 ? "待完成" : "已完成"} onChange={this.handleChangeStatus} />
+                        <AtSwitch title={this.state.curStatus === 0 ? "待完成" : "已完成"} onChange={this.changeStatus} />
                     </AtForm>
                     <AtCheckbox
-                        options={this.state.checkboxOption}
-                        selectedList={this.state.checkedList}
+                        options={this.state.optionList}
+                        selectedList={this.state.selectedList}
                         onChange={this.handleChange.bind(this)}
                     />
                 </View>

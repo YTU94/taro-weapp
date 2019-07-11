@@ -1,4 +1,4 @@
-import Taro, { Component, Config } from "@tarojs/taro"
+import Taro, { Component } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import "./index.less"
 import { AtButton, AtInput } from "taro-ui"
@@ -9,7 +9,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min //不含最大值，含最小值
 }
 
-function dos(a: string, arr: []) {
+function dos(a, arr) {
     let sArr = a.split("")
     let insert = i => {
         let r = getRandomInt(0, arr.length)
@@ -24,7 +24,53 @@ function dos(a: string, arr: []) {
         insert(i)
     }
 }
-
+const squal = [
+    {
+        key: "1",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "2",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "3",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "4",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "5",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "6",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "7",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "8",
+        value: "",
+        hasClick: false
+    },
+    {
+        key: "9",
+        value: "",
+        hasClick: false
+    }
+]
 export default class Index extends Component {
     /**
      * 指定config的类型声明为: Taro.Config
@@ -42,53 +88,7 @@ export default class Index extends Component {
         this.state = {
             value: "翻牌文字",
             inputValue: "",
-            squal: [
-                {
-                    key: "1",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "2",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "3",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "4",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "5",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "6",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "7",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "8",
-                    value: "",
-                    hasClick: false
-                },
-                {
-                    key: "9",
-                    value: "",
-                    hasClick: false
-                }
-            ]
+            squal: squal
         }
     }
 
@@ -142,56 +142,9 @@ export default class Index extends Component {
     }
 
     next = e => {
-        const a = [
-            {
-                key: "1",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "2",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "3",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "4",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "5",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "6",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "7",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "8",
-                value: "",
-                hasClick: false
-            },
-            {
-                key: "9",
-                value: "",
-                hasClick: false
-            }
-        ]
         this.setState(
             {
-                squal: a
+                squal: squal
             },
             () => {
                 dos(this.state.value, this.state.squal)
@@ -208,8 +161,8 @@ export default class Index extends Component {
                         name=''
                         clear
                         border={false}
-                        title='清除按钮'
-                        placeholder='翻牌文字'
+                        title='文字'
+                        placeholder='请输入翻牌文字'
                         type='text'
                         value={this.state.inputValue}
                         onChange={this.handleChange.bind(this)}>

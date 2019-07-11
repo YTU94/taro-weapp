@@ -151,10 +151,13 @@ export default class Index extends Component {
                         onChange={this.handleChange.bind(this)}
                     />
                 </View>
+
                 <View className='footer'>
-                    <AtButton onClick={this.add.bind(this)} className='footer-btn' type='primary'>
-                        添加
-                    </AtButton>
+                    {this.state.curStatus === 0 && (
+                        <AtButton onClick={this.add.bind(this)} className='footer-btn' type='primary'>
+                            添加
+                        </AtButton>
+                    )}
                 </View>
                 {this.state.show && (
                     <CusInput show={this.state.show} onSubmit={this.onSubmit.bind(this)} onBlur={this.inputOver.bind(this)} />

@@ -32,13 +32,14 @@ export default class Index extends Component {
             path: "/pages/tabBar/index/index"
         }
     }
-    
+
     componentWillMount() {}
 
     componentDidMount() {
         const that = this
+
         Taro.onAccelerometerChange(function(e) {
-            if (e.x > 0.5 || e.y > 0.5) {
+            if (e.x > 0.6 || e.y > 0.6) {
                 Taro.showToast({
                     title: "摇好啦👌",
                     icon: "success",
@@ -49,7 +50,9 @@ export default class Index extends Component {
         })
     }
 
-    componentWillUnmount() {}
+    componentWillUnmount() {
+        Taro.stopAccelerometer()
+    }
 
     componentDidShow() {}
 

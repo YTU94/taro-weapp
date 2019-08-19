@@ -89,6 +89,10 @@ export default class Index extends Component {
                     <AtButton type='primary' className='praise' onClick={this.praise}>
                         赞赏👍{" "}
                     </AtButton>
+
+                    <View className='adContainer'>
+                        <ad unit-id='adunit-49a1cea77858409e' />
+                    </View>
                 </View>
             </View>
         )

@@ -17,6 +17,7 @@ function timestampToTime(timestamp) {
     return `${Y}-${M}-${D} ${h}:${m}`
 }
 
+let videoAd = null
 export default class Index extends Component {
     /**
      * 指定config的类型声明为: Taro.Config
@@ -48,7 +49,34 @@ export default class Index extends Component {
         this.init()
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        let that = this
+        if (wx.createRewardedVideoAd) {
+            videoAd = wx.createRewardedVideoAd({
+                adUnitId: "adunit-02b66ef80b3f8e73"
+            })
+
+            videoAd.onLoad(() => {
+                console.log("onLoad event emit")
+            })
+            videoAd.onError(err => {
+                console.log("onError event emit", err)
+            })
+            videoAd.onClose(res => {
+                that.setState({
+                    showInput: true
+                })
+                // 用户点击了【关闭广告】按钮
+                if (res && res.isEnded) {
+                    console.log("正常播放结束，可以下发游戏奖励")
+                    // 正常播放结束，可以下发游戏奖励
+                } else {
+                    console.log("播放中途退出，不下发游戏奖励")
+                    // 播放中途退出，不下发游戏奖励
+                }
+            })
+        }
+    }
 
     componentWillUnmount() {}
 
@@ -73,9 +101,9 @@ export default class Index extends Component {
     onGotUserInfo(e) {
         console.log(e.detail.userInfo)
         this.setState({
-            showInput: true,
             userInfo: e.detail.userInfo
         })
+        videoAd.show().catch(err => console.log(err))
     }
 
     onSubmit(v) {

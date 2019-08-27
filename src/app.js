@@ -34,7 +34,8 @@ class App extends Component {
             "pages/keepList/index",
             "pages/pukeGame/index",
             "pages/rotateGame/index",
-            "pages/diceGame/index"
+            "pages/diceGame/index",
+            "pages/msgCard/index"
         ],
         tabBar: {
             color: "#333333",

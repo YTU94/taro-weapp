@@ -56,11 +56,11 @@ export default class Index extends Component {
                     onClick={this.goPage}
                     hasBorder={false}
                     data={[
-                        {
-                            url: "/pages/keepList/index",
-                            image: "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
-                            value: "keep清单"
-                        },
+                        // {
+                        //     url: "/pages/keepList/index",
+                        //     image: "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
+                        //     value: "keep清单"
+                        // },
                         {
                             url: "/pages/pukeGame/index",
                             image:
@@ -85,8 +85,7 @@ export default class Index extends Component {
                         },
                         {
                             url: "/pages/msgCard/index",
-                            image:
-                                "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png",
+                            image: "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
                             value: "apple Id"
                         }
                     ]}

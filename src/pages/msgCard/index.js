@@ -74,9 +74,11 @@ export default class Index extends Component {
     componentDidHide() {}
 
     init = e => {
+        Taro.showLoading()
         http({
             url: "/api/appleidList"
         }).then(res => {
+            Taro.hideLoading()
             this.setState({
                 appleIdList: res.data
             })
@@ -117,13 +119,6 @@ export default class Index extends Component {
                 </View>
             )
         })
-        return (
-            <View className='account-list'>
-                {listItems}
-                <View className='remark'>
-                    <b>备注：</b>密码是动态的，如果有不能登录，可以在我的页面留言，或者反馈，系统会及时更新
-                </View>
-            </View>
-        )
+        return <View className='account-list'>{listItems}</View>
     }
 }

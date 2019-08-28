@@ -1,16 +1,18 @@
 .account-list {
     width: 100%;
-    height: 100%;
+    height: auto;
     padding: 40rpx;
     box-sizing: border-box;
     background: #f2f2f2;
-    position: absolute;
+    position: relative;
+
     .card-list-item {
         width: auto;
         padding: 40rpx;
         border-radius: 8rpx;
         background-color: #fff;
         margin-bottom: 40rpx;
+
         .card-title {
             font-size: 36rpx;
             text-align: center;
@@ -21,7 +23,8 @@
             font-size: 28rpx;
             word-break: break-all;
             display: flex;
-            line-height: 2.0;
+            line-height: 1.0;
+            padding: 10rpx;
 
             .card-label {
                 flex: 0 0 auto;
@@ -35,16 +38,8 @@
 
             .red {
                 color: red;
+                line-height: 1.2;
             }
         }
-    }
-
-    .remark {
-        position: relative;
-        top: 0;
-        left: 0;
-        margin-top: 20rpx;
-        font-size: 28rpx;
-        color: #777777;
     }
 }

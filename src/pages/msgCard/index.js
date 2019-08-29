@@ -86,14 +86,21 @@ export default class Index extends Component {
     }
 
     copyPassword(e) {
-        this.setState(
-            {
-                curPwd: e.password
-            },
-            () => {
-                videoAd.show().catch(err => console.log(err))
+        let that = this
+        Taro.showModal({
+            title: "提示",
+            content: "获取密码前需要先观看一段短视屏广告才能获取，您确定继续吗？",
+            success: function(res) {
+                that.setState(
+                    {
+                        curPwd: e.password
+                    },
+                    () => {
+                        videoAd.show().catch(err => console.log(err))
+                    }
+                )
             }
-        )
+        })
     }
 
     render() {

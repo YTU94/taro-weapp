@@ -1,7 +1,7 @@
 import Taro, { Component } from "@tarojs/taro"
 import { View, Picker } from "@tarojs/components"
 import "./index.less"
-import { AtButton } from "taro-ui"
+import { AtButton, AtIcon } from "taro-ui"
 
 function randomNum(params) {
     return Math.ceil(Math.random() * params)
@@ -98,7 +98,7 @@ export default class Index extends Component {
             <View className='dice-game'>
                 <View className='dice-num'>
                     <Picker mode='selector' range={this.state.selector} onChange={this.onChange}>
-                        <View className='dice-picker'>🎲 X {this.state.diceNum} </View>{" "}
+                        <View className='dice-picker'>🎲 X {this.state.diceNum} <View className='at-icon at-icon-chevron-down'></View> </View>{" "}
                     </Picker>{" "}
                 </View>
                 <View className='title'> 骰子游戏 </View>

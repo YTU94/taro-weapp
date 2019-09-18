@@ -56,11 +56,11 @@ export default class Index extends Component {
                     onClick={this.goPage}
                     hasBorder={false}
                     data={[
-                        // {
-                        //     url: "/pages/keepList/index",
-                        //     image: "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
-                        //     value: "keep清单"
-                        // },
+                        {
+                            url: "/pages/signUp/index",
+                            image: "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
+                            value: "报名吧"
+                        },
                         {
                             url: "/pages/pukeGame/index",
                             image:

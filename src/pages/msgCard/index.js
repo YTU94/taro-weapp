@@ -84,6 +84,20 @@ export default class Index extends Component {
             })
         })
     }
+    copyAccount(e) {
+        wx.setClipboardData({
+            data: e.account,
+            success(res) {
+                wx.getClipboardData({
+                    success(res) {
+                        Taro.showToast({
+                            title: "账号复制成功"
+                        })
+                    }
+                })
+            }
+        })
+    }
 
     copyPassword(e) {
         let that = this
@@ -111,7 +125,9 @@ export default class Index extends Component {
                     <View className='card-title'>{card.name}</View>
                     <View className='card-item'>
                         <View className='card-label'>账号：</View>
-                        <View className='card-content'>{card.account}</View>
+                        <View className='card-content' onClick={this.copyAccount.bind(this, card)}>
+                            {card.account}
+                        </View>
                     </View>
                     <View className='card-item'>
                         <View className='card-label'>密码：</View>

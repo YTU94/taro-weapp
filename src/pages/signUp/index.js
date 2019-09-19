@@ -1,10 +1,10 @@
 import Taro, { Component } from "@tarojs/taro"
-import { View } from "@tarojs/components"
-import { AtButton, AtForm, AtSwitch, AtCheckbox, AtInput } from "taro-ui"
+import { View, Picker } from "@tarojs/components"
+import { AtButton, AtForm, AtSwitch, AtCheckbox, AtInput, AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
 
 import "./index.less"
 import http from "../../api"
-import CusInput from "../../components/cusInput"
+// import CusInput from "../../components/cusInput"
 export default class Index extends Component {
     /**
      * 指定config的类型声明为: Taro.Config
@@ -23,7 +23,9 @@ export default class Index extends Component {
             curStatus: 0,
             show: false,
             selectedList: [],
-            optionList: []
+            optionList: [],
+            // TODO: 待修改
+            dateSel: ""
         }
     }
     onShareAppMessage(res) {
@@ -138,6 +140,10 @@ export default class Index extends Component {
         )
     }
 
+    onDateChange = e => {
+        console.log(e)
+    }
+
     render() {
         return (
             <View className='keep-list'>
@@ -155,12 +161,42 @@ export default class Index extends Component {
                 <View className='footer'>
                     {this.state.curStatus === 0 && (
                         <AtButton onClick={this.add.bind(this)} className='footer-btn' type='primary'>
-                            添加
+                            发起报名 +
                         </AtButton>
                     )}
                 </View>
                 {this.state.show && (
-                    <CusInput show={this.state.show} onSubmit={this.onSubmit.bind(this)} onBlur={this.inputOver.bind(this)} />
+                    <AtModal isOpened>
+                        <AtModalHeader>标题</AtModalHeader>
+                        <AtModalContent>
+                            <AtForm onSubmit={this.onSubmit.bind(this)} onReset={this.onReset.bind(this)}>
+                                <AtInput
+                                    name='value'
+                                    title='标题'
+                                    type='text'
+                                    placeholder='单行文本'
+                                    value={this.state.value}
+                                    onChange={this.handleChange.bind(this)}
+                                />
+                                <AtInput
+                                    name='value'
+                                    title='内容'
+                                    type='text'
+                                    placeholder='单行文本'
+                                    value={this.state.value}
+                                    onChange={this.handleChange.bind(this)}
+                                />
+                                <Picker mode='date' onChange={this.onDateChange}>
+                                    <View className='picker'>当前选择：{this.state.dateSel}</View>
+                                </Picker>
+                            </AtForm>
+                        </AtModalContent>
+                        <AtModalAction>
+                            {" "}
+                            <Button>取消</Button> <Button>确定</Button>{" "}
+                        </AtModalAction>
+                    </AtModal>
+                    // <CusInput show={this.state.show} onSubmit={this.onSubmit.bind(this)} onBlur={this.inputOver.bind(this)} />
                 )}
             </View>
         )

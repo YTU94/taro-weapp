@@ -176,7 +176,7 @@ export default class Index extends Component {
                     <View style={`transform: translate(-50%, 0) rotate(${this.state.num}deg);`} className='ani-rotate'>
                         {rotateBox}
                     </View>
-                    <View className='rotate-pointer'>开始</View>
+                    <View className='rotate-pointer'>结果</View>
                 </View>
 
                 {this.state.showInput ? (

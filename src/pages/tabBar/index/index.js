@@ -57,11 +57,6 @@ export default class Index extends Component {
                     hasBorder={false}
                     data={[
                         {
-                            url: "/pages/signUp/index",
-                            image: "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
-                            value: "报名吧"
-                        },
-                        {
                             url: "/pages/pukeGame/index",
                             image:
                                 "https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png",

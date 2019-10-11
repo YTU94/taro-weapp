@@ -32,7 +32,6 @@ export default class Index extends Component {
     constructor() {
         super(...arguments)
         this.state = {
-            title: "留言板",
             userInfo: "",
             value: "",
             messageList: [],
@@ -131,10 +130,11 @@ export default class Index extends Component {
         return (
             <View className='user'>
                 {topBar}
-                <View className='title'>
-                    <View>{this.state.title}</View>
-                </View>
+              
                 <View className='list-box'>{msgList}</View>
+                <View className='adContainer'>
+                    <ad unit-id='adunit-49a1cea77858409e' />
+                </View>
                 {this.state.showInput && <CusInput show={showInput} onSubmit={this.onSubmit.bind(this)} onBlur={this.onBlur.bind(this)} />}
             </View>
         )

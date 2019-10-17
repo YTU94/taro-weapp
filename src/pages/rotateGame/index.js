@@ -10,18 +10,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min //不含最大值，含最小值
 }
 
-function Example() {
-    // 声明一个叫 “count” 的 state 变量。
-    const [count, setCount] = useState(0)
-
-    return (
-        <div>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
-    )
-}
-
 export default class Index extends Component {
     /**
      * 指定config的类型声明为: Taro.Config
@@ -157,7 +145,6 @@ export default class Index extends Component {
         return (
             <View className='rotate-game'>
                 <View className='title'> 超级转盘 </View>
-                {Example}
                 <View style='display:flex; justify-content:space-between;padding: 10rpx 40rpx;box'>
                     <View onClick={this.showInputBox.bind(this)}>
                         <AtButton className='cus-btn' size='small' type='secondary'>

@@ -29,16 +29,16 @@ class App extends Component {
     config = {
         pages: [
             "pages/tabBar/index/index",
+            "pages/tabBar/account/index",
             "pages/tabBar/user/index",
             "pages/game/index",
-            "pages/keepList/index",
             "pages/pukeGame/index",
             "pages/rotateGame/index",
             "pages/diceGame/index",
-            "pages/signUp/index",
             "pages/msgCard/index"
         ],
         tabBar: {
+            custom: false,
             color: "#333333",
             selectedColor: "#6190E8",
             backgroundColor: "#fff",
@@ -48,6 +48,12 @@ class App extends Component {
                     selectedIconPath: "./assets/images/game-active.png",
                     pagePath: "pages/tabBar/index/index",
                     text: "首页"
+                },
+                {
+                    iconPath: "./assets/images/person-default.png",
+                    selectedIconPath: "./assets/images/person-active.png",
+                    pagePath: "pages/tabBar/account/index",
+                    text: "分享"
                 },
                 {
                     iconPath: "./assets/images/person-default.png",

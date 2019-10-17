@@ -1,6 +1,7 @@
 import Taro, { useEffect, useLayoutEffect, useReducer, useState, useRef, useCallback, useMemo } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtList, AtListItem } from "taro-ui"
+import './index.less'
 
 export default function Counter({ initialCount }) {
     const [count, setCount] = useState(initialCount)
@@ -31,6 +32,9 @@ export default function Counter({ initialCount }) {
                     )
                 })}
             </AtList>
+            <View className='adContainer'>
+                <ad unit-id='adunit-49a1cea77858409e' />
+            </View>
         </View>
     )
 }

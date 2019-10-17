@@ -132,9 +132,7 @@ export default class Index extends Component {
                 {topBar}
               
                 <View className='list-box'>{msgList}</View>
-                <View className='adContainer'>
-                    <ad unit-id='adunit-49a1cea77858409e' />
-                </View>
+                
                 {this.state.showInput && <CusInput show={showInput} onSubmit={this.onSubmit.bind(this)} onBlur={this.onBlur.bind(this)} />}
             </View>
         )

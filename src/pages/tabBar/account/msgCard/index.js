@@ -2,7 +2,7 @@ import Taro, { Component } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 
 import "./index.less"
-import http from "../../api"
+import http from "../../../../api"
 
 let videoAd = null
 

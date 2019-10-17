@@ -30,12 +30,14 @@ class App extends Component {
         pages: [
             "pages/tabBar/index/index",
             "pages/tabBar/account/index",
+            "pages/tabBar/account/msgCard/index",
+            "pages/tabBar/account/bdCloud/index",
+            "pages/tabBar/account/xunlei/index",
             "pages/tabBar/user/index",
             "pages/game/index",
             "pages/pukeGame/index",
             "pages/rotateGame/index",
-            "pages/diceGame/index",
-            "pages/msgCard/index"
+            "pages/diceGame/index"
         ],
         tabBar: {
             custom: false,

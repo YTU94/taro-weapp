@@ -6,8 +6,8 @@ export default function Counter({ initialCount }) {
     const [count, setCount] = useState(initialCount)
     const lists = [
         { title: "apple id", note: "", path: "/pages/tabBar/account/msgCard/index", text: "", icon: "bookmark" },
-        { title: "百度云", note: "", path: "/pages/tabBar/account/bdCloud/index", text: "", icon: "download-cloud" },
-        { title: "迅雷", note: "", path: "/pages/tabBar/account/xunlei/index", text: "", icon: "download" }
+        { title: "百度云", note: "", path: "", text: "", icon: "download-cloud" },
+        { title: "迅雷", note: "", path: "", text: "", icon: "download" }
     ]
     const go = e => {
         console.log(e)

@@ -52,8 +52,8 @@ class App extends Component {
                     text: "首页"
                 },
                 {
-                    iconPath: "./assets/images/person-default.png",
-                    selectedIconPath: "./assets/images/person-active.png",
+                    iconPath: "./assets/images/share-default.png",
+                    selectedIconPath: "./assets/images/share-active.png",
                     pagePath: "pages/tabBar/account/index",
                     text: "分享"
                 },

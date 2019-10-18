@@ -4,7 +4,7 @@ import http from "../../../../api"
 import "../msgCard/index.less"
 
 export default function Counter({ initialCount }) {
-    const [idList, setidList] = useState(initialCount)
+    const [idList, setidList] = useState([])
 
     useEffect(() => {
         Taro.showLoading()

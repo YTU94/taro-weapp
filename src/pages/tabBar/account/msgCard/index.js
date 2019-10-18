@@ -49,7 +49,6 @@ export default class Index extends Component {
             videoAd.onClose(res => {
                 // 用户点击了【关闭广告】按钮
                 if (res && res.isEnded) {
-                    console.log("正常播放结束，可以下发游戏奖励")
                     // 正常播放结束，可以下发游戏奖励
                     wx.setClipboardData({
                         data: that.state.curPwd,
@@ -60,7 +59,6 @@ export default class Index extends Component {
                         }
                     })
                 } else {
-                    console.log("播放中途退出，不下发游戏奖励")
                     // 播放中途退出，不下发游戏奖励
                 }
             })

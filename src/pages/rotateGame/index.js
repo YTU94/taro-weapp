@@ -52,7 +52,6 @@ export default class Index extends Component {
     start(e) {
         if (this.state.btnDisabled) return
         let that = this
-        console.log("start")
 
         e.stopPropagation()
 
@@ -72,8 +71,6 @@ export default class Index extends Component {
     }
 
     clear(e) {
-        console.log("clear")
-
         e.stopPropagation()
         this.setState({
             cusList: []
@@ -101,7 +98,6 @@ export default class Index extends Component {
         this.setState({
             cusList: a
         })
-        console.log(this.state.cusList)
     }
 
     blur = e => {
@@ -169,7 +165,7 @@ export default class Index extends Component {
                 {this.state.showInput ? (
                     <CusInput show={showInput} onSubmit={this.onSubmit.bind(this)} onBlur={this.blur.bind(this)} />
                 ) : (
-                    <AtButton className='action-btn' type='primary' disabled={btnDisabled} onClick={this.start.bind(this)}>
+                    <AtButton className='action-btn' type='primary' disabled={this.state.btnDisabled} onClick={this.start.bind(this)}>
                         开始
                     </AtButton>
                 )}

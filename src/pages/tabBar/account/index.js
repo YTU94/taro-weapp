@@ -4,20 +4,19 @@ import { AtList, AtListItem } from "taro-ui"
 import './index.less'
 
 export default function Counter({ initialCount }) {
-    const [count, setCount] = useState(initialCount)
     const lists = [
         { title: "apple id", note: "", path: "/pages/tabBar/account/msgCard/index", text: "", icon: "bookmark" },
-        { title: "百度云", note: "", path: "/pages/tabBar/account/bdCloud/index", text: "", icon: "download-cloud" },
-        { title: "迅雷", note: "", path: "/pages/tabBar/account/xunlei/index", text: "", icon: "download" }
+        { title: "百度云账号", note: "", path: "/pages/tabBar/account/bdCloud/index", text: "", icon: "download-cloud" },
+        { title: "迅雷账号", note: "", path: "/pages/tabBar/account/xunlei/index", text: "", icon: "download" }
     ]
     const go = e => {
-        console.log(e)
         Taro.navigateTo({
             url: e.path
         })
     }
     return (
-        <View>
+        <View className='account'>
+            <View className='title'> 账号分享 </View>
             <AtList hasBorder={false}>
                 {lists.map(e => {
                     return (

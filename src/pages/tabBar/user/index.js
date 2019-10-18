@@ -87,7 +87,6 @@ export default class Index extends Component {
                 address: `${this.state.userInfo.country} ${this.state.userInfo.province} ${this.state.userInfo.city}`
             }
         }).then(res => {
-            console.log(res)
             this.init()
         })
     }
@@ -130,9 +129,9 @@ export default class Index extends Component {
         return (
             <View className='user'>
                 {topBar}
-              
+
                 <View className='list-box'>{msgList}</View>
-                
+
                 {this.state.showInput && <CusInput show={showInput} onSubmit={this.onSubmit.bind(this)} onBlur={this.onBlur.bind(this)} />}
             </View>
         )

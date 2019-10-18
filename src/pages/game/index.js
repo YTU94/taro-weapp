@@ -14,7 +14,6 @@ function dos(a, arr) {
     let insert = i => {
         let r = getRandomInt(0, arr.length)
         if (!arr[r].value) {
-            console.log(r)
             arr[r].value = sArr[i]
         } else {
             insert(i)

@@ -34,10 +34,7 @@ export default class Index extends Component {
             appId: "wx18a2ac992306a5a4",
             path: "pages/apps/largess/detail?accountId=5686224",
             envVersion: "release",
-            success(res) {
-                // 打开成功
-                console.log(res)
-            }
+            success(res) {}
         })
     }
     goPage = e => {

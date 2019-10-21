@@ -1,9 +1,9 @@
 import Taro, { useEffect, useLayoutEffect, useReducer, useState, useRef, useCallback, useMemo } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtList, AtListItem } from "taro-ui"
-import './index.less'
+import "./index.less"
 
-export default function Counter({ initialCount }) {
+function Index({ initialCount }) {
     const lists = [
         { title: "apple id", note: "", path: "/pages/tabBar/account/msgCard/index", text: "", icon: "bookmark" },
         { title: "百度云账号", note: "", path: "/pages/tabBar/account/bdCloud/index", text: "", icon: "download-cloud" },
@@ -14,6 +14,11 @@ export default function Counter({ initialCount }) {
             url: e.path
         })
     }
+
+    useEffect(() => {
+        console.log("effect")
+        Taro.setNavigationBarTitle("账号分享")
+    }, [])
     return (
         <View className='account'>
             <View className='title'> 账号分享 </View>
@@ -37,3 +42,9 @@ export default function Counter({ initialCount }) {
         </View>
     )
 }
+
+Index.config = {
+    navigationBarTitleText: "分享"
+}
+
+export default Index

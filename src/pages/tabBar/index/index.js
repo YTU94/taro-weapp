@@ -1,6 +1,6 @@
 import Taro, { Component } from "@tarojs/taro"
 import { View } from "@tarojs/components"
-import { AtButton, AtGrid } from "taro-ui"
+import { AtButton, AtGrid, AtNoticebar } from "taro-ui"
 import "./index.less"
 export default class Index extends Component {
     config = {
@@ -48,6 +48,7 @@ export default class Index extends Component {
     render() {
         return (
             <View className='home'>
+                <AtNoticebar close={true} single={true}>点击右上角「·<string>·</string>·」- 「添加到我的小程序」，下次访问更便捷</AtNoticebar>
                 <View className='title'> {this.state.title} </View>{" "}
                 <AtGrid
                     onClick={this.goPage}

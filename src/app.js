@@ -10,6 +10,8 @@ import "taro-ui/dist/style/components/button.scss"
 import "taro-ui/dist/style/components/checkbox.scss"
 import "taro-ui/dist/style/components/modal.scss"
 import "taro-ui/dist/style/components/switch.scss"
+import "taro-ui/dist/style/components/noticebar.scss"
+
 import "./app.less"
 
 // 如果需要在 h5 环境中开启 React Devtools

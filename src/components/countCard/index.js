@@ -9,6 +9,12 @@ function CountCard(props) {
         setidList(props.idList)
     }, [props.idList])
 
+    const slicePwd = pwd => {
+        if (!pwd) return ""
+        let len = pwd.indexOf(":")
+        return pwd.substr(len + 1)
+    }
+
     const copyAccount = e => {
         wx.setClipboardData({
             data: e.account,
@@ -23,7 +29,7 @@ function CountCard(props) {
 
     const copyPassword = e => {
         wx.setClipboardData({
-            data: e.password,
+            data: slicePwd(e.password),
             success(res) {
                 Taro.showToast({
                     icon: "none",

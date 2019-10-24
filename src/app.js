@@ -35,7 +35,7 @@ class App extends Component {
             "pages/tabBar/account/msgCard/index",
             "pages/tabBar/account/bdCloud/index",
             "pages/tabBar/account/xunlei/index",
-            "pages/tabBar/user/index",
+            // "pages/tabBar/user/index",
             "pages/game/index",
             "pages/pukeGame/index",
             "pages/rotateGame/index",
@@ -58,13 +58,13 @@ class App extends Component {
                     selectedIconPath: "./assets/images/share-active.png",
                     pagePath: "pages/tabBar/account/index",
                     text: "分享"
-                },
-                {
-                    iconPath: "./assets/images/person-default.png",
-                    selectedIconPath: "./assets/images/person-active.png",
-                    pagePath: "pages/tabBar/user/index",
-                    text: "我的"
                 }
+                // {
+                //     iconPath: "./assets/images/person-default.png",
+                //     selectedIconPath: "./assets/images/person-active.png",
+                //     pagePath: "pages/tabBar/user/index",
+                //     text: "我的"
+                // }
             ]
         },
         window: {

@@ -39,12 +39,16 @@ export default class Index extends Component {
             videoAd = wx.createRewardedVideoAd({
                 adUnitId: "adunit-02b66ef80b3f8e73"
             })
-
-            videoAd.onLoad(() => {
-                console.log("onLoad event emit")
-            })
+            videoAd.onLoad(res => {})
             videoAd.onError(err => {
-                console.log("onError event emit", err)
+                wx.setClipboardData({
+                    data: that.state.curPwd,
+                    success(res) {
+                        Taro.showToast({
+                            title: "复制成功"
+                        })
+                    }
+                })
             })
             videoAd.onClose(res => {
                 // 用户点击了【关闭广告】按钮
@@ -53,8 +57,8 @@ export default class Index extends Component {
                     wx.setClipboardData({
                         data: that.state.curPwd,
                         success(res) {
-                            wx.getClipboardData({
-                                success(res) {}
+                            Taro.showToast({
+                                title: "复制成功"
                             })
                         }
                     })
@@ -108,7 +112,14 @@ export default class Index extends Component {
                         curPwd: e.password
                     },
                     () => {
-                        videoAd.show().catch(err => console.log(err))
+                        videoAd.show().catch(() => {
+                            videoAd
+                                .load()
+                                .then(() => videoAd.show())
+                                .catch(err => {
+                                    console.log("激励视频 广告显示失败")
+                                })
+                        })
                     }
                 )
             }

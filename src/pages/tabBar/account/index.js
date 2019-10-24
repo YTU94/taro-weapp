@@ -14,11 +14,6 @@ function Index({ initialCount }) {
             url: e.path
         })
     }
-
-    useEffect(() => {
-        console.log("effect")
-        Taro.setNavigationBarTitle("账号分享")
-    }, [])
     return (
         <View className='account'>
             <View className='title'> 账号分享 </View>

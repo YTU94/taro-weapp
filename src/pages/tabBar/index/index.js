@@ -48,7 +48,9 @@ export default class Index extends Component {
     render() {
         return (
             <View className='home'>
-                <AtNoticebar close={true} single={true}>点击右上角「·<string>·</string>·」- 「添加到我的小程序」，下次访问更便捷</AtNoticebar>
+                <AtNoticebar close={true} single={true}>
+                    点击右上角「···」-「添加到我的小程序」,下次访问更便捷
+                </AtNoticebar>
                 <View className='title'> {this.state.title} </View>{" "}
                 <AtGrid
                     onClick={this.goPage}
@@ -56,6 +58,11 @@ export default class Index extends Component {
                     data={[
                         {
                             url: "/pages/pukeGame/index",
+                            // iconInfo: {
+                            //     size: 30,
+                            //     color: "red",
+                            //     value: "image"
+                            // },
                             image:
                                 "https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png",
                             value: "扑克牌"

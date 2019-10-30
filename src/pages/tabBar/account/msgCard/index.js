@@ -26,7 +26,8 @@ export default class Index extends Component {
     }
     onShareAppMessage(res) {
         return {
-            path: "/pages/tabBar/index/index"
+            title: "账号分享",
+            path: "/pages/tabBar/account/index"
         }
     }
     componentWillMount() {

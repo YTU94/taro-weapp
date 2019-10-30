@@ -1,4 +1,4 @@
-import Taro, { useEffect, useLayoutEffect, useReducer, useState, useRef, useCallback, useMemo } from "@tarojs/taro"
+import Taro, { useEffect, useLayoutEffect, useReducer, useState, useRef, useCallback, useMemo, useShareAppMessage } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import http from "../../../../api"
 import CountCard from "../../../../components/countCard"
@@ -17,6 +17,13 @@ function Index({ initialCount }) {
         })
     }, [])
     
+    useShareAppMessage(res => {
+        return {
+            title: "账号分享",
+            path: "/pages/tabBar/account/index"
+        }
+    })
+
     const spliceAccountList = arr => {
         let a = []
         arr.forEach(e => {

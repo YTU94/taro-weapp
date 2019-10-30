@@ -1,4 +1,4 @@
-import Taro, { useEffect, useLayoutEffect, useReducer, useState, useRef, useCallback, useMemo } from "@tarojs/taro"
+import Taro, { useEffect, useLayoutEffect, useReducer, useState, useRef, useCallback, useMemo, useShareAppMessage } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtList, AtListItem } from "taro-ui"
 import "./index.less"
@@ -14,6 +14,14 @@ function Index({ initialCount }) {
             url: e.path
         })
     }
+
+    useShareAppMessage(res => {
+        return {
+            title: "账号分享",
+            path: "/pages/tabBar/account/index"
+        }
+    })
+
     return (
         <View className='account'>
             <View className='title'> 账号分享 </View>

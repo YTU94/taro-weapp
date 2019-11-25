@@ -1,7 +1,7 @@
 import Taro, { Component } from "@tarojs/taro"
 import { View, Picker } from "@tarojs/components"
 import "./index.less"
-import { AtButton, AtIcon } from "taro-ui"
+import { AtButton } from "taro-ui"
 
 function randomNum(params) {
     return Math.ceil(Math.random() * params)

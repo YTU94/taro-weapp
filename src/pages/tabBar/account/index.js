@@ -1,18 +1,9 @@
-import Taro, {
-    useEffect,
-    useLayoutEffect,
-    useReducer,
-    useState,
-    useRef,
-    useCallback,
-    useMemo,
-    useShareAppMessage
-} from "@tarojs/taro";
+import Taro, { useShareAppMessage } from "@tarojs/taro";
 import { View } from "@tarojs/components";
 import { AtList, AtListItem } from "taro-ui";
 import "./index.less";
 
-function Index({ initialCount }) {
+function Index() {
     const lists = [
         {
             title: "apple id",
@@ -24,7 +15,7 @@ function Index({ initialCount }) {
         // { title: "百度云账号", note: "", path: "/pages/tabBar/account/bdCloud/index", text: "", icon: "download-cloud" },
         // { title: "迅雷账号", note: "", path: "/pages/tabBar/account/xunlei/index", text: "", icon: "download" }
     ];
-    const go = e => {
+    const openPage = e => {
         Taro.navigateTo({
             url: e.path
         });
@@ -44,7 +35,7 @@ function Index({ initialCount }) {
                 {lists.map(e => {
                     return (
                         <AtListItem
-                            onClick={go.bind(this, e)}
+                            onClick={openPage.bind(this, e)}
                             title={e.title}
                             note={e.note}
                             extraText={e.text}

@@ -36,16 +36,14 @@ export default class Index extends Component {
     componentWillMount() {}
 
     componentDidMount() {
-        const that = this
-
-        Taro.onAccelerometerChange(function(e) {
+        Taro.onAccelerometerChange((e) => {
             if (e.x > 0.6 || e.y > 0.6) {
                 Taro.showToast({
                     title: "摇好啦👌",
                     icon: "success",
                     duration: 1000
                 })
-                that.init()
+                this.init()
             }
         })
     }

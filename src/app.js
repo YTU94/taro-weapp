@@ -1,18 +1,18 @@
-import Taro, { Component } from "@tarojs/taro"
+import Taro, { Component } from "@tarojs/taro";
 
-import "taro-ui/dist/style/components/grid.scss"
-import "taro-ui/dist/style/components/drawer.scss"
-import "taro-ui/dist/style/components/list.scss"
-import "taro-ui/dist/style/components/loading.scss"
-import "taro-ui/dist/style/components/input.scss"
-import "taro-ui/dist/style/components/icon.scss"
-import "taro-ui/dist/style/components/button.scss"
-import "taro-ui/dist/style/components/checkbox.scss"
-import "taro-ui/dist/style/components/modal.scss"
-import "taro-ui/dist/style/components/switch.scss"
-import "taro-ui/dist/style/components/noticebar.scss"
+import "taro-ui/dist/style/components/grid.scss";
+import "taro-ui/dist/style/components/drawer.scss";
+import "taro-ui/dist/style/components/list.scss";
+import "taro-ui/dist/style/components/loading.scss";
+import "taro-ui/dist/style/components/input.scss";
+import "taro-ui/dist/style/components/icon.scss";
+import "taro-ui/dist/style/components/button.scss";
+import "taro-ui/dist/style/components/checkbox.scss";
+import "taro-ui/dist/style/components/modal.scss";
+import "taro-ui/dist/style/components/switch.scss";
+import "taro-ui/dist/style/components/noticebar.scss";
 
-import "./app.less"
+import "./app.less";
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -33,10 +33,7 @@ class App extends Component {
             "pages/tabBar/index/index",
             "pages/tabBar/account/index",
             "pages/tabBar/account/msgCard/index",
-            "pages/tabBar/account/bdCloud/index",
-            "pages/tabBar/account/xunlei/index",
-            // "pages/tabBar/user/index",
-            "pages/game/index",
+            "pages/flopGame/index",
             "pages/pukeGame/index",
             "pages/rotateGame/index",
             "pages/diceGame/index"
@@ -59,12 +56,6 @@ class App extends Component {
                     pagePath: "pages/tabBar/account/index",
                     text: "分享"
                 }
-                // {
-                //     iconPath: "./assets/images/person-default.png",
-                //     selectedIconPath: "./assets/images/person-active.png",
-                //     pagePath: "pages/tabBar/user/index",
-                //     text: "我的"
-                // }
             ]
         },
         window: {
@@ -74,7 +65,7 @@ class App extends Component {
             navigationBarTextStyle: "black"
         },
         navigateToMiniProgramAppIdList: ["wx18a2ac992306a5a4"]
-    }
+    };
 
     componentDidMount() {}
 
@@ -82,7 +73,7 @@ class App extends Component {
         Taro.login({
             success(res) {
                 if (res.code) {
-                    console.log("code", res.code)
+                    console.log("code", res.code);
                     // Taro.setStorageSync("code", res.code)
                     //发起网络请求
                     Taro.request({
@@ -92,14 +83,17 @@ class App extends Component {
                             code: res.code
                         },
                         success(response) {
-                            Taro.setStorageSync("token", response.data.token || "token")
+                            Taro.setStorageSync(
+                                "token",
+                                response.data.token || "token"
+                            );
                         }
-                    })
+                    });
                 } else {
-                    console.log("登录失败！" + res.errMsg)
+                    console.log("登录失败！" + res.errMsg);
                 }
             }
-        })
+        });
     }
 
     componentDidHide() {}
@@ -109,8 +103,8 @@ class App extends Component {
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
     render() {
-        return <Index />
+        return <Index />;
     }
 }
 
-Taro.render(<App />, document.getElementById("app"))
+Taro.render(<App />, document.getElementById("app"));

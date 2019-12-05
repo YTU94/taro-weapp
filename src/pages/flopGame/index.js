@@ -1,7 +1,7 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View } from "@tarojs/components";
-import "./index.less";
 import { AtButton, AtInput } from "taro-ui";
+import "./index.less";
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);

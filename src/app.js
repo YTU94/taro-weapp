@@ -31,8 +31,8 @@ class App extends Component {
     config = {
         pages: [
             "pages/tabBar/index/index",
-            "pages/tabBar/account/index",
-            "pages/tabBar/account/msgCard/index",
+            "pages/tabBar/share/index",
+            "pages/tabBar/share/appleId/index",
             "pages/flopGame/index",
             "pages/pukeGame/index",
             "pages/rotateGame/index",
@@ -53,7 +53,7 @@ class App extends Component {
                 {
                     iconPath: "./assets/images/share-default.png",
                     selectedIconPath: "./assets/images/share-active.png",
-                    pagePath: "pages/tabBar/account/index",
+                    pagePath: "pages/tabBar/share/index",
                     text: "分享"
                 }
             ]

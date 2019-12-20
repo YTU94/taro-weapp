@@ -30,25 +30,12 @@ function Index() {
 
     return (
         <View className="account">
-            <View className="title"> 账号分享 </View>
-            <AtList hasBorder={false}>
-                {lists.map(e => {
-                    return (
-                        <AtListItem
-                            onClick={openPage.bind(this, e)}
-                            title={e.title}
-                            note={e.note}
-                            extraText={e.text}
-                            arrow="right"
-                            iconInfo={{
-                                size: 25,
-                                color: "#6190E8",
-                                value: e.icon
-                            }}
-                        />
-                    );
-                })}
-            </AtList>
+            <View className="title">
+                分享给你的朋友
+            </View>
+            <View className="content">
+                点击右上角选择转发分享给你的朋友
+            </View>
             <View className="adContainer">
                 <ad unit-id="adunit-49a1cea77858409e" />
             </View>

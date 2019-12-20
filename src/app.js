@@ -32,11 +32,11 @@ class App extends Component {
         pages: [
             "pages/tabBar/index/index",
             "pages/tabBar/share/index",
-            "pages/tabBar/share/appleId/index",
             "pages/flopGame/index",
             "pages/pukeGame/index",
             "pages/rotateGame/index",
-            "pages/diceGame/index"
+            "pages/diceGame/index",
+            "pages/twentyFourGame/index"
         ],
         tabBar: {
             custom: false,

@@ -35,6 +35,12 @@ export default class Index extends Component {
                     image:
                         "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png",
                     value: "大转盘"
+                },
+                {
+                    url: "/pages/twentyFourGame/index",
+                    image:
+                        "https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png",
+                    value: "24点"
                 }
             ]
         };

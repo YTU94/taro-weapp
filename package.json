@@ -26,6 +26,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@tarojs/components": "2.0.0",
+		"@tarojs/mini-runner": "^2.1.0",
 		"@tarojs/router": "2.0.0",
 		"@tarojs/taro": "2.0.0",
 		"@tarojs/taro-alipay": "2.0.0",

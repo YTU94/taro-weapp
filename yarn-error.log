@@ -1,34 +1,25 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add ~taro-ui/dist/style/components/icon.scss --silent --no-progress
+  /Users/yuanjiankang/.nvm/versions/node/v10.16.0/bin/node /usr/local/bin/yarn add -D @tarojs/cli@2.0.0
 
 PATH: 
-  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/var/folders/bh/fn8bzdkd1xv0hyystgk9mq5r0000gn/T/yarn--1571296402186-0.9023227487204384:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/Users/yuanjiankang/.config/yarn/link/node_modules/.bin:/Users/yuanjiankang/www/React/wxapp/node_modules/.bin:/Users/yuanjiankang/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/yuanjiankang/www/Go//bin:/Users/yuanjiankang/www/Go//bin
+  /Users/yuanjiankang/.nvm/versions/node/v10.16.0/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/sbin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/sbin:/Users/yuanjiankang/www/Go//bin:/Users/yuanjiankang/development/flutter/bin:/Users/yuanjiankang/Library/Android/sdk/tools:/Users/yuanjiankang/Library/Android/sdk/platform-tools://flutter/bin:/Users/yuanjiankang/www/Go//bin:/Users/yuanjiankang/development/flutter/bin:/Users/yuanjiankang/Library/Android/sdk/tools:/Users/yuanjiankang/Library/Android/sdk/platform-tools:/Users/yuanjiankang/www/React/taro-weapp/flutter/bin:/Users/yuanjiankang/development/flutter/bin:/Users/yuanjiankang/Library/Android/sdk/tools:/Users/yuanjiankang/Library/Android/sdk/platform-tools:/Users/yuanjiankang/www/React/taro-weapp/flutter/bin
 
 Yarn version: 
   1.13.0
 
 Node version: 
-  10.15.3
+  10.16.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/~taro-ui%2fdist/style/components/icon.scss: Request "https://registry.yarnpkg.com/~taro-ui%2fdist/style/components/icon.scss" returned a 405
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66264:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129397:22)
-      at Request.emit (events.js:189:13)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130369:10)
-      at Request.emit (events.js:189:13)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130291:12)
-      at Object.onceWrapper (events.js:277:13)
-      at IncomingMessage.emit (events.js:194:15)
-      at endReadableNT (_stream_readable.js:1125:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: http://r.cnpmjs.org/typescript/download/typescript-3.8.3.tgz: unexpected end of file
+      at Zlib.zlibOnError [as onerror] (zlib.js:162:17)
 
 npm manifest: 
   {
-      "name": "demoTaro",
+      "name": "G-gaming",
       "version": "1.0.0",
       "private": true,
       "description": "",

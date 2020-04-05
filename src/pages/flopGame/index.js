@@ -9,12 +9,12 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
 }
 
-function dos(a, arr) {
+function dos(a, arr = []) {
     let sArr = a.split("");
     let insert = i => {
         let r = getRandomInt(0, arr.length);
         if (!arr[r].value) {
-            arr[r].value = sArr[i];
+            arr[r] && (arr[r].value = sArr[i]);
         } else {
             insert(i);
         }
@@ -23,53 +23,7 @@ function dos(a, arr) {
         insert(i);
     }
 }
-const Squal = [
-    {
-        key: "1",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "2",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "3",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "4",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "5",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "6",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "7",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "8",
-        value: "",
-        hasClick: false
-    },
-    {
-        key: "9",
-        value: "",
-        hasClick: false
-    }
-];
+
 export default class Index extends Component {
     /**
      * 指定config的类型声明为: Taro.Config
@@ -87,7 +41,53 @@ export default class Index extends Component {
         this.state = {
             value: "翻牌文字",
             inputValue: "",
-            squal: Squal
+            squal: [
+                {
+                    key: "1",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "2",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "3",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "4",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "5",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "6",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "7",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "8",
+                    value: "",
+                    hasClick: false
+                },
+                {
+                    key: "9",
+                    value: "",
+                    hasClick: false
+                }
+            ]
         };
     }
 

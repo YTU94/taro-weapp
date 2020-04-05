@@ -12,7 +12,6 @@ import "./index.less";
 function Index() {
     const [num, setnum] = useState(1);
     const [isOpened, setisOpened] = useState(false);
-    const [showExpain, setshowExpain] = useState(false);
     const [showPlayModel, setshowPlayModel] = useState(true);
 
     const select = e => {
@@ -21,7 +20,9 @@ function Index() {
     const handleClose = e => {
         setisOpened(false);
     };
-
+    const handleClosePlayModel = e => {
+        setshowPlayModel(false);
+    }
     const selectNum = e => {
         return Math.floor(Math.random() * 54) + 1 || 1;
     };
@@ -33,7 +34,7 @@ function Index() {
     }, [isOpened]);
 
     const tModel = (
-        <AtModal isOpened={showPlayModel} onClose={handleClose}>
+        <AtModal isOpened={showPlayModel} onClose={handleClosePlayModel}>
             <AtModalHeader>玩法介绍</AtModalHeader>
             <AtModalContent>
                 <Swiper

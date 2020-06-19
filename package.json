@@ -38,7 +38,7 @@
 		"@tarojs/taro-weapp": "2.0.0",
 		"nerv-devtools": "^1.5.6",
 		"nervjs": "^1.5.6",
-		"taro-ui": "^2.2.3"
+		"taro-ui": "2.3.4"
 	},
 	"devDependencies": {
 		"@tarojs/cli": "2.0.0",

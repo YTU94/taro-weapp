@@ -36,6 +36,7 @@ class App extends Component {
             "pages/pukeGame/index",
             "pages/rotateGame/index",
             "pages/diceGame/index",
+            "pages/undercoverGame/index",
             "pages/twentyFourGame/index"
         ],
         tabBar: {

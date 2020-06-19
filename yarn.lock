@@ -11747,10 +11747,10 @@ taro-css-to-react-native@2.0.0:
     css-mediaquery "^0.1.2"
     postcss-value-parser "^3.3.0"
 
-taro-ui@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/taro-ui/-/taro-ui-2.2.3.tgz#8b2a0d5c86257fa82585980c675871ca3d2a0602"
-  integrity sha512-2I3qnnz7anvbOkajhO/XTDqxX0ycLFDsyxBUa2ZxGW5kNjAqyiJL0jBq2g1BMcJe0dUiFSrHefTmW/TS7QkANQ==
+taro-ui@2.3.4:
+  version "2.3.4"
+  resolved "http://registry.npm.souche-inc.com/taro-ui/download/taro-ui-2.3.4.tgz#a7a2cdd67b2b4a49d10c351d89def4d28b9bb192"
+  integrity sha1-p6LN1nsrSknRDDUdid700oubsZI=
   dependencies:
     "@types/react" "^16.7.3"
     bind-decorator "^1.0.11"

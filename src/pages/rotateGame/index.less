@@ -1,159 +1,207 @@
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(180deg);
-    }
+.rotate-game {
+    height: 100vh;
+    padding: 30rpx 30rpx 48rpx;
+    box-sizing: border-box;
+    background: #f5f7fb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.roate-game {
-    width: 100%;
+.page-header {
+    display: flex;
+    align-items: center;
+    padding: 10rpx 4rpx 24rpx;
 }
 
-.title {
-    text-align: center;
-    color: #6190e8;
-    padding: 20rpx 0;
+.icon-tile {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 26rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24rpx;
+    flex-shrink: 0;
 }
 
-.cus-btn {
+.t-wheel {
+    background: linear-gradient(135deg, #e4f6ee, #c5ebda);
+}
+
+.wheel-mini {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+    background: conic-gradient(#e2582f 0 25%, #ffd66b 0 50%, #e2582f 0 75%, #ffd66b 0);
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
     position: relative;
-    // top: 80rpx;
-    // left: 40rpx;
+}
+
+.wheel-mini::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20rpx;
+    height: 20rpx;
+    margin: -10rpx 0 0 -10rpx;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.page-title {
+    font-size: 44rpx;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.2;
+}
+
+.page-sub {
+    margin-top: 6rpx;
+    font-size: 26rpx;
+    color: #98a2b3;
+}
+
+.toolbar {
+    display: flex;
+    gap: 16rpx;
+    padding: 0 4rpx 24rpx;
+}
+
+.tool-btn {
+    flex: 1;
+    text-align: center;
+    padding: 18rpx 0;
+    background: #fff;
+    border-radius: 999rpx;
+    color: #6190e8;
+    font-size: 28rpx;
+    font-weight: 600;
+    box-shadow: 0 4rpx 14rpx rgba(31, 41, 55, 0.06);
+    transition: transform 0.15s ease;
+}
+
+.tool-btn-active {
+    transform: scale(0.97);
 }
 
 .action-btn {
-    position: absolute;
-    left: 40rpx;
-    right: 40rpx;
-    bottom: 60rpx;
+    display: block;
+    width: 100%;
+    padding: 26rpx 0;
+    text-align: center;
+    border-radius: 999rpx;
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: 600;
+    box-shadow: 0 10rpx 24rpx rgba(97, 144, 232, 0.35);
+    transition: transform 0.15s ease;
+}
+
+.action-btn-active {
+    transform: scale(0.97);
+}
+
+.action-btn-disabled {
+    opacity: 0.5;
+    box-shadow: none;
 }
 
 .rotate-box {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0, -50%);
-    width: 100%;
-    height: 500rpx;
-    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sector {
+/* 外圈灯带边框（固定不转） */
+.wheel-wrap {
+    position: relative;
+    width: 560rpx;
+    height: 560rpx;
+    padding: 16rpx;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from -3deg, #ffe9a8 0deg 6deg, #e2482f 6deg 22.5deg);
+    box-shadow:
+        0 12rpx 32rpx rgba(216, 67, 21, 0.35),
+        inset 0 0 0 4rpx rgba(255, 255, 255, 0.25);
+}
+
+/* 旋转盘体：conic-gradient 扇区，纯色兜底 */
+.wheel-rotator {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background-color: #f6b352;
+    box-shadow: inset 0 0 24rpx rgba(122, 44, 8, 0.25);
+    /* 真实转盘手感：起步快、长尾缓慢减速 */
+    transition: transform 5s cubic-bezier(0.15, 0.72, 0.12, 1);
+}
+
+/* 区块文字：贴转盘圆心定位，旋转到扇区中线、半径 168~208rpx 处 */
+.sector-text {
     position: absolute;
     left: 50%;
-    width: 250rpx;
-    height: 500rpx;
-    margin: 0 auto;
-    border-radius: 0rpx 250rpx 250rpx 0;
-    overflow: hidden;
-    // transform: rotate(-18deg);
-    transform-origin: left center;
-
-}
-
-.sector-inner {
-    position: relative;
+    top: 50%;
+    width: 220rpx;
+    transform-origin: 0 0;
+    font-size: 26rpx;
+    font-weight: 600;
+    line-height: 40rpx;
     text-align: center;
-    display: block;
-    width: 250rpx;
-    // padding: 10rpx 6rpx 0 114rpx;
-    height: 500rpx;
-    // transform: translateX(-200rpx) rotate(36deg);
-    transform-origin: right center;
-    box-sizing: border-box;
-    border-radius: 250rpx 0 0 250rpx;
-
-}
-// .sector-inner::before{
-//     content: '';
-//     width: 20rpx;
-//     height: 20rpx;
-//     position: absolute;
-//     top: 13rpx;
-//     right: 67rpx;
-//     background: #fff899;
-//     box-shadow: 0rpx 0rpx 4rpx #fff899;
-//     // border: 2px solid #111;
-//     border-radius: 10rpx;
-//     z-index: 1001;
-// }
-.sector-inner span {
-    display: inline-block;
-    position: absolute;
-    top: 20%;
-    right: 0;
-    padding: 0 5%;
-    box-sizing: border-box;
-    text-align: center;
-    box-sizing: border-box;
-    // color: #ff571a;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    word-break: break-all;
-    line-height: 1.0;
-    height: 66rpx;
+    pointer-events: none;
 }
 
-.sector:nth-child(2n+1) .sector-inner {
-    background: rgb(251, 223, 83);
-    color: rgb(217, 89, 38);
-}
-
-.sector:nth-child(2n) .sector-inner {
-    background: rgb(239, 132, 50);
-    color: rgb(254, 247, 173);
-}
-
-.ani-rotate {
-    position: relative;
+/* 顶部指针 */
+.wheel-pin {
+    position: absolute;
+    top: 2rpx;
     left: 50%;
-    width: 500rpx;
-    height: 500rpx;
-    background-color: #ff571a;
-    padding: 20rpx;
-    box-shadow: #000000 0px 0px 10rpx;
-    border-radius: 50%;
-    box-sizing: content-box;
-    overflow: hidden;
-    transition: 5s cubic-bezier(.18, 1.05, .79, 1.08);
+    margin-left: -18rpx;
+    width: 0;
+    height: 0;
+    border-left: 18rpx solid transparent;
+    border-right: 18rpx solid transparent;
+    border-top: 40rpx solid #d9482b;
+    filter: drop-shadow(0 4rpx 6rpx rgba(0, 0, 0, 0.25));
+    z-index: 3;
 }
 
-.rotate-pointer {
-    // display: none;
+/* 中心按钮（可点击开转 / 展示结果） */
+.wheel-hub {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
-    height: 60rpx;
-    width: 60rpx;
-    padding: 12rpx;
-    color: #fff899;
-    line-height: 60rpx;
-    font-size: 24rpx;
-    text-align: center;
-    background-color: #ff571a;
+    width: 128rpx;
+    height: 128rpx;
     border-radius: 50%;
-    border: 2rpx solid #c0381f;
+    background: linear-gradient(180deg, #ff8a5c, #e2482f);
+    border: 6rpx solid #fff3d6;
+    box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
 }
 
-.rotate-pointer::after {
-    display: block;
-    content: '';
-    position: absolute;
-    left: 28rpx;
-    top: -56rpx;
-    border-width: 30rpx 15rpx;
-    border-style: solid;
-    border-color: transparent;
-    border-bottom-color: #ff571a;
-    // border: 2rpx solid #c0381f;
-}
-
-.rotate-animation {
-    animation: rotate 1s 1;
+.wheel-hub-txt {
+    color: #fff8e7;
+    font-size: 26rpx;
+    font-weight: 600;
+    line-height: 34rpx;
+    text-align: center;
+    padding: 0 8rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }

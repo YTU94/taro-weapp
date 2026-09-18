@@ -1,58 +1,69 @@
 .puke-game {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.puke-game-c {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 40rpx;
     display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: space-between;
     flex-direction: column;
-    box-sizing: border-box;
-
 }
 
-.title {
-    flex: 0 0 auto;
-    color: #6190E8;
-    padding: 20rpx 0;
+.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48rpx 30rpx 32rpx;
+    transition: transform 0.15s ease;
 }
 
-.puke-btn {
-    flex: 0 0 100%;
-    padding: 0 280rpx;
-}
-
-
-.expain {
-    flex: 0 0 auto;
-    font-size: 24rpx;
-    color: #7b7b7b;
-    padding: 40rpx 0;
-    text-align: left;
-}
-
-.explain-label {
-    display: block;
-    width: 100%;
-    color: #6190E8;
-    font-size: 28rpx;
-    text-align: left;
-    // margin-top: 200rpx;
-}
-
-.puke-img {
-    width: 100%;
+.preview-img {
+    width: 440rpx;
     height: auto;
+    border-radius: 16rpx;
+    box-shadow: 0 10rpx 28rpx rgba(0, 0, 0, 0.15);
+    transition: transform 0.26s ease, opacity 0.26s ease;
+
+    // 抽牌动画：先缩小压暗（盖牌），结束后弹回
+    &.drawing {
+        transform: scale(0.86) rotate(-4deg);
+        opacity: 0.55;
+    }
+}
+
+.preview-hint {
+    margin-top: 20rpx;
+    font-size: 24rpx;
+    color: #98a2b3;
+}
+
+// 与首页同款的图标底座（t- 前缀与首页色卡复用）
+.icon-tile {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 26rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t-puke {
+    background: linear-gradient(135deg, #ffe9e0, #ffc9b5);
+}
+
+.mini-card {
+    width: 50rpx;
+    height: 68rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-6deg);
+}
+
+.mini-card-inner {
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #e2582f;
+    line-height: 1;
+}
+
+.card-active {
+    transform: scale(0.97);
 }

@@ -1,90 +1,160 @@
 .game {
-    padding: 0 40rpx;
-
-    .at-input {
-        margin-left: 0;
-        padding: 16rpx 0;
-        border: 0 solid #e6e6e6;
-        border-bottom-width: 1rpx;
-    }
-
-    .title {
-        text-align: center;
-        color: #6190e8;
-        padding: 20rpx 0;
-    }
-
-    .expain {
-        font-size: 24rpx;
-        color: #7b7b7b;
-        padding: 40rpx 0;
-        margin-bottom: 160rpx;
-    }
-
-    .footer {
-        padding: 40rpx;
-        box-sizing: border-box;
-    }
+    display: flex;
+    flex-direction: column;
 }
 
-.game-content {
+// ====== 顶部图标 + 标题 ======
+.icon-tile {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 26rpx;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 100rpx 0;
+}
 
-    .card-item {
-        position: relative;
-        flex: 0 0 30%;
-        height: 100rpx;
-        line-height: 100rpx;
-        font-size: 36rpx;
-        text-align: center;
-        box-sizing: border-box;
-        margin: 1.5%;
-        color: #fff;
-        animation: all 1s;
-        perspective: 500;
-        backface-visibility: hidden;
+.t-flop {
+    background: linear-gradient(135deg, #e5edff, #c9d9ff);
+}
+
+.mini-card {
+    width: 50rpx;
+    height: 68rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-6deg);
+}
+
+.mini-card-inner {
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #4a6fe3;
+    line-height: 1;
+}
+
+// ====== 输入行 ======
+.input-row {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 999rpx;
+    padding: 8rpx 8rpx 8rpx 30rpx;
+    box-shadow: 0 6rpx 20rpx rgba(31, 41, 55, 0.06);
+}
+
+.input {
+    flex: 1;
+    height: 64rpx;
+    font-size: 28rpx;
+    color: #1f2937;
+}
+
+.input-ph {
+    color: #b0b8c1;
+    font-size: 28rpx;
+}
+
+.input-action {
+    padding: 0 32rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+    border-radius: 999rpx;
+    font-size: 28rpx;
+    font-weight: 600;
+}
+
+// ====== 3x3 牌阵 ======
+// 用 grid 替代 flex+百分比，避免渲染器对 3D transform 上下文的布局计算 bug
+.game-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16rpx;
+    margin: 36rpx 0 16rpx;
+}
+
+.card-item {
+    position: relative;
+    width: 100%;
+    height: 180rpx;
+}
+
+.card-item-active {
+    transform: scale(0.96);
+}
+
+// 翻牌不用 backface-visibility（微信渲染器兼容性差），
+// 改为两层面互斥显隐 + rotateY 关键帧动画
+.face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20rpx;
+    box-shadow: 0 6rpx 16rpx rgba(31, 41, 55, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56rpx;
+    font-weight: 700;
+    color: #4a6fe3;
+}
+
+.front {
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+}
+
+.front .face-shape {
+    display: flex;
+    align-items: center;
+    gap: 14rpx;
+}
+
+.face-dot {
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.back {
+    background: #fff;
+    color: #4a6fe3;
+}
+
+// 未翻：只显示正面
+.front {
+    display: flex;
+}
+
+.back {
+    display: none;
+}
+
+// 已翻：正面隐藏，背面以翻转动画进场
+.front.flipped {
+    display: none;
+}
+
+.back.flipped {
+    display: flex;
+    animation: card-flip-in 0.45s ease;
+}
+
+@keyframes card-flip-in {
+    0% {
+        transform: rotateY(90deg) scale(0.9);
+        opacity: 0.4;
     }
-
-    .front {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: all 1s;
-        border-radius: 10rpx;
-
-        background: #92b901;
-        border: 1px solid #eee;
-        backface-visibility: hidden;
-
-    }
-
-    .back {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: all 1s;
-        border-radius: 10rpx;
-        background-color: #6190e8;
-        transform: rotateY(-180deg);
-        backface-visibility: hidden;
-
-    }
-
-    .animation-rotate-f {
-        transform: rotateY(-180deg);
-
-    }
-
-    .animation-rotate-b {
-        transform: rotateY(-360deg);
-
+    100% {
+        transform: rotateY(0deg) scale(1);
+        opacity: 1;
     }
 }

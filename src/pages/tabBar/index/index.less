@@ -1,29 +1,231 @@
 .home {
+    min-height: 100vh;
     box-sizing: border-box;
-    text-align: center;
+    padding: 30rpx 30rpx 80rpx;
+    background: #f5f7fb;
 }
 
-.title {
-    text-align: center;
-    font-size: 30rpx;
-    color: #6190e8;
-    font-size: 48px;
-    padding: 80rpx 0;
+/* ===== 顶部 Hero ===== */
+.hero {
+    position: relative;
+    border-radius: 32rpx;
+    padding: 56rpx 40rpx;
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    &::before {
+        width: 220rpx;
+        height: 220rpx;
+        right: -60rpx;
+        top: -80rpx;
+    }
+
+    &::after {
+        width: 140rpx;
+        height: 140rpx;
+        right: 90rpx;
+        bottom: -70rpx;
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+.hero-title {
+    font-size: 52rpx;
     font-weight: 700;
+    letter-spacing: 2rpx;
 }
 
-.content {
-    padding: 30rpx 0;
-    font-size: 28rpx;
-    color: #777777;
+.hero-sub {
+    margin-top: 14rpx;
+    font-size: 26rpx;
+    opacity: 0.85;
 }
 
-.btn-group {
-    position: fixed;
-    bottom: 40rpx;
-    left: 0;
-    width: 100%;
-    padding: 0 30rpx;
+/* ===== 提示条 ===== */
+.tips {
+    margin: 28rpx 8rpx 24rpx;
+    font-size: 24rpx;
+    color: #98a2b3;
+    text-align: center;
+}
+
+/* ===== 游戏卡片 ===== */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: calc(50% - 12rpx);
+    margin-right: 24rpx;
+    margin-bottom: 24rpx;
     box-sizing: border-box;
-    height: auto;
+    background: #fff;
+    border-radius: 28rpx;
+    padding: 36rpx 28rpx;
+    box-shadow: 0 6rpx 24rpx rgba(31, 41, 55, 0.06);
+    transition: transform 0.15s ease;
+
+    &:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    &.wide {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+
+        .icon-tile {
+            margin-bottom: 0;
+            margin-right: 28rpx;
+            flex-shrink: 0;
+        }
+    }
+}
+
+.card-active {
+    transform: scale(0.97);
+}
+
+.card-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.card-desc {
+    margin-top: 8rpx;
+    font-size: 24rpx;
+    color: #98a2b3;
+}
+
+/* ===== 图标底座（柔和渐变色块） ===== */
+.icon-tile {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 26rpx;
+    margin-bottom: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.t-puke {
+    background: linear-gradient(135deg, #ffe9e0, #ffc9b5);
+}
+
+.t-flop {
+    background: linear-gradient(135deg, #e5edff, #c9d9ff);
+}
+
+.t-dice {
+    background: linear-gradient(135deg, #fff3d6, #ffe0a3);
+}
+
+.t-wheel {
+    background: linear-gradient(135deg, #e4f6ee, #c5ebda);
+}
+
+.t-twenty {
+    background: linear-gradient(135deg, #efe9ff, #dccfff);
+}
+
+/* ===== CSS 图标 ===== */
+/* 扑克 / 翻牌 / 24点：迷你卡牌 */
+.mini-card {
+    width: 50rpx;
+    height: 68rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #4a6fe3;
+    transform: rotate(-6deg);
+}
+
+.c-red {
+    color: #e2582f;
+}
+
+.card-24 {
+    width: 68rpx;
+    font-size: 28rpx;
+    color: #7a5af8;
+    transform: none;
+}
+
+/* 色子 */
+.die {
+    width: 58rpx;
+    height: 58rpx;
+    background: #fff;
+    border-radius: 14rpx;
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 12rpx;
+        height: 12rpx;
+        margin: -6rpx 0 0 -6rpx;
+        border-radius: 50%;
+        background: #e8a23d;
+        box-shadow:
+            -13rpx -13rpx 0 #e8a23d,
+            13rpx 13rpx 0 #e8a23d;
+    }
+}
+
+/* 转盘 */
+.wheel-ic {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+    background: conic-gradient(#e2582f 0 25%, #ffd66b 0 50%, #e2582f 0 75%, #ffd66b 0);
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 20rpx;
+        height: 20rpx;
+        margin: -10rpx 0 0 -10rpx;
+        border-radius: 50%;
+        background: #fff;
+    }
+}
+
+/* ===== 赞赏按钮 ===== */
+.praise-btn {
+    margin: 24rpx auto 0;
+    width: 320rpx;
+    padding: 20rpx 0;
+    text-align: center;
+    border-radius: 999rpx;
+    background: #fff;
+    color: #6190e8;
+    font-size: 28rpx;
+    font-weight: 600;
+    box-shadow: 0 6rpx 20rpx rgba(97, 144, 232, 0.18);
+    transition: transform 0.15s ease;
 }

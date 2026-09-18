@@ -1,83 +1,160 @@
 .dice-game {
-    padding: 0 40rpx;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-.title {
-    flex: 1;
-    color: #6190E8;
-    padding: 20rpx 0;
+// ====== 顶部图标 ======
+.icon-tile {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 26rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.dice-num {
+.t-dice {
+    background: linear-gradient(135deg, #fff3d6, #ffe0a3);
+}
+
+.die-icon {
+    width: 58rpx;
+    height: 58rpx;
+    background: #fff;
+    border-radius: 14rpx;
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
     position: relative;
-    top: 0;
-    left: 0;
-    width: auto;
-    text-align: left;
+    transform: rotate(-10deg);
+}
+
+.die-icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12rpx;
+    height: 12rpx;
+    margin: -6rpx 0 0 -6rpx;
+    border-radius: 50%;
+    background: #e8a23d;
+    box-shadow:
+        -13rpx -13rpx 0 #e8a23d,
+        13rpx 13rpx 0 #e8a23d;
+}
+
+// ====== 卡片：数量选择 + 骰盅 ======
+.dice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28rpx 28rpx 20rpx;
+}
+
+.dice-card-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16rpx;
+}
+
+.dice-card-label {
+    font-size: 28rpx;
+    color: #1f2937;
+    font-weight: 600;
 }
 
 .dice-picker {
-    font-size: 40rpx;
+    display: flex;
+    align-items: center;
+    padding: 8rpx 20rpx;
+    background: #fff7e6;
+    border-radius: 999rpx;
+    color: #b9770e;
 }
 
-.dice-bg {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0, -50%);
+.dice-picker-num {
+    font-size: 32rpx;
+    font-weight: 700;
 }
 
-.dice-box {
+.dice-picker-caret {
+    margin-left: 10rpx;
+    width: 0;
+    height: 0;
+    border-left: 8rpx solid transparent;
+    border-right: 8rpx solid transparent;
+    border-top: 10rpx solid #e8a23d;
+}
+
+// ====== 骰盅 ======
+.dice-cup {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 12rpx 0 8rpx;
+}
+
+.dice-cup-img {
+    width: 90%;
+    height: auto;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dice-cup-img.opened {
+    opacity: 0.25;
+    transform: translateY(-10rpx);
+}
+
+.dice-grid {
     position: absolute;
-    left: 50%;
-    bottom: 35%;
-    transform: translate(-50%, 0); // rotateX(-15deg)
-    width: 420rpx;
+    inset: 30% 0 10% 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    z-index: 1;
-
-    image {
-        flex: 0 0 110rpx;
-        height: 110rpx;
-        margin: 10rpx;
-    }
+    z-index: 2;
 }
 
-.dice-bg-active {
-    opacity: .8;
+.dice-img {
+    width: 110rpx;
+    height: 110rpx;
+    margin: 8rpx;
+    border-radius: 14rpx;
+    box-shadow: 0 6rpx 14rpx rgba(0, 0, 0, 0.18);
 }
 
+.dice-placeholder {
+    font-size: 26rpx;
+    color: #98a2b3;
+    padding: 24rpx 32rpx;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16rpx;
+}
+
+// ====== 摇一摇文字 ======
 .shake-text {
-    font-size: 60rpx;
-    line-height: 2.0;
-    color: #6190E8;
+    margin-top: 12rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    image {
-        display: inline-block;
-        flex: 0 0 80rpx;
-        height: auto;
-    }
+    color: #b9770e;
+    font-size: 28rpx;
+    font-weight: 600;
+    transition: transform 0.15s ease;
 }
 
-.opt-btn {
-    position: absolute;
-    bottom: 60rpx;
-    left: 0;
-    right: 0;
-    margin: 0 20px;
+.shake-arrow {
+    margin-right: 12rpx;
+    width: 70rpx;
+    height: 70rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.shake-img {
+    width: 64rpx;
+    height: auto;
 }

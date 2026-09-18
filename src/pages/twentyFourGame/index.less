@@ -1,47 +1,96 @@
 .twentyFour-game {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 40rpx;
-    box-sizing: border-box;
-}
-
-.imgBox {
     display: flex;
+    flex-direction: column;
 }
 
-.title {
-    text-align: center;
-    font-size: 30rpx;
-    color: #6190e8;
-    font-size: 48px;
-    padding: 80rpx 0;
+// ====== 顶部图标 ======
+.icon-tile {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 26rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t-twenty {
+    background: linear-gradient(135deg, #efe9ff, #dccfff);
+}
+
+.mini-card {
+    width: 50rpx;
+    height: 68rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-24 {
+    width: 68rpx;
+    height: 50rpx;
+}
+
+.mini-card-inner {
+    font-size: 26rpx;
     font-weight: 700;
+    color: #7a5af8;
+    line-height: 1;
 }
 
-.puke-img {
+// ====== 卡片预览 ======
+.card-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36rpx 24rpx 28rpx;
+}
+
+.cards-row {
     width: 100%;
-    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16rpx;
+}
+
+.card-slot {
     flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
-.expain {
-    flex: 0 0 auto;
-    font-size: 24rpx;
-    color: #7b7b7b;
-    padding: 100rpx 0 40rpx;
-    text-align: left;
-
-}
-
-.explain-label {
-    display: block;
+.card-img {
     width: 100%;
-    color: #6190E8;
-    font-size: 28rpx;
-    text-align: left;
-    // margin-top: 200rpx;
+    max-width: 180rpx;
+    height: auto;
+    border-radius: 14rpx;
+    box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.18);
+    transform: translateY(0);
+    animation: card-fade 0.4s ease;
+}
+
+@keyframes card-fade {
+    from {
+        opacity: 0;
+        transform: translateY(20rpx) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-loading {
+    padding: 60rpx 0;
+    color: #98a2b3;
+    font-size: 26rpx;
+}
+
+.card-tips {
+    margin-top: 24rpx;
+    font-size: 24rpx;
+    color: #98a2b3;
 }

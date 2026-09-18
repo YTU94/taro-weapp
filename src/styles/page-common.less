@@ -1,0 +1,155 @@
+// 页面通用设计令牌（与首页保持一致的现代简洁风）
+
+// 页面容器
+.page {
+    min-height: 100vh;
+    padding: 30rpx 30rpx 180rpx;
+    box-sizing: border-box;
+    background: #f5f7fb;
+}
+
+// 页面顶部：图标 + 标题块
+.page-header {
+    display: flex;
+    align-items: center;
+    padding: 10rpx 4rpx 32rpx;
+
+    .icon-tile {
+        margin-bottom: 0;
+        margin-right: 24rpx;
+        flex-shrink: 0;
+    }
+}
+
+.page-title {
+    font-size: 44rpx;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.2;
+}
+
+.page-sub {
+    margin-top: 6rpx;
+    font-size: 26rpx;
+    color: #98a2b3;
+}
+
+// 通用卡片
+.card {
+    background: #fff;
+    border-radius: 28rpx;
+    padding: 36rpx 28rpx;
+    box-shadow: 0 6rpx 24rpx rgba(31, 41, 55, 0.06);
+}
+
+// 玩法介绍卡
+.section-title {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 36rpx 4rpx 16rpx;
+
+    &::before {
+        content: '';
+        width: 6rpx;
+        height: 28rpx;
+        margin-right: 14rpx;
+        border-radius: 4rpx;
+        background: linear-gradient(180deg, #6190e8, #7c6fe8);
+    }
+}
+
+.expain {
+    background: #fff;
+    border-radius: 24rpx;
+    padding: 28rpx 30rpx;
+    font-size: 26rpx;
+    color: #4b5563;
+    line-height: 1.7;
+    box-shadow: 0 6rpx 24rpx rgba(31, 41, 55, 0.06);
+
+    view + view {
+        margin-top: 12rpx;
+    }
+}
+
+// 主操作按钮（渐变胶囊）
+.primary-btn {
+    display: block;
+    width: 100%;
+    padding: 26rpx 0;
+    text-align: center;
+    border-radius: 999rpx;
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: 600;
+    box-shadow: 0 10rpx 24rpx rgba(97, 144, 232, 0.35);
+    transition: transform 0.15s ease;
+}
+
+.primary-btn-active {
+    transform: scale(0.97);
+}
+
+.primary-btn-disabled {
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+// 次要按钮（白底描边胶囊）
+.ghost-btn {
+    display: block;
+    width: 100%;
+    padding: 24rpx 0;
+    text-align: center;
+    border-radius: 999rpx;
+    background: #fff;
+    color: #6190e8;
+    font-size: 30rpx;
+    font-weight: 600;
+    box-shadow: 0 4rpx 14rpx rgba(31, 41, 55, 0.06);
+    transition: transform 0.15s ease;
+}
+
+// 固定的底部操作栏
+.bottom-bar {
+    position: fixed;
+    left: 30rpx;
+    right: 30rpx;
+    bottom: 40rpx;
+}
+
+// 自定义弹层背景
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-card {
+    width: 620rpx;
+    background: #fff;
+    border-radius: 28rpx;
+    padding: 40rpx 30rpx 30rpx;
+    text-align: center;
+    box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+    margin-top: 24rpx;
+    width: 100%;
+    text-align: center;
+    padding: 16rpx 0;
+    color: #98a2b3;
+    font-size: 26rpx;
+}

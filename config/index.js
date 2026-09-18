@@ -31,6 +31,10 @@ export default defineConfig(async (merge, { command, mode }) => {
       enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
     mini: {
+      // 不自动清空输出目录（避免 watch 反复删除 dist 触发批量删除保护；需要全新产物时手动清理）
+      output: {
+        clean: false
+      },
       postcss: {
         pxtransform: {
           enable: true,

@@ -1,39 +1,28 @@
-import Taro, { useEffect, useContext, useLayoutEffect, useReducer, useState, useRef, useCallback, useMemo } from "@tarojs/taro"
-import { View } from "@tarojs/components"
-import "./index.less"
+import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import { useEffect, useState } from 'react'
+import './index.less'
 
-function CountCard(props) {
-    const [idList, setidList] = useState([])
+function slicePwd(pwd) {
+    if (!pwd) return ''
+    const len = pwd.indexOf(':')
+    return pwd.substr(len + 1)
+}
+
+export default function CountCard(props) {
+    const [idList, setIdList] = useState([])
 
     useEffect(() => {
-        setidList(props.idList)
+        setIdList(props.idList || [])
     }, [props.idList])
 
-    const slicePwd = pwd => {
-        if (!pwd) return ""
-        let len = pwd.indexOf(":")
-        return pwd.substr(len + 1)
-    }
-
-    const copyAccount = e => {
-        wx.setClipboardData({
-            data: e.account,
-            success(res) {
+    const copy = data => {
+        Taro.setClipboardData({
+            data,
+            success() {
                 Taro.showToast({
-                    icon: "none",
-                    title: "复制成功"
-                })
-            }
-        })
-    }
-
-    const copyPassword = e => {
-        wx.setClipboardData({
-            data: slicePwd(e.password),
-            success(res) {
-                Taro.showToast({
-                    icon: "none",
-                    title: "复制成功"
+                    icon: 'none',
+                    title: '复制成功'
                 })
             }
         })
@@ -41,19 +30,19 @@ function CountCard(props) {
 
     return (
         <View className='account-card-list'>
-            {idList.map(card => {
+            {idList.map((card, index) => {
                 return (
-                    <View className='card-list-item'>
+                    <View key={card.id || card.account || index} className='card-list-item'>
                         <View className='card-title'>{card.name}</View>
                         <View className='card-item'>
                             <View className='card-label'>账号：</View>
-                            <View className='card-content' onClick={copyAccount.bind(this, card)}>
+                            <View className='card-content' onClick={() => copy(card.account)}>
                                 {card.account}
                             </View>
                         </View>
                         <View className='card-item'>
                             <View className='card-label'>密码：</View>
-                            <View className='card-content' onClick={copyPassword.bind(this, card)}>
+                            <View className='card-content' onClick={() => copy(slicePwd(card.password))}>
                                 点我复制
                             </View>
                         </View>
@@ -67,5 +56,3 @@ function CountCard(props) {
         </View>
     )
 }
-
-export default CountCard

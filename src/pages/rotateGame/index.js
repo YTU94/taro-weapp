@@ -1,8 +1,24 @@
-import Taro, { Component, useState } from "@tarojs/taro"
-import { View } from "@tarojs/components"
-import "./index.less"
-import { AtButton } from "taro-ui"
-import CusInput from "../../components/cusInput"
+import Taro, { useShareAppMessage } from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
+import { useEffect, useRef, useState } from 'react'
+import { AtButton } from 'taro-ui'
+import CusInput from '../../components/cusInput'
+import './index.less'
+
+const DEFAULT_LIST = [
+    'PASS',
+    '再来一次',
+    '喝一杯',
+    '讲故事',
+    '喝一瓶',
+    '喝半杯',
+    '大冒险',
+    '大家干杯',
+    '选人喝一杯',
+    '赢家说了算'
+]
+
+const MAX_OPTIONS = 10
 
 function getRandomInt(min, max) {
     min = Math.ceil(min)
@@ -10,166 +26,118 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min //不含最大值，含最小值
 }
 
-export default class Index extends Component {
-    /**
-     * 指定config的类型声明为: Taro.Config
-     *
-     * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
-     * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
-     * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
-     */
+export default function Index() {
+    const [num, setNum] = useState(1)
+    const [cusList, setCusList] = useState([])
+    const [showInput, setShowInput] = useState(false)
+    const [btnDisabled, setBtnDisabled] = useState(false)
+    const timer = useRef(null)
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            num: 1,
-            gameStart: false,
-            list: null,
-            cusList: [],
-            showInput: false,
-            btnDisabled: false
-        }
-    }
-    onShareAppMessage(res) {
+    useShareAppMessage(() => {
         return {
-            path: "/pages/tabBar/index/index"
+            path: '/pages/tabBar/index/index'
         }
-    }
-    config = {
-        navigationBarTitleText: "转盘游戏"
-    }
+    })
 
-    componentWillMount() {}
+    useEffect(() => {
+        return () => {
+            timer.current && clearTimeout(timer.current)
+        }
+    }, [])
 
-    componentDidMount() {}
-
-    componentWillUnmount() {}
-
-    componentDidShow() {}
-
-    componentDidHide() {}
-
-    start(e) {
-        if (this.state.btnDisabled) return
-        let that = this
-
+    const start = e => {
         e.stopPropagation()
-
-        this.setState(
-            {
-                num: this.state.num + getRandomInt(360, 1800),
-                btnDisabled: true
-            },
-            () => {
-                setTimeout(() => {
-                    that.setState({
-                        btnDisabled: false
-                    })
-                }, 5000)
-            }
-        )
+        if (btnDisabled) return
+        setNum(n => n + getRandomInt(360, 1800))
+        setBtnDisabled(true)
+        timer.current = setTimeout(() => {
+            setBtnDisabled(false)
+        }, 5000)
     }
 
-    clear(e) {
+    const clear = e => {
         e.stopPropagation()
-        this.setState({
-            cusList: []
-        })
+        setCusList([])
     }
-    onSubmit(v) {
-        let a = this.state.cusList.slice(0)
-        if (a.length > 10) {
+
+    const onSubmit = v => {
+        if (cusList.length > MAX_OPTIONS) {
             Taro.showToast({
-                title: "最多支持10个自定义选项",
-                icon: "none",
+                title: '最多支持10个自定义选项',
+                icon: 'none',
                 duration: 1500
             })
             return false
         }
         if (!v) {
             Taro.showToast({
-                title: "内容不能为空",
-                icon: "none",
+                title: '内容不能为空',
+                icon: 'none',
                 duration: 1500
             })
             return false
         }
-        a.push(v)
-        this.setState({
-            cusList: a
-        })
+        setCusList(prev => prev.concat(v))
     }
 
-    blur = e => {
-        this.setState({
-            showInput: false
-        })
+    const blur = () => {
+        setShowInput(false)
     }
 
-    showInputBox = e => {
+    const showInputBox = e => {
         e.stopPropagation()
-        if (this.state.showInput) return
-        this.setState({
-            showInput: true
-        })
+        if (showInput) return
+        setShowInput(true)
     }
 
-    render() {
-        const defaultList = ["PASS", "再来一次", "喝一杯", "讲故事", "喝一瓶", "喝半杯", "大冒险", "大家干杯", "选人喝一杯", "赢家说了算"]
-        let arr = []
-        if (10 > this.state.cusList.length > 0) {
-            const cl = this.state.cusList.length
-            arr = this.state.cusList.concat(defaultList.slice(cl))
-        } else {
-            arr = this.state.cusList.slice(0, 10)
-        }
-        const l = arr.length
-        const rotateBox = arr.map((e, i) => (
-            <View className='sector' style={`transform: rotate(${i * (360 / l)}deg)`}>
-                <View class='sector-inner' style={`transform: translatex(-250rpx) rotate(${360 / l}deg)`}>
-                    <span
-                        style={`transform: translate(0, -100%) rotate(-${360 / arr.length / 2}deg); width: ${Math.sin(
-                            ((360 / arr.length / 2) * Math.PI) / 180
-                        ).toFixed(8) * 160}%`}>
-                        {e}
-                    </span>
-                </View>
+    const arr = cusList.length >= MAX_OPTIONS ? cusList.slice(0, MAX_OPTIONS) : cusList.concat(DEFAULT_LIST.slice(cusList.length))
+    const l = arr.length
+
+    const rotateBox = arr.map((item, i) => (
+        <View key={i} className='sector' style={`transform: rotate(${i * (360 / l)}deg)`}>
+            <View className='sector-inner' style={`transform: translatex(-250rpx) rotate(${360 / l}deg)`}>
+                <Text
+                    style={`transform: translate(0, -100%) rotate(-${360 / arr.length / 2}deg); width: ${(
+                        Math.sin(((360 / arr.length / 2) * Math.PI) / 180).toFixed(8) * 160
+                    )}%`}
+                >
+                    {item}
+                </Text>
             </View>
-        ))
+        </View>
+    ))
 
-        // }
-        return (
-            <View className='rotate-game'>
-                <View className='title'> 超级转盘 </View>
-                <View style='display:flex; justify-content:space-between;padding: 10rpx 40rpx;box'>
-                    <View onClick={this.showInputBox.bind(this)}>
-                        <AtButton className='cus-btn' size='small' type='secondary'>
-                            自定义转盘
-                        </AtButton>
-                    </View>
-
-                    <View onClick={this.clear.bind(this)}>
-                        <AtButton className='cus-btn' size='small' onClick={this.clear.bind(this)}>
-                            清空
-                        </AtButton>
-                    </View>
-                </View>
-
-                <View className='rotate-box'>
-                    <View style={`transform: translate(-50%, 0) rotate(${this.state.num}deg);`} className='ani-rotate'>
-                        {rotateBox}
-                    </View>
-                    <View className='rotate-pointer'>结果</View>
-                </View>
-
-                {this.state.showInput ? (
-                    <CusInput show={showInput} onSubmit={this.onSubmit.bind(this)} onBlur={this.blur.bind(this)} />
-                ) : (
-                    <AtButton className='action-btn' type='primary' disabled={this.state.btnDisabled} onClick={this.start.bind(this)}>
-                        开始
+    return (
+        <View className='rotate-game'>
+            <View className='title'> 超级转盘 </View>
+            <View style='display:flex; justify-content:space-between;padding: 10rpx 40rpx;box'>
+                <View onClick={showInputBox}>
+                    <AtButton className='cus-btn' size='small' type='secondary'>
+                        自定义转盘
                     </AtButton>
-                )}
+                </View>
+
+                <View>
+                    <AtButton className='cus-btn' size='small' onClick={clear}>
+                        清空
+                    </AtButton>
+                </View>
             </View>
-        )
-    }
+
+            <View className='rotate-box'>
+                <View style={`transform: translate(-50%, 0) rotate(${num}deg);`} className='ani-rotate'>
+                    {rotateBox}
+                </View>
+                <View className='rotate-pointer'>结果</View>
+            </View>
+
+            {showInput ? (
+                <CusInput show={showInput} onSubmit={onSubmit} onBlur={blur} />
+            ) : (
+                <AtButton className='action-btn' type='primary' disabled={btnDisabled} onClick={start}>
+                    开始
+                </AtButton>
+            )}
+        </View>
+    )
 }

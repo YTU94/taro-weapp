@@ -1,5 +1,7 @@
 dist/
 .temp/
 .rn_temp/
+.swc/
 node_modules/
+node_modules.taro1-polluted/
 .DS_Store

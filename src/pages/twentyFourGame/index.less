@@ -62,14 +62,35 @@
     justify-content: center;
 }
 
-.card-img {
-    width: 100%;
-    max-width: 180rpx;
-    height: auto;
+// 缩小版自绘扑克（覆盖 faces 组件的默认尺寸）
+.card-slot .pk-card {
+    width: 176rpx;
+    height: 246rpx;
     border-radius: 14rpx;
     box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.18);
-    transform: translateY(0);
     animation: card-fade 0.4s ease;
+}
+
+.card-slot .pk-suit-big {
+    font-size: 88rpx;
+}
+
+.card-slot .pk-rank {
+    font-size: 26rpx;
+}
+
+.card-slot .pk-suit-s {
+    font-size: 20rpx;
+}
+
+.card-slot .pk-corner {
+    top: 12rpx;
+    left: 14rpx;
+}
+
+.card-slot .pk-corner-flip {
+    bottom: 12rpx;
+    right: 14rpx;
 }
 
 @keyframes card-fade {

@@ -143,14 +143,23 @@
     transition: transform 5s cubic-bezier(0.15, 0.72, 0.12, 1);
 }
 
-/* 区块文字：贴转盘圆心定位，旋转到扇区中线、半径 168~208rpx 处 */
-.sector-text {
+/* 扇区文字：以转盘圆心为零尺寸锚点旋转（transform-origin 0 0 兼容性最稳），
+   文字块沿半径外推到 178~218rpx 处（贴近外缘最宽处），宽度按弦长自适应 */
+.sector {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 220rpx;
+    width: 0;
+    height: 0;
     transform-origin: 0 0;
-    font-size: 26rpx;
+    z-index: 1;
+}
+
+.sector-text {
+    position: absolute;
+    left: 0;
+    bottom: 178rpx;
+    transform: translateX(-50%);
     font-weight: 600;
     line-height: 40rpx;
     text-align: center;

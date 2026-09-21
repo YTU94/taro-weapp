@@ -42,32 +42,56 @@
         13rpx 13rpx 0 #e8a23d;
 }
 
-// ====== 卡片：数量选择 + 骰盅 ======
-.dice-card {
+// ====== 模式切换 ======
+.seg {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 28rpx 28rpx 20rpx;
+    background: #f0f3f9;
+    border-radius: 999rpx;
+    padding: 6rpx;
 }
 
+.seg-item {
+    flex: 1;
+    text-align: center;
+    padding: 14rpx 0;
+    border-radius: 999rpx;
+    font-size: 27rpx;
+    font-weight: 600;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.seg-item-active {
+    background: #fff;
+    color: #4a6fe3;
+    box-shadow: 0 4rpx 12rpx rgba(31, 41, 55, 0.1);
+}
+
+// ====== 数量选择（小屏不换行溢出） ======
 .dice-card-header {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 16rpx;
+    gap: 12rpx;
+    padding: 24rpx 4rpx 0;
 }
 
 .dice-card-label {
     font-size: 28rpx;
     color: #1f2937;
     font-weight: 600;
+    flex-shrink: 0;
 }
 
 .dice-picker {
     display: flex;
     align-items: center;
-    padding: 8rpx 20rpx;
+    flex-shrink: 0;
+    min-height: 60rpx;
+    box-sizing: border-box;
+    padding: 10rpx 26rpx;
     background: #fff7e6;
     border-radius: 999rpx;
     color: #b9770e;
@@ -76,10 +100,11 @@
 .dice-picker-num {
     font-size: 32rpx;
     font-weight: 700;
+    line-height: 1;
 }
 
 .dice-picker-caret {
-    margin-left: 10rpx;
+    margin-left: 12rpx;
     width: 0;
     height: 0;
     border-left: 8rpx solid transparent;
@@ -87,74 +112,195 @@
     border-top: 10rpx solid #e8a23d;
 }
 
-// ====== 骰盅 ======
-.dice-cup {
+// ====== 骰盅舞台 ======
+.dice-stage {
     position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 12rpx 0 8rpx;
+    height: 430rpx;
+    margin-top: 10rpx;
 }
 
-.dice-cup-img {
-    width: 90%;
-    height: auto;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.dice-cup-img.opened {
-    opacity: 0.25;
-    transform: translateY(-10rpx);
-}
-
-.dice-grid {
+// 桌面层：骰子落在骰盅原位置
+.dice-zone {
     position: absolute;
-    inset: 30% 0 10% 0;
+    left: 10rpx;
+    right: 10rpx;
+    bottom: 26rpx;
+    min-height: 120rpx;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    gap: 16rpx;
+    z-index: 1;
+}
+
+.sum-badge {
+    padding: 10rpx 26rpx;
+    border-radius: 999rpx;
+    background: #1f2937;
+    color: #ffd66b;
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+// ====== 立体骰盅（纯 CSS，替代远程黑色剪影素材） ======
+.cup {
+    position: absolute;
+    left: 50%;
+    bottom: 30rpx;
+    width: 220rpx;
+    height: 300rpx;
+    margin-left: -110rpx;
     z-index: 2;
+    transition: transform 0.55s cubic-bezier(0.36, 0.66, 0.04, 1), opacity 0.4s ease 0.1s;
 }
 
-.dice-img {
-    width: 110rpx;
-    height: 110rpx;
-    margin: 8rpx;
-    border-radius: 14rpx;
-    box-shadow: 0 6rpx 14rpx rgba(0, 0, 0, 0.18);
+.cup-body {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, #f4f8fd 0%, #ffffff 32%, #ccd8e8 76%, #a4b8d0 100%);
+    border-radius: 110rpx 110rpx 26rpx 26rpx;
+    box-shadow:
+        inset -18rpx -14rpx 30rpx rgba(90, 112, 142, 0.35),
+        inset 14rpx 10rpx 22rpx rgba(255, 255, 255, 0.95),
+        0 18rpx 36rpx rgba(31, 41, 55, 0.18);
+    overflow: hidden;
 }
 
-.dice-placeholder {
-    font-size: 26rpx;
-    color: #98a2b3;
-    padding: 24rpx 32rpx;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 16rpx;
+// 左侧高光
+.cup-body::before {
+    content: '';
+    position: absolute;
+    left: 32rpx;
+    top: 30rpx;
+    width: 26rpx;
+    height: 160rpx;
+    border-radius: 20rpx;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.1));
 }
 
-// ====== 摇一摇文字 ======
+// 金色底箍
+.cup-band {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 52rpx;
+    background: linear-gradient(180deg, #e8a23d, #a86f0a);
+    border-radius: 0 0 26rpx 26rpx;
+    box-shadow: inset 0 4rpx 8rpx rgba(255, 255, 255, 0.4);
+}
+
+// 桌面投影
+.cup-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: -22rpx;
+    width: 240rpx;
+    height: 36rpx;
+    margin-left: -120rpx;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(31, 41, 55, 0.22), transparent 70%);
+}
+
+// 摇动中
+.cup-shaking {
+    animation: cup-shake 0.32s ease-in-out infinite;
+}
+
+@keyframes cup-shake {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-14rpx) rotate(-5deg); }
+    50% { transform: translateY(-16rpx) rotate(0deg); }
+    75% { transform: translateX(14rpx) rotate(5deg); }
+}
+
+// 开盅：向左上飞出并淡出，露出桌面骰子
+.cup-opened {
+    transform: translate(-150rpx, -320rpx) rotate(-24deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+// ====== 摇一摇提示（不再被骰盅遮挡） ======
 .shake-text {
-    margin-top: 12rpx;
+    margin-top: 8rpx;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #b9770e;
     font-size: 28rpx;
     font-weight: 600;
+    min-height: 44rpx;
     transition: transform 0.15s ease;
 }
 
-.shake-arrow {
-    margin-right: 12rpx;
-    width: 70rpx;
-    height: 70rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+// ====== 789 判定面板 ======
+.judge {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    padding: 22rpx 26rpx;
+    border-radius: 20rpx;
+    text-align: center;
+    animation: judge-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.shake-img {
-    width: 64rpx;
-    height: auto;
+@keyframes judge-in {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.judge-pass { background: #f0f3f9; }
+.judge-add { background: #eef3ff; }
+.judge-half { background: #fff4e5; }
+.judge-full { background: #ffeceb; }
+
+.judge-txt {
+    font-size: 34rpx;
+    font-weight: 800;
+}
+
+.judge-pass .judge-txt { color: #6b7280; }
+.judge-add .judge-txt { color: #4a6fe3; }
+.judge-half .judge-txt { color: #d97706; }
+.judge-full .judge-txt { color: #e2582f; }
+
+.judge-assign {
+    margin-top: 16rpx;
+}
+
+.judge-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12rpx;
+}
+
+.judge-assign-label {
+    width: 100%;
+    font-size: 22rpx;
+    color: #98a2b3;
+    margin-bottom: 2rpx;
+}
+
+.judge-chip {
+    padding: 12rpx 24rpx;
+    border-radius: 999rpx;
+    background: #fff;
+    box-shadow: 0 4rpx 12rpx rgba(31, 41, 55, 0.1);
+    font-size: 25rpx;
+    font-weight: 600;
+    color: #1f2937;
+    transition: transform 0.15s ease;
+}
+
+.judge-chip-active {
+    transform: scale(0.94);
+}
+
+.judge-assign-hint {
+    font-size: 22rpx;
+    color: #98a2b3;
 }

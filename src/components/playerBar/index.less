@@ -1,0 +1,278 @@
+// 悬浮胶囊（游戏页）
+.pb-fab {
+    position: fixed;
+    right: 24rpx;
+    bottom: 150rpx;
+    display: flex;
+    align-items: center;
+    padding: 16rpx 22rpx;
+    background: #fff;
+    border-radius: 999rpx;
+    box-shadow: 0 8rpx 24rpx rgba(31, 41, 55, 0.16);
+    z-index: 50;
+    transition: transform 0.15s ease;
+}
+
+.pb-fab-active {
+    transform: scale(0.96);
+}
+
+.pb-fab-ico {
+    font-size: 36rpx;
+    margin-right: 12rpx;
+}
+
+.pb-fab-title {
+    font-size: 26rpx;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.2;
+}
+
+.pb-fab-sub {
+    font-size: 20rpx;
+    color: #98a2b3;
+    margin-top: 2rpx;
+}
+
+.pb-badge {
+    margin-left: 14rpx;
+    min-width: 34rpx;
+    height: 34rpx;
+    padding: 0 8rpx;
+    border-radius: 999rpx;
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+    font-size: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// 内嵌战况卡（首页）
+.pb-inline {
+    margin-top: 24rpx;
+    padding: 28rpx;
+}
+
+.pb-inline-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.pb-inline-title {
+    font-size: 30rpx;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.pb-inline-sub {
+    font-size: 22rpx;
+    color: #98a2b3;
+}
+
+.pb-chips {
+    margin-top: 20rpx;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12rpx;
+}
+
+.pb-chip {
+    display: flex;
+    align-items: center;
+    padding: 8rpx 18rpx;
+    background: #f5f7fb;
+    border-radius: 999rpx;
+    font-size: 24rpx;
+    color: #1f2937;
+}
+
+.pb-chip-out {
+    opacity: 0.45;
+    text-decoration: line-through;
+}
+
+.pb-chip-more {
+    color: #98a2b3;
+}
+
+.pb-chip-dot {
+    width: 14rpx;
+    height: 14rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+
+.pb-chip-cups {
+    margin-left: 8rpx;
+    color: #e2582f;
+    font-weight: 600;
+}
+
+.pb-empty-hint {
+    margin-top: 18rpx;
+    font-size: 24rpx;
+    color: #98a2b3;
+    background: #f5f7fb;
+    border-radius: 16rpx;
+    padding: 20rpx 24rpx;
+}
+
+// 计分板弹层
+.pb-board {
+    width: 640rpx;
+    max-height: 78vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 28rpx;
+    padding: 40rpx 30rpx 28rpx;
+    box-sizing: border-box;
+}
+
+.pb-board-title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #1f2937;
+    text-align: center;
+}
+
+.pb-board-sub {
+    margin-top: 10rpx;
+    font-size: 24rpx;
+    color: #98a2b3;
+    text-align: center;
+}
+
+.pb-add {
+    margin-top: 28rpx;
+    display: flex;
+    gap: 14rpx;
+}
+
+.pb-add-input {
+    flex: 1;
+    height: 76rpx;
+    padding: 0 26rpx;
+    background: #f5f7fb;
+    border-radius: 999rpx;
+    font-size: 26rpx;
+}
+
+.pb-add-btn {
+    width: 130rpx;
+    height: 76rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999rpx;
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+    font-size: 27rpx;
+    font-weight: 600;
+    transition: transform 0.15s ease;
+}
+
+.pb-list {
+    margin-top: 26rpx;
+}
+
+.pb-row {
+    display: flex;
+    align-items: center;
+    padding: 18rpx 6rpx;
+    border-bottom: 1rpx solid #f0f2f6;
+}
+
+.pb-row-out {
+    opacity: 0.5;
+}
+
+.pb-row-dot {
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 50%;
+    margin-right: 16rpx;
+    flex-shrink: 0;
+}
+
+.pb-row-name {
+    font-size: 27rpx;
+    font-weight: 600;
+    color: #1f2937;
+    max-width: 150rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pb-row-tag {
+    margin-left: 10rpx;
+    font-size: 18rpx;
+    color: #e2582f;
+    border: 1rpx solid #e2582f;
+    border-radius: 8rpx;
+    padding: 2rpx 8rpx;
+}
+
+.pb-row-cups {
+    flex: 1;
+    text-align: right;
+    font-size: 22rpx;
+    color: #98a2b3;
+    margin-right: 14rpx;
+}
+
+.pb-row-act {
+    flex-shrink: 0;
+    font-size: 22rpx;
+    padding: 8rpx 16rpx;
+    border-radius: 999rpx;
+    margin-left: 10rpx;
+}
+
+.pb-row-outbtn {
+    color: #6190e8;
+    background: #eef3ff;
+}
+
+.pb-row-del {
+    color: #98a2b3;
+    background: #f5f7fb;
+}
+
+.pb-notice {
+    margin-top: 26rpx;
+    text-align: center;
+    font-size: 20rpx;
+    color: #b7bfcc;
+}
+
+.pb-board-btns {
+    margin-top: 22rpx;
+    display: flex;
+    gap: 16rpx;
+}
+
+.pb-board-btn {
+    flex: 1;
+    text-align: center;
+    padding: 22rpx 0;
+    border-radius: 999rpx;
+    font-size: 28rpx;
+    font-weight: 600;
+    transition: transform 0.15s ease;
+}
+
+.pb-board-primary {
+    background: linear-gradient(135deg, #6190e8, #7c6fe8);
+    color: #fff;
+    box-shadow: 0 8rpx 20rpx rgba(97, 144, 232, 0.3);
+}
+
+.pb-board-ghost {
+    background: #fff;
+    color: #6190e8;
+    border: 1rpx solid #c9d9ff;
+}

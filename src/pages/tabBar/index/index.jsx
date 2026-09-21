@@ -1,5 +1,6 @@
 import Taro, { useShareAppMessage } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import PlayerBar from '../../../components/playerBar'
 import './index.less'
 
 const TITLE = '酒桌Gameing'
@@ -53,6 +54,9 @@ export default function Index() {
 
             <View className='tips'>点击右上角「···」-「添加到我的小程序」，下次访问更便捷</View>
 
+            {/* 今晚战况：玩家计分板入口（P0 全局底座） */}
+            <PlayerBar />
+
             <View className='grid'>
                 {GAMES.map((g, i) => (
                     <View
@@ -69,6 +73,12 @@ export default function Index() {
                         </View>
                     </View>
                 ))}
+            </View>
+
+            {/* 理性饮酒提示（P0 合规项） */}
+            <View className='drink-notice'>
+                <Text className='drink-notice-main'>理性饮酒 · 未成年人禁止饮酒 · 酒后不驾车</Text>
+                <Text className='drink-notice-sub'>量力而行，随时可以在战况里「我好了，退出本轮」</Text>
             </View>
         </View>
     )

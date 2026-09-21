@@ -2,6 +2,7 @@ import Taro, { useShareAppMessage } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { useEffect, useRef, useState } from 'react'
 import CusInput from '../../components/cusInput'
+import PlayerBar from '../../components/playerBar'
 import '../../styles/page-common.less'
 import './index.less'
 
@@ -112,17 +113,28 @@ export default function Index() {
         .map((_, i) => `${SECTOR_COLORS[i % 2]} ${i * step}deg ${(i + 1) * step}deg`)
         .join(', ')})`
 
-    // 文字沿扇区中线（切向排布），transform-origin 0 0 即转盘圆心
+    // 文字半径与宽度自适应扇区夹角：宽度 = 该半径处的弦长 × 0.92，
+    // 保证任意扇区数下相邻文字不重叠（修复 H5/真机文字重叠，P0 修复项 4）
+    const LABEL_R = 200
+    const labelWidth = Math.min(240, Math.floor(2 * LABEL_R * Math.sin((step / 2) * Math.PI / 180) * 0.92))
+    const labelFont = l > 8 ? 22 : 26
+
     const sectors = arr.map((item, i) => (
         <View
             key={i}
-            className='sector-text'
-            style={{
-                transform: `rotate(${i * step + step / 2}deg) translate(-50%, -208rpx)`,
-                color: TEXT_COLORS[i % 2]
-            }}
+            className='sector'
+            style={{ transform: `rotate(${i * step + step / 2}deg)` }}
         >
-            {item}
+            <View
+                className='sector-text'
+                style={{
+                    width: `${labelWidth}rpx`,
+                    fontSize: `${labelFont}rpx`,
+                    color: TEXT_COLORS[i % 2]
+                }}
+            >
+                {item}
+            </View>
         </View>
     ))
 
@@ -183,6 +195,8 @@ export default function Index() {
                     开始
                 </View>
             )}
+
+            <PlayerBar fixed />
         </View>
     )
 }

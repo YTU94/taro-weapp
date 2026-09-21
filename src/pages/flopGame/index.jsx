@@ -1,6 +1,7 @@
 import Taro, { useShareAppMessage } from '@tarojs/taro'
 import { View, Input } from '@tarojs/components'
 import { useState } from 'react'
+import PlayerBar from '../../components/playerBar'
 import '../../styles/page-common.less'
 import './index.less'
 
@@ -137,6 +138,8 @@ export default function Index() {
                     下一局（重新打乱）
                 </View>
             </View>
+
+            <PlayerBar fixed />
         </View>
     )
 }

@@ -1,0 +1,118 @@
+// ====== 自绘扑克牌 ======
+.pk-card {
+    position: relative;
+    width: 380rpx;
+    height: 532rpx;
+    background: linear-gradient(160deg, #ffffff, #f2f5fa);
+    border-radius: 24rpx;
+    box-shadow: 0 12rpx 32rpx rgba(31, 41, 55, 0.16);
+    box-sizing: border-box;
+    border: 2rpx solid #e8edf5;
+    overflow: hidden;
+}
+
+.pk-corner {
+    position: absolute;
+    top: 22rpx;
+    left: 26rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.05;
+}
+
+.pk-corner-flip {
+    top: auto;
+    left: auto;
+    bottom: 22rpx;
+    right: 26rpx;
+    transform: rotate(180deg);
+}
+
+.pk-corner-txt {
+    font-size: 40rpx;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.pk-rank {
+    font-size: 44rpx;
+    font-weight: 800;
+}
+
+.pk-suit-s {
+    font-size: 30rpx;
+}
+
+.pk-suit-big {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 190rpx;
+    line-height: 1;
+}
+
+.pk-joker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 88rpx;
+    font-weight: 800;
+    letter-spacing: 6rpx;
+}
+
+// 颜色（黑桃梅花 / 红心方片）
+.pk-card .red {
+    color: #e2582f;
+}
+
+.pk-card .blk {
+    color: #26303e;
+}
+
+// ====== 自绘骰子 ======
+.die-face {
+    width: 110rpx;
+    height: 110rpx;
+    background: linear-gradient(150deg, #ffffff, #eef2f8);
+    border-radius: 22rpx;
+    border: 2rpx solid #e4e9f2;
+    box-shadow: 0 8rpx 18rpx rgba(31, 41, 55, 0.14);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 14rpx;
+    gap: 4rpx;
+    box-sizing: border-box;
+    animation: die-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.die-small {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 18rpx;
+    padding: 10rpx;
+}
+
+.die-cell {
+    border-radius: 50%;
+}
+
+.die-cell-on {
+    background: radial-gradient(circle at 35% 30%, #4a5568, #1f2937);
+    box-shadow: inset 0 -2rpx 4rpx rgba(255, 255, 255, 0.35);
+}
+
+@keyframes die-in {
+    0% {
+        transform: scale(0.4) rotate(-24deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}

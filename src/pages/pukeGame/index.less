@@ -1,6 +1,9 @@
 .puke-game {
     display: flex;
     flex-direction: column;
+    // 底部固定按钮（高约 84rpx + 距底 40rpx），预留足量空间，
+    // 玩法介绍滚动到底部时不再被按钮遮挡（P0 修复项 2）
+    padding-bottom: 280rpx;
 }
 
 .preview {
@@ -11,12 +14,9 @@
     transition: transform 0.15s ease;
 }
 
-.preview-img {
-    width: 440rpx;
-    height: auto;
-    border-radius: 16rpx;
-    box-shadow: 0 10rpx 28rpx rgba(0, 0, 0, 0.15);
+.preview-wrap {
     transition: transform 0.26s ease, opacity 0.26s ease;
+    filter: drop-shadow(0 12rpx 28rpx rgba(31, 41, 55, 0.16));
 
     // 抽牌动画：先缩小压暗（盖牌），结束后弹回
     &.drawing {
@@ -26,7 +26,7 @@
 }
 
 .preview-hint {
-    margin-top: 20rpx;
+    margin-top: 28rpx;
     font-size: 24rpx;
     color: #98a2b3;
 }

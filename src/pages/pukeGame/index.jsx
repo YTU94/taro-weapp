@@ -1,7 +1,8 @@
 import { useShareAppMessage } from '@tarojs/taro'
-import { View, Image } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useState } from 'react'
-import { PUKE_IMAGES } from '../../utils/images'
+import { PokerCard } from '../../components/faces'
+import PlayerBar from '../../components/playerBar'
 import '../../styles/page-common.less'
 import './index.less'
 
@@ -38,11 +39,9 @@ export default function Index() {
             </View>
 
             <View className='card preview' hoverClass='card-active' onClick={select}>
-                <Image
-                    className={`preview-img${drawing ? ' drawing' : ''}`}
-                    src={PUKE_IMAGES[num]}
-                    mode='widthFix'
-                />
+                <View className={`preview-wrap${drawing ? ' drawing' : ''}`}>
+                    <PokerCard num={num} />
+                </View>
                 <View className='preview-hint'>
                     {drawing ? '抽牌中…' : '点击卡片或下方按钮抽一张'}
                 </View>
@@ -63,6 +62,8 @@ export default function Index() {
                     {drawing ? '抽牌中…' : '选一张牌'}
                 </View>
             </View>
+
+            <PlayerBar fixed />
         </View>
     )
 }

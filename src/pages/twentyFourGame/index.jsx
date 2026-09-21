@@ -1,7 +1,8 @@
 import { useShareAppMessage } from '@tarojs/taro'
-import { View, Image } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useEffect, useState } from 'react'
-import { PUKE_IMAGES } from '../../utils/images'
+import { PokerCard } from '../../components/faces'
+import PlayerBar from '../../components/playerBar'
 import '../../styles/page-common.less'
 import './index.less'
 
@@ -54,11 +55,7 @@ export default function Index() {
                     <View className='cards-row'>
                         {numArr.map(e => (
                             <View key={e} className='card-slot'>
-                                <Image
-                                    className='card-img'
-                                    src={PUKE_IMAGES[e]}
-                                    mode='widthFix'
-                                />
+                                <PokerCard num={e} />
                             </View>
                         ))}
                     </View>
@@ -84,6 +81,8 @@ export default function Index() {
                     换一组
                 </View>
             </View>
+
+            <PlayerBar fixed />
         </View>
     )
 }

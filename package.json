@@ -50,6 +50,7 @@
         "@tarojs/taro": "4.2.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "swiper": "^12.1.2",
         "taro-ui": "^3.4.1"
     },
     "devDependencies": {
@@ -74,5 +75,13 @@
         "react-refresh": "^0.14.0",
         "sass": "^1.75.0",
         "webpack": "5.91.0"
+    },
+    "overrides": {
+        "@tarojs/components": {
+            "swiper": "12.1.2"
+        },
+        "@tarojs/components-react": {
+            "swiper": "12.1.2"
+        }
     }
 }

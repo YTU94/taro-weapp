@@ -50,8 +50,13 @@
 }
 
 // 内嵌战况卡（首页）
-.pb-inline {
+// 用 .pb-inline.card 提高优先级：首页 .card 是网格卡片（半宽 + 右边距），
+// 战况卡不在网格里，需要撑满整行
+.pb-inline.card {
+    width: 100%;
+    margin-right: 0;
     margin-top: 24rpx;
+    margin-bottom: 24rpx;
     padding: 28rpx;
 }
 

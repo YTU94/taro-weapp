@@ -15,7 +15,12 @@ export default defineConfig(async (merge, { command, mode }) => {
       828: 1.81 / 2
     },
     sourceRoot: 'src',
-    outputRoot: 'dist',
+    // H5 与小程序产物必须分开，不能共用 dist/：
+    // H5 产物是 index.html + js/[name].[chunkhash].js + css/，一旦落在 dist/，
+    // 开发者工具会把它编进小程序的文件清单；等 dist 被重新构建成纯小程序产物后，
+    // 那个 js/ 里的 chunk 已不存在，上传就会报
+    //   ENOENT: no such file or directory, open '.../dist/js/<id>.<hash>.js'
+    outputRoot: process.env.TARO_ENV === 'h5' ? 'dist-h5' : 'dist',
     plugins: [],
     defineConstants: {
     },

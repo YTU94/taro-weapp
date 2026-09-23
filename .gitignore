@@ -1,4 +1,5 @@
 dist/
+dist-h5/
 .temp/
 .rn_temp/
 .swc/

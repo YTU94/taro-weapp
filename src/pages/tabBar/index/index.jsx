@@ -52,8 +52,6 @@ export default function Index() {
                 <View className='hero-sub'>{SUBTITLE}</View>
             </View>
 
-            <View className='tips'>点击右上角「···」-「添加到我的小程序」，下次访问更便捷</View>
-
             {/* 今晚战况：玩家计分板入口（P0 全局底座） */}
             <PlayerBar />
 
@@ -80,6 +78,8 @@ export default function Index() {
                 <Text className='drink-notice-main'>理性饮酒 · 未成年人禁止饮酒 · 酒后不驾车</Text>
                 <Text className='drink-notice-sub'>量力而行，随时可以在战况里「我好了，退出本轮」</Text>
             </View>
+
+            <View className='tips'>点击右上角「···」-「添加到我的小程序」，下次访问更便捷</View>
         </View>
     )
 }
